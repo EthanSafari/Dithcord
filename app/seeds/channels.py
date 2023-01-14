@@ -2,9 +2,7 @@ from ..models.channel import Channel
 from app import db, app
 
 
-with app.app_context():
-    db.drop_all()
-    db.create_all()
+def seed_channels():
     
     channel1 = Channel(
         private=False
@@ -42,7 +40,10 @@ with app.app_context():
     )
     
     all_channels = [ channel1, channel2, channel3, channel4, channel5, channel6 ]
-    add_channels = [db.session.add(channel) for channel in all_channels]
+    
+    for channel in all_channels:
+        db.session.add(channel)
     db.session.commit()
+    
     print('Seeded Channels')
     
