@@ -27,6 +27,13 @@ def seed_servers():
         owner_id = 4,
     )
     
+    all_servers = [ server1, server2, server3, server4 ]
+    for server in all_servers:
+        db.session.add(server)
+    db.session.commit()
+    
+    print("Servers Seeded")
+    
 
 def undo_server():
     db.session.execute("DELETE FROM servers")
