@@ -17,4 +17,4 @@ class Server(db.Model):
 
     owner = db.relationship('User', back_populates='server')
     channels = db.relationship('Channel', back_populates='server', cascade="all, delete")
-    users = db.relationship(secondary=server_users, back_populates="servers")
+    users = db.relationship('User', secondary=server_users, back_populates="servers")

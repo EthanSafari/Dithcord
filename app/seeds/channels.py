@@ -1,5 +1,4 @@
-from ..models.channel import Channel
-from app import db, environment, SCHEMA
+from app.models import db, Channel, environment, SCHEMA
 
 
 def seed_channels():
