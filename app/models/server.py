@@ -1,5 +1,5 @@
 from .db import db
-import datetime
+
 
 server_users = db.Table(
     'server_users',

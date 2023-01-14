@@ -1,6 +1,4 @@
 from .db import db
-import datetime
-
 
 class Channel(db.Model):
     __tablename__ = 'channels'
