@@ -1,38 +1,38 @@
-from app.models import db, message, message_image
+from app.models import db, Message, MessageImage, environment, SCHEMA
 
 
 def seed_messages():
-    message1 = message(
+    message1 = Message(
         body='Hello there', channel_id=1, author_id=2
     )
-    message2 = message(
+    message2 = Message(
         body='Hey bud', channel_id=1, author_id=3
     )
-    message3 = message(
+    message3 = Message(
         body='Hows it going', channel_id=1, author_id=2
     )
-    message4 = message(
+    message4 = Message(
         body='Not so bad and yourself', channel_id=1, author_id=3
     )
-    message5 = message(
+    message5 = Message(
         body='Pretty good', channel_id=1, author_id=2,
     )
-    message6 = message(
+    message6 = Message(
         body='Did you see that thing about the thing?', channel_id=2, author_id=4,
     )
-    message7 = message(
+    message7 = Message(
         body='Yeah man thats crazy', channel_id=2, author_id=1,
     )
-    message8 = message(
+    message8 = Message(
         body='Hola', channel_id=3, author_id=5,
     )
-    message9 = message(
+    message9 = Message(
         body='Como esta', channel_id=3, author_id=1,
     )
-    message10 = message(
+    message10 = Message(
         body='mucho bueno', channel_id=3, author_id=5,
     )
-    message11 = message(
+    message11 = Message(
         body='tu es loco', channel_id=3, author_id=1,
     )
     
@@ -50,19 +50,19 @@ def seed_messages():
     db.session.commit()
     
 def seed_message_images():
-    image1 = message_image(
+    image1 = MessageImage(
         image_url='/static/images/message_images/assault-dog.jpeg', message_id=3
     )
-    image2 = message_image(
+    image2 = MessageImage(
         image_url='/static/images/message_images/beef-cat.jpg', message_id=5
     )
-    image3 = message_image(
+    image3 = MessageImage(
         image_url='/static/images/message_images/footzo.png', message_id=7
     )
-    image4 = message_image(
+    image4 = MessageImage(
         image_url='/static/images/message_images/hampster.jpg', message_id=9
     )
-    image5 = message_image(
+    image5 = MessageImage(
         image_url='/static/images/message_images/rogan-tyson.jpg', message_id=11
     )
     
