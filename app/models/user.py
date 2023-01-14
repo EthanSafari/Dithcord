@@ -5,6 +5,18 @@ import datetime
 from .server import server_users
 from random import choice
 
+profile_images = [
+    'a-bards-curse-hallucinated-dog.png',
+    'astro-tyson.png',
+    'drunk-pidgeon.png',
+    'MTM_UnsolvedSituations_Still07.png',
+    'ogopogo.png',
+    'pox.png',
+    'the-bards-curse-bisexual-license-plate.png',
+    'Yung_Hee_29.jpg',
+    'yung-hee.png'
+]
+
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
@@ -15,7 +27,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_img = db.Column(db.String(255), nullable=False)
+    profile_img = db.Column(db.String(255), nullable=False, default=f'/static/images/profile_images/{choice(profile_images)}')
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
@@ -38,5 +50,8 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'profile_img': self.profile_img,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
         }
