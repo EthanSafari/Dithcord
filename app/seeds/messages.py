@@ -72,3 +72,19 @@ def seed_message_images():
     db.session.add(image4)
     db.session.add(image5)
     db.session.commit()
+    
+def undo_messages():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.messages RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM message")
+        
+    db.session.commit()
+    
+def undo_message_images():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.message_images RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute("DELETE FROM message_images")
+        
+    db.session.commit()
