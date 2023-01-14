@@ -77,7 +77,7 @@ def undo_messages():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.messages RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM message")
+        db.session.execute("DELETE FROM messages")
         
     db.session.commit()
     
