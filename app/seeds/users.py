@@ -13,12 +13,14 @@ def seed_users():
         username='Tyson', email='mike@tyson.com', password='password'
     )
     pidgeon = User(
-        username='pidge', email='pi'
+        username='pidge', email='tysonpidgeon@tyson.com', password='password'
     )
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(tyson)
+    db.session.add(pidgeon)
     db.session.commit()
 
 
