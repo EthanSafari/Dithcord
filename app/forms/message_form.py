@@ -6,7 +6,7 @@ from wtforms.validators import DataRequired, URL
 
 class MessageForm(FlaskForm):
     body = StringField('Message', validators=[DataRequired()])
-    image_url = StringField('Image', validators=[URL()])
+    # image_url = StringField('Image', validators=[URL()])
     channel_id = IntegerField('Channel Id', validators=[DataRequired()])
     author_id = IntegerField('Author Id', validators=[DataRequired()])
     submit = SubmitField('Submit')
