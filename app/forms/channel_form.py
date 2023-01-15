@@ -8,3 +8,4 @@ class ChannelForm(FlaskForm):
     private = BooleanField('Private', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
     server_id = IntegerField('Server Id', validators=[DataRequired()])
+    submit = SubmitField('Submit')
