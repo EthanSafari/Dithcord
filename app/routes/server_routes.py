@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, request
 
-from app.forms.new_server_form import ServerForm
+from app.forms.server_form import ServerForm
 from ..models import Server, Channel, db
 
 
