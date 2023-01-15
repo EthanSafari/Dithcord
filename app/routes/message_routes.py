@@ -25,7 +25,7 @@ def new_message():
 
 
 @message_bp.route('/<int:id>', methods=['GET', 'DELETE', 'PUT'])
-def get_message_by_id(id):
+def message_by_id(id):
     message = Message.query.get(id)
 
     if message:
