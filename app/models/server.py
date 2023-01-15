@@ -1,19 +1,22 @@
-from .db import db
+from .db import db, environment, SCHEMA, add_prefix_for_prod
 
 
 server_users = db.Table(
     'server_users',
     db.Column('server_id', db.Integer, db.ForeignKey('servers.id'), primary_key=True),
-    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
-)
+    db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True))
 
+if environment == 'production': server_users.schema = SCHEMA
 class Server(db.Model):
     __tablename__ = 'servers'
+
+    if environment == "production": __table_args__ = {'schema': SCHEMA}
+
     id = db.Column(db.Integer, primary_key=True)
     private = db.Column(db.Boolean, default=False, nullable=False)
     name = db.Column(db.String(255), nullable=False)
     server_image = db.Column(db.String(255), nullable=False, default='/static/images/dithcord_server_image.png')
-    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     owner = db.relationship('User', back_populates='server')
     channels = db.relationship('Channel', back_populates='server', cascade="all, delete")
