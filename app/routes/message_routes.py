@@ -25,10 +25,13 @@ def new_message():
         return form.errors
 
 
-@message_bp.route('/<int:id>', methods=['DELETE'])
+@message_bp.route('/<int:id>', methods=['GET', 'DELETE'])
 def delete_message(id):
-    delete_message = Message.query.get(id)
+    message = Message.query.get(id)
     
-    db.session.delete(delete_message)
-    db.session.commit()
-    return {'message': 'Message Deleted!'}
+    if request.method == 'DELETE':
+        db.session.delete(message)
+        db.session.commit()
+        return {'message': 'Message Deleted!'}
+
+    return message.to_dict()
