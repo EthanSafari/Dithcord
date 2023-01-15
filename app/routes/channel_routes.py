@@ -31,6 +31,25 @@ def new_channel():
     else:
         return form.errors
     
+    
+@channel_bp.route('/<int:id>/update', methods=['PUT'])
+def update_channel(id):
+    channel_update = Channel.query.get(id)
+    form = ChannelForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    
+    if form.validate_on_submit():
+        
+        channel_update.name = form.data['name']
+        channel_update.private = form.data['private']
+        
+        # db.session.add(channel_update)
+        db.session.commit()
+        return channel_update.to_dict()
+    
+    else:
+        return form.errors    
+
 
 @channel_bp.route('/<int:channel_id>', methods=['DELETE'])
 def delete_channel(channel_id):
