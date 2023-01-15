@@ -38,7 +38,7 @@ export const editServer = (server) => {
     }
 }
 
-export const deleteServer = (serverId) => {
+export const removeServer = (serverId) => {
     return {
         type: DELETE_SERVER,
         serverId
@@ -68,23 +68,33 @@ export const getOneServer = (serverId) => async (dispatch) => {
 }
 
 export const createServer = (server) => async (dispatch) => {
-    const {name, private, serverImage} = server;
+    const {name, privateStatus, serverImage} = server;
 
     const res = await fetch('/api/servers/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             name,
-            private,
+            privateStatus,
             serverImage
         })
     })
 
     if(res.ok) {
         const data = await res.json();
-    };
-    dispatch(addServer(data))
-};
+        dispatch(addServer(data))
+    }
+}
+
+export const deleteServer = (serverId) => async (dispatch) => {
+    const res = await fetch(`/api/servers/${serverId}`, {
+        method: 'DELETE'
+    })
+
+    if(res.ok) {
+        dispatch(removeServer(serverId))
+    }
+}
 
 
 
@@ -112,11 +122,18 @@ const serverReducer = (state = initialState, action) => {
 
         case ADD_SERVER:
             {
-                const newState = {}
+                const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
+                newState.allServers[action.server.id] = action.server
+                return newState
             }
 
         case DELETE_SERVER:
-            {}
+            {
+                const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
+                delete newState.allServers[action.serverId]
+                delete newState.oneServer[action.serverId]
+                return newState
+            }
 
         default:
             return state
