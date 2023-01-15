@@ -35,3 +35,19 @@ def delete_message(id):
         return {'message': 'Message Deleted!'}
 
     return message.to_dict()
+
+
+@message_bp.route('/<int:id>', methods=["PUT"])
+def update_message(id):
+    form = MessageForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    message_update = Message.query.get(id)
+    
+    if request.method == "PUT":
+        if form.validate_on_submit():
+            message_update.body = form.data['body']
+            db.session.commit()
+        
+            return message_update.to_dict()
+    
+        return form.errors

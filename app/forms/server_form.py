@@ -5,8 +5,8 @@ from wtforms.validators import DataRequired, URL
 
 
 class ServerForm(FlaskForm):
-    private = BooleanField('Private', validators=[DataRequired()])
+    private = BooleanField('Private')
     name = StringField('Name', validators=[DataRequired()])
     server_image = StringField('Image', validators=[URL()])
-    owner_id = IntegerField('Owner', validators=[DataRequired()])
+    owner_id = IntegerField('Owner')
     submit = SubmitField('Submit')

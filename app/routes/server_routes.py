@@ -13,7 +13,7 @@ def server_home():
     return {'servers': [server.to_dict() for server in all_servers]}
 
 
-@server_bp.route('/<int:id>')
+@server_bp.route('/<int:id>', methods=["GET"])
 def server_by_id(id):
     server = Server.query.get(id)
     channels = Channel.query.filter(Channel.server_id == id).all()
@@ -41,6 +41,24 @@ def new_server():
     else:
         return form.errors
         
+@server_bp.route('/<int:id>', methods=['PUT'])
+def update_server(id):
+    server_update = Server.query.get(id)
+    form = ServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    
+    if form.validate_on_submit():
+        
+        server_update.name = form.data['name']
+        server_update.private = form.data['private']
+        server_update.server_image = form.data['server_image']
+        
+        # db.session.add(channel_update)
+        db.session.commit()
+        return server_update.to_dict()
+    
+    else:
+        return form.errors 
     
 @server_bp.route('/<int:id>', methods=['DELETE'])
 def delete_server(id):
