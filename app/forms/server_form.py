@@ -1,0 +1,12 @@
+from wsgiref.validate import validator
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, BooleanField, IntegerField
+from wtforms.validators import DataRequired, URL
+
+
+class ServerForm(FlaskForm):
+    private = BooleanField('Private', validators=[DataRequired()])
+    name = StringField('Name', validators=[DataRequired()])
+    server_image = StringField('Image', validators=[URL()])
+    owner_id = IntegerField('Owner', validators=[DataRequired()])
+    submit = SubmitField('Submit')
