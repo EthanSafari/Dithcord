@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, render_template, redirect, request
+
+from app.forms.new_server_form import ServerForm
 from ..models import Server, Channel, db
 
 
@@ -25,6 +27,8 @@ def server_by_id(id):
 
 @server_bp.route('/new', methods=['POST'])
 def new_server():
+    form = ServerForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     # new_server = Server(
     #     private = False,
     #     name = "Test",
@@ -32,6 +36,15 @@ def new_server():
     #     owner_id=1
     # )
     
-    db.session.add(new_server)
-    db.session.commit()
-    return new_server.to_dict()
+    if form.validate_on_submit():
+        new_server = Server()
+        form.populate_obj(new_server)
+        
+        db.session.add(new_server)
+        db.session.commit()
+        return new_server.to_dict()
+    
+    else:
+        return form.errors
+        
+    
