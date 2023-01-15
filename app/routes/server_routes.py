@@ -29,12 +29,6 @@ def server_by_id(id):
 def new_server():
     form = ServerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    # new_server = Server(
-    #     private = False,
-    #     name = "Test",
-    #     server_image="/static/images/server_images/tysonTattoo_server_image.jpg",
-    #     owner_id=1
-    # )
     
     if form.validate_on_submit():
         new_server = Server()
