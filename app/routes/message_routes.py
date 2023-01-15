@@ -1,8 +1,7 @@
 from flask import Blueprint, render_template, redirect, request
 
-from app.forms.server_form import ServerForm
 from app.forms.message_form import MessageForm
-from ..models import Server, Channel, Message, db
+from ..models import Message, db
 
 
 message_bp = Blueprint('messages', __name__)
