@@ -13,3 +13,14 @@ class Message(db.Model):
     channel = db.relationship('Channel', back_populates='messages')
     author = db.relationship('User', back_populates='messages')
     images = db.relationship('MessageImage', back_populates='message', cascade="all, delete")
+
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'body': self.body,
+            'channelId': self.channel_id,
+            'authorId': self.author_id,
+            'createdAt': self.created_at,
+            'updatedAt': self.updated_at
+        }
