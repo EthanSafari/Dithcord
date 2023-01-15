@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect
-from ..models import Server, Channel
+from ..models import Server, Channel, db
 
 
 server_bp = Blueprint('servers', __name__)
@@ -23,3 +23,15 @@ def server_by_id(id):
     return server_dict
 
 
+@server_bp.route('/new', methods=['POST'])
+def new_server():
+    # new_server = Server(
+    #     private = False,
+    #     name = "Test",
+    #     server_image="/static/images/server_images/tysonTattoo_server_image.jpg",
+    #     owner_id=1
+    # )
+    
+    db.session.add(new_server)
+    db.session.commit()
+    return new_server.to_dict()
