@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, redirect, request
+from flask import Blueprint, request
 
 from app.forms.server_form import ServerForm
-from ..models import Server, Channel, db
+from ..models import Server, db
 
 
 server_bp = Blueprint('servers', __name__)
@@ -13,39 +13,52 @@ def server_home():
     return {'servers': [server.to_dict() for server in all_servers]}
 
 
-@server_bp.route('/<int:id>')
-def server_by_id(id):
-    server = Server.query.get(id)
-    channels = Channel.query.filter(Channel.server_id == id).all()
-
-    server_dict = server.to_dict()
-    server_dict['channels'] = [channel.to_dict() for channel in channels]
-    server_dict['users'] = [user.to_dict() for user in server.users]
-
-    return server_dict
-
 
 @server_bp.route('/new', methods=['POST'])
 def new_server():
     form = ServerForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    
+
     if form.validate_on_submit():
         new_server = Server()
         form.populate_obj(new_server)
-        
+
         db.session.add(new_server)
         db.session.commit()
         return new_server.to_dict()
-    
+
     else:
         return form.errors
-        
-    
-@server_bp.route('/<int:id>', methods=['DELETE'])
-def delete_server(id):
-    delete_server = Server.query.get(id)
-    
-    db.session.delete(delete_server)
-    db.session.commit()
-    return {'message': 'Server Deleted!'}
+
+
+@server_bp.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
+def server_by_id(id):
+    server = Server.query.get(id)
+
+    if server:
+
+        if request.method == 'GET':
+            server_dict = server.to_dict()
+            server_dict['channels'] = [channel.to_dict() for channel in server.channels]
+            server_dict['users'] = [user.to_dict() for user in server.users]
+            server_dict['owner'] = server.owner.to_dict()
+            return server_dict
+
+        if request.method == 'PUT':
+            form = ServerForm()
+            form['csrf_token'].data = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                server.name = form.data['name']
+                server.private = form.data['private']
+                server.server_image = form.data['server_image']
+                db.session.commit()
+                return server.to_dict()
+            else:
+                return form.errors
+
+        if request.method == 'DELETE':
+            db.session.delete(server)
+            db.session.commit()
+            return {'message': 'Server Deleted!'}
+
+    return { "error": "Server not found", "errorCode" : 404 }, 404

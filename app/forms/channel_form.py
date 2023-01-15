@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired, URL
 
 
 class ChannelForm(FlaskForm):
-    private = BooleanField('Private', validators=[DataRequired()])
+    private = BooleanField('Private')
     name = StringField('Name', validators=[DataRequired()])
-    server_id = IntegerField('Server Id', validators=[DataRequired()])
+    server_id = IntegerField('Server Id')
     submit = SubmitField('Submit')
