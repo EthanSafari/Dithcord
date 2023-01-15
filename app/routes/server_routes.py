@@ -42,3 +42,10 @@ def new_server():
         return form.errors
         
     
+@server_bp.route('/<int:id>', methods=['DELETE'])
+def delete_server(id):
+    delete_server = Server.query.get(id)
+    
+    db.session.delete(delete_server)
+    db.session.commit()
+    return {'message': 'Server Deleted!'}
