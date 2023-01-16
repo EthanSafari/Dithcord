@@ -1,4 +1,4 @@
-from app.models import db, Server, environment, SCHEMA
+from app.models import db, Server, environment, SCHEMA, User
 
 
 def seed_servers():
@@ -28,6 +28,11 @@ def seed_servers():
     )
 
     all_servers = [ server1, server2, server3, server4 ]
+    all_users = User.query.all()
+    for i in range(len(all_users)):
+        for j in range(len(all_servers)):
+            all_users[i].servers.append(all_servers[j])
+
     for server in all_servers:
         db.session.add(server)
     db.session.commit()
