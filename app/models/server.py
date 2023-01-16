@@ -5,7 +5,7 @@ server_users = db.Table(
     'server_users',
     db.Model.metadata,
     db.Column('server_id', db.Integer, db.ForeignKey(add_prefix_for_prod('servers.id')), primary_key=True),
-    db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id)'), primary_key=True))
+    db.Column('user_id', db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), primary_key=True))
 
 if environment == 'production':
     server_users.schema = SCHEMA
