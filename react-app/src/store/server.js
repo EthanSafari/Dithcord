@@ -50,16 +50,23 @@ export const removeServer = (serverId) => {
 //------------------------------   THUNKS   ------------------------------//
 
 export const getServers = () => async (dispatch) => {
-    const res = await fetch('/api/servers');
+    const res = await fetch('/api/servers', {
+        headers: {
+            'Content-Type': 'application/json'
+          }
+    });
+
+    console.log('response data: ', res)
 
     if(res.ok){
         const data = await res.json();
-        dispatch(loadServers(data.Servers))
+        console.log('response data: ', data)
+        dispatch(loadServers(data.servers))
     }
 }
 
 export const getOneServer = (serverId) => async (dispatch) => {
-    const res = await fetch(`api/servers/${serverId}`)
+    const res = await fetch(`/api/servers/${serverId}`)
 
     if(res.ok){
         const data = await res.json();
@@ -116,7 +123,7 @@ const serverReducer = (state = initialState, action) => {
         case LOAD_ONE_SERVER:
             {
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
-                newState.oneServer = {...action.Server};
+                newState.oneServer = {...action.server};
                 return newState;
             }
 
