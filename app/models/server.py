@@ -1,20 +1,17 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from sqlalchemy.ext.declarative import declarative_base
-
-BASE = declarative_base()
 
 
 server_users = db.Table(
     'server_users',
-    BASE.metadata,
     db.Column('server_id', db.Integer, db.ForeignKey('servers.id'), primary_key=True),
     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True))
 
 if environment == 'production': server_users.schema = SCHEMA
-class Server(db.Model, BASE):
+class Server(db.Model):
     __tablename__ = 'servers'
 
-    if environment == "production": __table_args__ = {'schema': SCHEMA}
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     private = db.Column(db.Boolean, default=False, nullable=False)
