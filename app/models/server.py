@@ -7,7 +7,8 @@ server_users = db.Table(
     db.Column('server_id', db.Integer, db.ForeignKey('servers.id'), primary_key=True),
     db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True))
 
-if environment == 'production': server_users.schema = SCHEMA
+if environment == 'production':
+    server_users.schema = SCHEMA
 class Server(db.Model):
     __tablename__ = 'servers'
 
