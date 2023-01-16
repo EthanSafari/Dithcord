@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 
 from app.forms.server_form import ServerForm
-from ..models import Server, db
+from ..models import Server, Channel, db
 
 
 server_bp = Blueprint('servers', __name__)
@@ -62,3 +62,13 @@ def server_by_id(id):
             return {'message': 'Server Deleted!'}
 
     return { "error": "Server not found", "errorCode" : 404 }, 404
+
+
+@server_bp.route('/<int:id>/channels')
+def get_channels_by_server(id):
+    server = Server.query.get(id)
+    if server:
+        server_channels = Channel.query.filter(Channel.server_id == id).all()
+        return { 'channels': [channel.to_dict() for channel in server_channels]}
+    else:
+        return { "error": "Server not found", "errorCode" : 404 }, 404
