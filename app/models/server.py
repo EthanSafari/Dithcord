@@ -1,5 +1,5 @@
 from .db import db, environment, SCHEMA, add_prefix_for_prod
-from models import User
+from . import User
 
 
 server_users = db.Table(
