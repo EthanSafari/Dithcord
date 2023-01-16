@@ -2,7 +2,7 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
-from .server import server_users, Base
+from .server import server_users, BASE
 import random
 
 profile_images = [
@@ -17,7 +17,7 @@ profile_images = [
     'yung-hee.png'
 ]
 
-class User(db.Model, UserMixin, Base):
+class User(db.Model, UserMixin, BASE):
     __tablename__ = 'users'
 
     if environment == "production":
