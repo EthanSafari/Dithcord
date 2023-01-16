@@ -56,11 +56,8 @@ export const getServers = () => async (dispatch) => {
           }
     });
 
-    console.log('response data: ', res)
-
     if(res.ok){
         const data = await res.json();
-        console.log('response data: ', data)
         dispatch(loadServers(data.servers))
     }
 }
@@ -103,6 +100,26 @@ export const deleteServer = (serverId) => async (dispatch) => {
     }
 }
 
+export const editServerById = (server) => async (dispatch) => {
+    const { id, privateStatus, name, serverImage, ownerId } = server
+    const res = await fetch(`/api/server/${id}`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            id,
+            privateStatus,
+            name,
+            serverImage,
+            ownerId
+        })
+    })
+    if(res.ok) {
+        const data = await res.json();
+        console.log('IN THUNK --res data-- : ', data)
+        dispatch(editServer(data))
+    }
+}
+
 
 
 //------------------------------   REDUCER   ------------------------------//
@@ -131,6 +148,14 @@ const serverReducer = (state = initialState, action) => {
             {
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
                 newState.allServers[action.server.id] = action.server
+                return newState
+            }
+
+        case EDIT_SERVER:
+            {
+                const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
+                newState.allServers[action.server.id] = action.server
+                newState.oneServer = action.server
                 return newState
             }
 
