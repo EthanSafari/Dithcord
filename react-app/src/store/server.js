@@ -56,8 +56,6 @@ export const getServers = () => async (dispatch) => {
           }
     });
 
-    console.log('response data: ', res)
-
     if(res.ok){
         const data = await res.json();
         console.log('response data: ', data)
