@@ -2,8 +2,8 @@ from .db import db, environment, SCHEMA, add_prefix_for_prod
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 import datetime
-from .server import server_users
-from random import choice
+from .server import server_users, Base
+import random
 
 profile_images = [
     'a-bards-curse-hallucinated-dog.png',
@@ -17,7 +17,7 @@ profile_images = [
     'yung-hee.png'
 ]
 
-class User(db.Model, UserMixin):
+class User(db.Model, UserMixin, Base):
     __tablename__ = 'users'
 
     if environment == "production":
@@ -27,7 +27,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_img = db.Column(db.String(255), nullable=False, default=f'/static/images/profile_images/{choice(profile_images)}')
+    profile_img = db.Column(db.String(255), nullable=False, default=f'/static/images/profile_images/{random.choice(profile_images)}')
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
