@@ -25,5 +25,4 @@ def user(id):
     current_user = user.to_dict()
     current_user['servers'] = [server.to_dict() for server in user.servers]
     current_user['serversOwned'] = [server.to_dict() for server in user.server]
-    print('CURRENT USER',current_user)
     return current_user
