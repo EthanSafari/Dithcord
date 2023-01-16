@@ -4,7 +4,8 @@ import datetime
 class Message(db.Model):
     __tablename__ = 'messages'
 
-    if environment == "production": __table_args__ = {'schema': SCHEMA}
+    if environment == "production":
+        __table_args__ = {'schema': SCHEMA}
 
     id = db.Column(db.Integer, primary_key=True)
     body = db.Column(db.String(750))
