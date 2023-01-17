@@ -1,9 +1,17 @@
-const LOAD_CHANNEL = 'channels/loadOne';
-const ADD_CHANNEL = 'channels/add';
-const EDIT_CHANNEL = 'channels/edit';
-const DELETE_CHANNEL = 'channels/delete';
+const GET_CHANNELS = 'channels/getAllChannels';
+const LOAD_CHANNEL = 'channels/loadChannel';
+const ADD_CHANNEL = 'channels/addChannel';
+const EDIT_CHANNEL = 'channels/editChannel';
+const DELETE_CHANNEL = 'channels/deleteChannel';
 
 //------------------------------   ACTIONS   ------------------------------//
+
+export const getAllChannels = (channels) => {
+    return {
+        type: GET_CHANNELS,
+        channels,
+    };
+};
 
 export const loadChannel = (channel) => {
     return {
@@ -34,6 +42,14 @@ export const deleteChannel = (channelId) => {
 };
 
 //------------------------------   THUNKS   ------------------------------//
+
+export const getAllChannelsByServerId = (serverId) => async (dispatch) => {
+    const res = await fetch(`/api/serevrs/${serverId}/channels`);
+    if (res.ok) {
+        const data = await res.json();
+        dispatch(getAllChannels(data));
+    };
+};
 
 export const getChannel = (channelId) => async (dispatch) => {
     const res = await fetch(`/api/channels/${channelId}`);
@@ -82,7 +98,7 @@ export const destroyChannel = (channelId) => async dispatch => {
 
 //------------------------------   REDUCER   ------------------------------//
 
-const initialState = { channel: {} };
+const initialState = { channels: {}, channel: {} };
 const channelReducer = (state = initialState, action) => {
     let newState = {};
     switch (action.type) {
