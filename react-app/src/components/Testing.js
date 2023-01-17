@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getServers } from '../store/server';
 import { getChannel, newChannel, putChannel, destroyChannel } from '../store/channel'
 import { getAllChannelsByServerId } from '../store/channel';
+import { getChannelMessages } from '../store/message';
 
 function Testing() {
     const dispatch = useDispatch()
@@ -14,6 +15,9 @@ function Testing() {
     const channels = Object.values(serverChannelsObj)
 
     const channel = useSelector(state => state.channels.oneChannel)
+
+    const channelMessagesObj = useSelector(state => state.messages.channelMessages)
+    const channelMessages = Object.values(channelMessagesObj)
     
 
     console.log('---Test Component---', channel)
@@ -21,7 +25,7 @@ function Testing() {
     useEffect(() => {
         dispatch(getServers())
         dispatch(getAllChannelsByServerId(1))
-        dispatch(getChannel(3))
+        // dispatch(getChannel(3))
         // dispatch(newChannel(
         //     {
         //         "private": false,
@@ -38,18 +42,24 @@ function Testing() {
         //     }
         // ));
 
-        dispatch(destroyChannel(7));
+        // dispatch(destroyChannel(7));
+
+        dispatch(getChannelMessages(1))
 
     }, [dispatch])
 
 
     return (
         <div>
-            {channels.map((server) => (
+            {/* {channels.map((server) => (
                 <li key={server.id}>{server.name}</li>
+            ))} */}
+
+            {channelMessages.map((message) => (
+                <li key={message.id}>{message.body}</li>
             ))}
 
-            <p>{channel.name}</p>
+            {/* <p>{channel.name}</p> */}
         </div>
     )
 }
