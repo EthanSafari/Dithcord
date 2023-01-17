@@ -9,6 +9,7 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import Testing from './components/Testing'
 import { authenticate } from './store/session';
+import Greeting from './components/ModalTest';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -43,6 +44,7 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/testing' exact={true} >
           <Testing />
+          <Greeting />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           <h1>My Home Page</h1>
