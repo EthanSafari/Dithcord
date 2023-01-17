@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import styled from 'styled-components';
+import { Wrapper } from './ComponentStyling';
 
 import Servers from './Servers'
 
@@ -8,19 +9,14 @@ function Dithcord() {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
-    console.log(sessionUser)
-
-    const Wrapper = styled.section`
-        display: flex;
-        flex-direction: row;
-    `;
+    console.log('----MAIN COMPONENT----\n', `${sessionUser}\n`)
 
     return(
         <Wrapper>
             {/* {sessionUser.servers.map((server) => (
                 <p>{server.name}</p>
             ))} */}
-            <Servers />
+            <Servers user={{ sessionUser }}/>
         </Wrapper>
     )
 
