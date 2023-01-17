@@ -1,5 +1,5 @@
 from flask import Blueprint, request
-from ..models import Channel, db
+from ..models import Channel, Message, db
 from ..forms.channel_form import ChannelForm
 
 
@@ -34,7 +34,7 @@ def channel_by_id(id):
             return {'message': 'Channel Deleted!'}
 
     return { "error": "Channel not found", "errorCode" : 404 }, 404
-    
+
 
 @channel_bp.route('/new', methods=['POST'])
 def new_channel():
@@ -51,3 +51,14 @@ def new_channel():
 
     else:
         return form.errors
+
+
+@channel_bp.route('/<int:id>/messages')
+def get_all_messages_by_channel_id(id):
+    channel = Channel.query.get(id)
+    if channel:
+        channel_messages = Message.query.filter(Message.channel_id == id).all()
+        messages_list = { 'messages' : [message.to_dict() for message in channel_messages]}
+        return messages_list
+    else:
+        return { "error": "Channel not found", "errorCode" : 404 }, 404
