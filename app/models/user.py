@@ -53,5 +53,6 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profile_img': self.profile_img,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'servers': [server.to_dict() for server in self.servers]
         }
