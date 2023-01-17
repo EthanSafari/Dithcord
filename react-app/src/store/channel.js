@@ -87,7 +87,7 @@ export const putChannel = (channelId, channel) => async (dispatch) => {
     };
 };
 
-export const destroyChannel = (channelId) => async dispatch => {
+export const destroyChannel = (channelId, serverId) => async dispatch => {
     // console.log('---START THUNK DATA---', channelId) //TODO
     const res = await fetch(`/api/channels/${channelId}`, {
         method: 'DELETE',
@@ -95,6 +95,7 @@ export const destroyChannel = (channelId) => async dispatch => {
     if (res.ok) {
         // console.log('---THUNK DATA---' ) //TODO
         dispatch(deleteChannel(channelId));
+        dispatch(getAllChannelsByServerId(serverId)); //TODO needs to be tested on frontend
         return { 'message' : 'Successfully Deleted' };
     };
 };
