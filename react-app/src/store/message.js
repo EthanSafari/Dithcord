@@ -25,10 +25,11 @@ export const loadChannelMessages = (messages) => {
     }
 }
 
-export const addMessage = (message) => {
+export const addMessage = (message, channelId) => {
     return {
         type: ADD_MESSAGE,
-        message
+        message,
+        channelId
     }
 }
 
@@ -68,7 +69,7 @@ export const getChannelMessages = (channelId) => async (dispatch) => {
     }
 }
 
-export const createMessage = (message) => async (dispatch) => {
+export const createMessage = (message, channelId) => async (dispatch) => {
     const { body, channelId, authorId } = message;
 
     const res = await fetch('/api/messages/new', {
@@ -79,7 +80,7 @@ export const createMessage = (message) => async (dispatch) => {
 
     if(res.ok) {
         const data = await res.json();
-        dispatch(addMessage(data))
+        dispatch(addMessage(data, channelId))
     }
 }
 
@@ -138,7 +139,7 @@ const messageReducer = (state = initialState, action) => {
         case ADD_MESSAGE:
             {
                 const newState = { channelMessages: {...state.channelMessages}, oneMessage: {...state.oneMessage}}
-                newState.channelMessages[action.server.id] = action.message
+                newState.channelMessages[action.channelId] = action.message
                 return newState
             }
 

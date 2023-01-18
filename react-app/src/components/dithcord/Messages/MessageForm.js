@@ -34,7 +34,7 @@ const MessageForm = ({ channelId }) => {
             }
 
 
-            let newMessage = await dispatch(createMessage(payload))
+            let newMessage = await dispatch(createMessage(payload, channelId))
             if (newMessage) {
                 await dispatch(loadChannelMessages(channelId))
                 setErrors(false)
