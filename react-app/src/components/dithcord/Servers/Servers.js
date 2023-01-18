@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper } from '../DithcordStyles';
+import { ServerWrapper, Wrapper, ImageWrapper } from '../DithcordStyles';
 import { useDispatch } from 'react-redux';
 import { getOneServer } from '../../../store/server';
 
@@ -14,14 +14,14 @@ function Servers(user) {
     }
 
     return (
-        <Wrapper>
+        <ServerWrapper>
             {servers.map((server) => (
                 <div onClick={() => oneServer(server.id)} key={server.id}>
                     <h2>{server.name}</h2>
-                    <img src={`/images/server_images/${server.serverImage}`} alt='serverImg'></img>
+                    <ImageWrapper as="img" src={`/images/server_images/${server.serverImage}`} />
                 </div>
             ))}
-        </Wrapper>
+        </ServerWrapper>
     )
 }
 
