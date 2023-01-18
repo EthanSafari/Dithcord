@@ -61,8 +61,10 @@ function App() {
           <Dithcord />
         </ProtectedRoute>
         <Route path='/' exact={true} >
-          {!sessionUser && (
+          {!sessionUser ? (
             <NotLogInLanding />
+          ) : (
+            <Dithcord />
           )}
         </Route>
       </Switch>
