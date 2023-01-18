@@ -2,7 +2,7 @@ import React from 'react';
 import { ServerWrapper, Wrapper, ImageWrapper } from '../DithcordStyles';
 import { useDispatch } from 'react-redux';
 import { getOneServer } from '../../../store/server';
-import { getChannel } from '../../../store/channel';
+import { getChannel, loadChannel } from '../../../store/channel';
 
 function Servers(user) {
     const dispatch = useDispatch()
@@ -14,6 +14,9 @@ function Servers(user) {
         dispatch(getOneServer(serverId))
         if(channelId) {
             dispatch(getChannel(channelId))    
+        }
+        else {
+            dispatch(loadChannel({}))
         }
         return 
     }

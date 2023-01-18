@@ -4,7 +4,7 @@ import { Wrapper } from '../DithcordStyles';
 
 function CurrentChannel(channel) {
     const currentChannel = channel.channel
-    const channelMessages = currentChannel.messages
+    const channelMessages = currentChannel?.messages
     console.log('', '\n', '--------------CURRENT CHANNELS COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
     return (
