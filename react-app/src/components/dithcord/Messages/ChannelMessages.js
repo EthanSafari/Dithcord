@@ -1,13 +1,19 @@
 import React from 'react';
+import { MessageWrapper } from '../DithcordStyles';
 
 
-function ChannelMessages(server) {
-    console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', '**DATA GOES HERE**', '\n', '')
+function ChannelMessages(messages) {
+    const channelMessages = messages.messages
+    console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
     return (
-        <div>
-            {/* {Loop through channels messages here} */}
-        </div>
+        <MessageWrapper>
+            {channelMessages && channelMessages.map((message) => (
+                <div key={message.id}>
+                    <p>{message.body}</p>
+                </div>
+            ))}
+        </MessageWrapper>
     )
 }
 
