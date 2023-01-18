@@ -1,0 +1,42 @@
+.sign-up-form {
+    background-color: orangered;
+    border-radius: 5px;
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    padding: 1rem;
+    min-width: 20rem;
+    min-height: 20rem;
+    justify-content: space-evenly;
+    align-items: center;
+    height: fit-content;
+}
+
+.submit-button {
+    margin: 5px 0;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    background-color: orange;
+    color: white;
+    width: 100%;
+}
+
+.have-an-account {
+    font-size: 12px;
+    margin: 1px;
+    display: flex;
+    width: 100%;
+    margin-left: 1.5rem;
+    justify-content: flex-start;
+}
+
+.input-margin {
+    margin: 1rem 0;
+}
+
+.terms-agreement {
+    margin: 1rem 0;
+    font-size: 10px;
+    color: white;
+}
