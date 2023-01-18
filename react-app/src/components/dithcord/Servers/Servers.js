@@ -18,6 +18,8 @@ function Servers(user) {
         return 
     }
 
+    // TESTING THIS
+
     return (
         <ServerWrapper>
             {servers && servers.map((server) => (
