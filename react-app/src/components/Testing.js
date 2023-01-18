@@ -1,18 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import { getServers } from '../store/server';
-import { getChannel, newChannel, putChannel, destroyChannel } from '../store/channel'
 import { getAllChannelsByServerId } from '../store/channel';
 import { getChannelMessages } from '../store/message';
 
 function Testing() {
     const dispatch = useDispatch()
 
-    const serversObj = useSelector(state => state.servers.allServers)
-    const servers = Object.values(serversObj);
+    // const serversObj = useSelector(state => state.servers.allServers)              
+    // const servers = Object.values(serversObj);
 
-    const serverChannelsObj = useSelector(state => state.channels.allChannels)
-    const channels = Object.values(serverChannelsObj)
+    // const serverChannelsObj = useSelector(state => state.channels.allChannels) 
+    // const channels = Object.values(serverChannelsObj)
 
     const channel = useSelector(state => state.channels.oneChannel)
 
