@@ -3,12 +3,13 @@ import styled from 'styled-components';
 export const Wrapper = styled.section`
     display: flex;
     flex-direction: row;
+    width: 100%;
 `;
 
 export const ServerWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 20%
 `;
 
 export const ImageWrapper = styled.div`
@@ -22,5 +23,5 @@ export const ImageWrapper = styled.div`
 export const MessageWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 50%;
 `;
