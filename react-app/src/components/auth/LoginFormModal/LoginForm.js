@@ -72,7 +72,7 @@ const LoginForm = () => {
           </div>
           <NavLink to={'/signup'}>
             <div className='register-text'>
-              Register Here
+              Regithter Here
             </div>
           </NavLink>
         </div>

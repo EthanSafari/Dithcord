@@ -5,16 +5,19 @@ const NotLoggedInParts = ({ partsArray }) => {
     const [lastPart, setLastPart] = useState({});
     const [lastPartTrue, setLastPartTrue] = useState(false);
 
+    const copyArray = [...partsArray];
+    copyArray.pop();
+
     useEffect(() => {
         if (lastPartTrue === false){
-            setLastPart(partsArray.pop());
+            setLastPart(partsArray[partsArray.length - 1]);
             setLastPartTrue(true)
         };
     }, [])
     if (!lastPart) return null;
     return (
         <div className='front-page-information'>
-            {partsArray.map(part => (
+            {copyArray.map(part => (
                 <div className='part' key={part.picture}>
                     <img className='part-picture' src={part.picture} alt='image' />
                     <div className='part-heading'>{part.heading}</div>
