@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
 import styled from 'styled-components';
 import { Wrapper } from './ComponentStyling';
@@ -13,13 +13,15 @@ function Dithcord() {
     const dispatch = useDispatch()
 
     const sessionUser = useSelector(state => state.session.user)
-    console.log('----MAIN COMPONENT----\n', sessionUser)
+
+    const [banana, setServers] = useState({...sessionUser.servers})
+
+    // setServers(testServer)
+
+    console.log('----MAIN COMPONENT----\n', banana)
 
     return(
         <Wrapper>
-            {/* {sessionUser.servers.map((server) => (
-                <p key={server.id}>{server.name}</p>
-            ))} */}
             <PrivateMessaging />
             <Servers user={{ sessionUser }}/>
             <Channels />
