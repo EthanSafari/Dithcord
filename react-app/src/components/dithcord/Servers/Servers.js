@@ -1,19 +1,18 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
 import { Wrapper } from '../DithcordStyles';
 
 function Servers(user) {
-    const currentUser = user.user.sessionUser
-    console.log('----SERVERS COMPONENT----\n', `${currentUser} \n`)
+    const currentUser = {...user.user}
+    console.log('--------------SERVERS COMPONENT--------------\n', currentUser)
 
     return (
         <Wrapper>
-            {/* {currentUser.servers.map((server) => (
-                <div>
+            {currentUser.servers.map((server) => (
+                <div key={server.id}>
                     <h1>{server.name}</h1>
-                    <img src={`/images/server_images/${server.serverImage}`}></img>
+                    <img src={`/images/server_images/${server.serverImage}`} alt='serverImg'></img>
                 </div>
-            ))} */}
+            ))}
         </Wrapper>
     )
 }

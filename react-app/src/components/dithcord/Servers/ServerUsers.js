@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
 import { Wrapper } from '../DithcordStyles';
 
 function ServerUsers(server) {
@@ -7,7 +6,9 @@ function ServerUsers(server) {
 
     return (
         <div>
-            
+            <Wrapper>
+
+            </Wrapper>
         </div>
     )
 }

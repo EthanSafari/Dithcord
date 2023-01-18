@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from "react-redux"
+import React from 'react';
+import { useSelector } from "react-redux"
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import { Wrapper } from './DithcordStyles';
 
 import PrivateMessaging from './Messages/PrivateMessages'
@@ -10,19 +10,15 @@ import CurrentServer from './Servers/CurrentServer'
 
 
 function Dithcord() {
-    const dispatch = useDispatch()
 
-    const servers = useSelector(state => state.session.user.servers)
+    const currentUser = useSelector(state => state.session.user)
 
-    // const [servers, setServers] = useState({...sessionUser.servers})
-
-
-    console.log('--------------MAIN COMPONENT--------------\n', servers)
+    console.log('--------------MAIN COMPONENT--------------\n', {...currentUser})
 
     return(
         <Wrapper>
             <PrivateMessaging />
-            <Servers user={{ servers }}/>
+            <Servers user={{...currentUser}}/>
             <CurrentServer />
         </Wrapper>
     )

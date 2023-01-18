@@ -1,6 +1,4 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { Wrapper } from '../DithcordStyles';
+import React from 'react';
 
 function PrivateMessages(server) {
     // console.log('----PM COMPONENT----\n', `${currentUser} \n`)

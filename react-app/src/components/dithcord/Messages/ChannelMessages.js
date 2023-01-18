@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux'
-import { Wrapper } from '../DithcordStyles';
+import React from 'react';
+
 
 function ChannelMessages(server) {
     // console.log('----MESSAGES COMPONENT----\n', `${currentUser} \n`)
