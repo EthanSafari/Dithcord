@@ -2,9 +2,9 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { getChannel } from '../../../store/channel';
 
-function Channels(channels) {
+function Channels({ channels }) {
     const dispatch = useDispatch();
-    const serverChannels = channels.channels
+    const serverChannels = channels
     console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', serverChannels, '\n', '')
 
     const getOneChannel = (channelId) => {

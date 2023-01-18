@@ -4,7 +4,7 @@ const EditServerFormModal = () => {
     return (
         <OpenModalButton
             buttonText="Edit Server"
-            modalComponent={<LoginForm />}
+            modalComponent={<EditServerForm />}
         />
     );
 };

@@ -2,8 +2,8 @@ import React from 'react';
 import { MessageWrapper } from '../DithcordStyles';
 
 
-function ChannelMessages(messages) {
-    const channelMessages = messages.messages
+function ChannelMessages({ messages }) {
+    const channelMessages = messages
     console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
     return (

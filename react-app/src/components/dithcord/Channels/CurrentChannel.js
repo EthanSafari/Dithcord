@@ -2,8 +2,8 @@ import React from 'react';
 import ChannelMessages from '../Messages/ChannelMessages';
 import { Wrapper } from '../DithcordStyles';
 
-function CurrentChannel(channel) {
-    const currentChannel = channel.channel
+function CurrentChannel({ channel }) {
+    const currentChannel = channel
     const channelMessages = currentChannel?.messages
     console.log('', '\n', '--------------CURRENT CHANNELS COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 

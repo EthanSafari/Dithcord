@@ -4,9 +4,9 @@ import { useDispatch } from 'react-redux';
 import { getOneServer } from '../../../store/server';
 import { getChannel, loadChannel } from '../../../store/channel';
 
-function Servers(user) {
+function Servers({ user }) {
     const dispatch = useDispatch()
-    const currentUser = {...user.user}
+    const currentUser = user
     const servers = currentUser.servers
     console.log('', '\n', '--------------SERVERS COMPONENT DATA--------------', '\n', servers, '\n', '')
 

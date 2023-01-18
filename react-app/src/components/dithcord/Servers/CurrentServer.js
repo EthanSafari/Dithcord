@@ -8,10 +8,10 @@ import { useSelector } from 'react-redux';
 
 
 
-function CurrentServer(server) {
-    const serverChannels = server.server.channels
+function CurrentServer({ server }) {
+    const serverChannels = server.channels
     const currentChannel = useSelector((state) => state.channels.oneChannel)
-    console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', 'DATA HERE', '\n', '')
+    console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', server, '\n', '')
 
     return (
         <Wrapper>

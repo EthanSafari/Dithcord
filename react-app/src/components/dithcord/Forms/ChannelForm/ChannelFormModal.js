@@ -4,7 +4,7 @@ const EditChannelFormModal = () => {
     return (
         <OpenModalButton
             buttonText="Edit Channel"
-            modalComponent={<ChannelForm />}
+            modalComponent={<EditChannelForm />}
         />
     );
 };
