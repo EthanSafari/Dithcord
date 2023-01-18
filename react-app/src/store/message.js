@@ -74,11 +74,7 @@ export const createMessage = (message) => async (dispatch) => {
     const res = await fetch('/api/messages/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            body,
-            channelId,
-            authorId
-        })
+        body: JSON.stringify(message)
     })
 
     if(res.ok) {

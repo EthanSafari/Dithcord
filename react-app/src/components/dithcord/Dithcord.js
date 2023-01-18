@@ -7,6 +7,7 @@ import { Wrapper } from './DithcordStyles';
 import PrivateMessaging from './Messages/PrivateMessages'
 import Servers from './Servers/Servers'
 import CurrentServer from './Servers/CurrentServer'
+import ChannelMessages from './Messages/ChannelMessages';
 
 
 function Dithcord() {
@@ -21,6 +22,7 @@ function Dithcord() {
             <PrivateMessaging />
             <Servers user={{...currentUser}}/>
             <CurrentServer server={{...currentServer}}/>
+            {/* <ChannelMessages /> */}
         </Wrapper>
     )
         

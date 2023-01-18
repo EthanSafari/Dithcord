@@ -9,7 +9,7 @@ function CurrentChannel(channel) {
 
     return (
         <Wrapper>
-            <ChannelMessages messages={channelMessages} />
+            <ChannelMessages messages={channelMessages} channelId={currentChannel.id} />
         </Wrapper>
     )
 }
