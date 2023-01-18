@@ -1,4 +1,4 @@
-.login-form-page {
+.login-signup-form-page {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -90,4 +90,8 @@
 
 .label {
     margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+    width: 18rem;
+    padding: 5px;
 }

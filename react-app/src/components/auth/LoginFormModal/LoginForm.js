@@ -33,7 +33,7 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='login-form-page'>
+    <div className='login-signup-form-page'>
       <div className='login-from-and-qr-code'>
         <div className='login-form-container'>
           <form onSubmit={onLogin}>
@@ -67,7 +67,7 @@ const LoginForm = () => {
                 onChange={updatePassword}
                 className='label'
               />
-              <button type='submit'>Login</button>
+              <button type='submit' className='submit-button'>Login</button>
             </div>
           </form>
           <div className='register'>
@@ -84,7 +84,7 @@ const LoginForm = () => {
         <div className='qr-code-container'>
           <img className='qr-code' src='https://cdn.discordapp.com/attachments/1063590516068991177/1064979049304313926/stsmall507x507-pad600x600f8f8f8.png' alt='qr-code' />
           <div className='qr-code-login'>Log in with QR Code</div>
-          <div className='qr-code-text'>Scan thith with the <strong style={{ fontSize: '16px' }}>Dithcord mobile app</strong> to log in inthantly</div>
+          <div className='qr-code-text'>Thcan thith with the <strong style={{ fontSize: '16px' }}>Dithcord mobile app</strong> to log in inthantly</div>
         </div>
       </div>
     </div>

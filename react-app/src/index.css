@@ -14,4 +14,9 @@ h1 {
 
 button {
     font-size: 16px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: darkorange;
 }
