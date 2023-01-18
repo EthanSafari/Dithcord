@@ -9,7 +9,7 @@ function Servers(user) {
         <Wrapper>
             {currentUser.servers.map((server) => (
                 <div key={server.id}>
-                    <h1>{server.name}</h1>
+                    <h2>{server.name}</h2>
                     <img src={`/images/server_images/${server.serverImage}`} alt='serverImg'></img>
                 </div>
             ))}
