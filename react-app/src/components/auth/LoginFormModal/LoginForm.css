@@ -1,0 +1,36 @@
+.login-form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://static3.srcdn.com/wordpress/wp-content/uploads/2019/08/mike-tyson-mysteries-poster.jpg');
+    background-size: cover;
+}
+
+.login-form-container {
+    border: 2px solid red;
+    background-color: orangered;
+    padding: 5rem;
+    border-radius: 5px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-name {
+    font-size: 12px;
+}
+
+.register {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+}
+
+.register-text {
+    font-size: 12px;
+    margin: 1px;
+}

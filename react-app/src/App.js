@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import LoginForm from './components/auth/LoginForm';
+import LoginForm from './components/auth/LoginFormModal/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
@@ -11,6 +11,7 @@ import Testing from './components/Testing'
 import { authenticate } from './store/session';
 import Greeting from './components/ModalTest';
 import NotLogInLanding from './components/LoggedOut/Landing';
+import LoginSignUpPage from './components/LoggedOut/LoginSignUpPage';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
+      {/* <NavBar /> */}
       <Switch>
         <Route path='/login' exact={true}>
           <LoginForm />
@@ -48,6 +49,9 @@ function App() {
         <ProtectedRoute path='/testing' exact={true} >
           <Testing />
           <Greeting />
+        </ProtectedRoute>
+        <ProtectedRoute path='/login-or-signup' exact={true}>
+          <LoginSignUpPage />
         </ProtectedRoute>
         <Route path='/' exact={true} >
           {!sessionUser && (

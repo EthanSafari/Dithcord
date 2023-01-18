@@ -5,6 +5,10 @@ import logo from '../images/dithcord_logo.png'
 import NotLoggedInParts from '../MiddleParts';
 import DropDownMenuFrontPage from '../DropDownMenu';
 import { partsArray } from '../data';
+import LoginForm from '../../auth/LoginFormModal/LoginForm';
+import { NavLink, Route, Switch } from 'react-router-dom';
+import LoginModal from '../../auth/LoginFormModal';
+import LoginSignUpPage from '../LoginSignUpPage';
 
 const NotLogInLanding = () => {
     return (
@@ -17,7 +21,9 @@ const NotLogInLanding = () => {
                     </div>
                     <div>
                         <div>
-                            <button>Login</button>
+                            <NavLink to='/login'>
+                                <button>Login</button>
+                            </NavLink>
                             <button>Drop Down Menu</button>
                         </div>
                     </div>
@@ -27,11 +33,11 @@ const NotLogInLanding = () => {
                     <div className='top-portion-description'>
                         <div style={{ width: '45rem' }}>
                             ...where you can belong to a thchool club, a gaming group, or a worldwide art community. Where juth you and a handful of friendth can thpend time together. A place that maketh it eathy to talk every day and hang out more often.</div>
-                        </div>
+                    </div>
                     <div className='top-portion-buttons'>
                         <div className='top-buttons'>
-                        <button className='top-portion-button'>Download for Windowth</button>
-                        <button className='top-portion-button'>Open Dithcord in your browther</button>
+                            <button className='top-portion-button'>Download for Windowth</button>
+                            <button className='top-portion-button'>Open Dithcord in your browther</button>
                         </div>
                     </div>
                 </div>
@@ -54,6 +60,14 @@ const NotLogInLanding = () => {
                     <button>Thign Up</button>
                 </div>
             </div>
+            <Switch>
+                {/* <Route path='/login' exact={true}>
+                    <LoginForm />
+                </Route> */}
+                <Route path='/login-or-signup' exact={true}>
+                    <LoginSignUpPage />
+                </Route>
+            </Switch>
         </div>
     );
 };
