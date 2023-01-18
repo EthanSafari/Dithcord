@@ -68,6 +68,7 @@ export const getOneServer = (serverId) => async (dispatch) => {
     if(res.ok){
         const data = await res.json();
         dispatch(loadOneServer(data))
+        return data
     }
 }
 

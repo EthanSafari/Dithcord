@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from "react-redux"
 
 // import styled from 'styled-components';
@@ -10,10 +10,11 @@ import CurrentServer from './Servers/CurrentServer'
 
 
 function Dithcord() {
+    // const [ oneServer, getOneServer ] = useState()
 
     const currentUser = useSelector(state => state.session.user)
     const currentServer = useSelector(state => state.servers.oneServer)
-    console.log('', '\n', '--------------MAIN COMPONENT DATA--------------', '\n', currentUser, '\n', '')
+    console.log('', '\n', '--------------MAIN COMPONENT DATA--------------', '\n', currentServer, '\n', '')
 
     return(
         <Wrapper>
