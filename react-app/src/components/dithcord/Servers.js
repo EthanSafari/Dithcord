@@ -8,7 +8,12 @@ function Servers(user) {
 
     return (
         <Wrapper>
-            <p>{currentUser.username}</p>
+            {currentUser.servers.map((server) => (
+                <div>
+                    <h1>{server.name}</h1>
+                    <img src={`/images/server_images/${server.serverImage}`}></img>
+                </div>
+            ))}
         </Wrapper>
     )
 }
