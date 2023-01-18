@@ -2,7 +2,7 @@ import React from 'react';
 
 
 function ChannelMessages(server) {
-    // console.log('----MESSAGES COMPONENT----\n', `${currentUser} \n`)
+    console.log('--------------CHANNEL MESSAGES COMPONENT--------------\n')
 
     return (
         <div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 function PrivateMessages(server) {
-    // console.log('----PM COMPONENT----\n', `${currentUser} \n`)
+    console.log('--------------PM COMPONENT--------------\n')
 
     return (
         <div>

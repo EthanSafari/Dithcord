@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Channels(server) {
-    // console.log('----CHANNELS COMPONENT----\n', `${currentUser} \n`)
+    console.log('--------------CHANNELS COMPONENT--------------\n')
 
     return (
         <div>
