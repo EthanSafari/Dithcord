@@ -8,11 +8,12 @@ import ServerUsers from './ServerUsers';
 
 
 function CurrentServer(server) {
-    console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', server.server, '\n', '')
+    const serverChannels = server.server.channels
+    console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', serverChannels, '\n', '')
 
     return (
         <Wrapper>
-            <Channels />
+            <Channels channels={serverChannels}/>
             <CurrentChannel />
             <ServerUsers />
         </Wrapper>

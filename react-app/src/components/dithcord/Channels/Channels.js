@@ -1,7 +1,7 @@
 import React from 'react';
 
-function Channels(server) {
-    console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', '**DATA GOES HERE**', '\n', '')
+function Channels(channels) {
+    console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', channels.channels, '\n', '')
 
     return (
         <div>
