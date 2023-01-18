@@ -3,7 +3,7 @@ import ChannelMessages from '../Messages/ChannelMessages';
 import { Wrapper } from '../DithcordStyles';
 
 function CurrentChannel() {
-    console.log('--------------CURRENT CHANNEL COMPONENT--------------\n')
+    console.log('', '\n', '--------------CURRENT CHANNELS COMPONENT DATA--------------', '\n', '**DATA GOES HERE**', '\n', '')
 
     return (
         <Wrapper>

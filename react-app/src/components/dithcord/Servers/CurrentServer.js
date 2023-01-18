@@ -8,7 +8,7 @@ import ServerUsers from './ServerUsers';
 
 
 function CurrentServer() {
-    console.log('--------------CURRENT SERVERS COMPONENT--------------\n')
+    console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', '**DATA GOES HERE**', '\n', '')
 
     return (
         <Wrapper>

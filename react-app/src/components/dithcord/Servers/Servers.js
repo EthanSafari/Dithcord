@@ -3,7 +3,7 @@ import { Wrapper } from '../DithcordStyles';
 
 function Servers(user) {
     const currentUser = {...user.user}
-    console.log('--------------SERVERS COMPONENT--------------\n', currentUser)
+    console.log('', '\n', '--------------SERVERS COMPONENT DATA--------------', '\n', currentUser, '\n', '')
 
     return (
         <Wrapper>
