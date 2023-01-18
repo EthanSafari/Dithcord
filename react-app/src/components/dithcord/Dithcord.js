@@ -12,13 +12,14 @@ import CurrentServer from './Servers/CurrentServer'
 function Dithcord() {
 
     const currentUser = useSelector(state => state.session.user)
+    const currentServer = useSelector(state => state.servers.oneServer)
     console.log('', '\n', '--------------MAIN COMPONENT DATA--------------', '\n', currentUser, '\n', '')
 
     return(
         <Wrapper>
             <PrivateMessaging />
             <Servers user={{...currentUser}}/>
-            <CurrentServer />
+            <CurrentServer server={{...currentServer}}/>
         </Wrapper>
     )
         
