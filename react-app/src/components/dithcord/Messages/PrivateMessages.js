@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Wrapper } from './ComponentStyling';
+import { Wrapper } from '../DithcordStyles';
 
-function PrivateMessaging(server) {
+function PrivateMessages(server) {
     // console.log('----PM COMPONENT----\n', `${currentUser} \n`)
 
     return (
@@ -12,4 +12,5 @@ function PrivateMessaging(server) {
     )
 }
 
-export default PrivateMessaging
+
+export default PrivateMessages

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Wrapper } from './ComponentStyling';
+import { Wrapper } from '../DithcordStyles';
 
 function Servers(user) {
     const currentUser = user.user.sessionUser
@@ -8,14 +8,15 @@ function Servers(user) {
 
     return (
         <Wrapper>
-            {currentUser.servers.map((server) => (
+            {/* {currentUser.servers.map((server) => (
                 <div>
                     <h1>{server.name}</h1>
                     <img src={`/images/server_images/${server.serverImage}`}></img>
                 </div>
-            ))}
+            ))} */}
         </Wrapper>
     )
 }
+
 
 export default Servers

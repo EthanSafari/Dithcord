@@ -1,35 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-import styled from 'styled-components';
-import { Wrapper } from './ComponentStyling';
 
-import PrivateMessaging from './PrivateMessaging'
-import Servers from './Servers'
-import Channels from './Channels';
-import ChannelMessages from './ChannelMessages';
-import ServerUsers from './ServerUsers';
+import styled from 'styled-components';
+import { Wrapper } from './DithcordStyles';
+
+import PrivateMessaging from './Messages/PrivateMessages'
+import Servers from './Servers/Servers'
+import CurrentServer from './Servers/CurrentServer'
+
 
 function Dithcord() {
     const dispatch = useDispatch()
 
-    const sessionUser = useSelector(state => state.session.user)
+    const servers = useSelector(state => state.session.user.servers)
 
-    const [banana, setServers] = useState({...sessionUser.servers})
+    // const [servers, setServers] = useState({...sessionUser.servers})
 
-    // setServers(testServer)
 
-    console.log('----MAIN COMPONENT----\n', banana)
+    console.log('--------------MAIN COMPONENT--------------\n', servers)
 
     return(
         <Wrapper>
             <PrivateMessaging />
-            <Servers user={{ sessionUser }}/>
-            <Channels />
-            <ChannelMessages />
-            <ServerUsers />
+            <Servers user={{ servers }}/>
+            <CurrentServer />
         </Wrapper>
     )
-
+        
 }
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Wrapper } from './ComponentStyling';
+import { Wrapper } from '../DithcordStyles';
 
 function ServerUsers(server) {
     // console.log('----SERVER-USERS COMPONENT----\n', `${currentUser} \n`)
@@ -11,5 +11,6 @@ function ServerUsers(server) {
         </div>
     )
 }
+
 
 export default ServerUsers
