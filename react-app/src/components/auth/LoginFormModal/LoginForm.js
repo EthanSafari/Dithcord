@@ -34,47 +34,57 @@ const LoginForm = () => {
 
   return (
     <div className='login-form-page'>
-      <div className='login-form-container'>
-
-        <form onSubmit={onLogin}>
-          <div className='dithcord'>Welcome back</div>
-          <div>we are tho exthited to thee you again</div>
-          <div>
-            {errors.map((error, ind) => (
-              <div key={ind}>{error}</div>
-            ))}
-          </div>
-          <div className='input'>
-            <label className='label-name' htmlFor='email'>EMAIL</label>
-            <input
-              name='email'
-              type='text'
-              placeholder='Email'
-              value={email}
-              onChange={updateEmail}
-            />
-          </div>
-          <div className='input'>
-            <label className='label-name' htmlFor='password'>PATHWORD</label>
-            <input
-              name='password'
-              type='password'
-              placeholder='Password'
-              value={password}
-              onChange={updatePassword}
-            />
-            <button type='submit'>Login</button>
-          </div>
-        </form>
-        <div className='register'>
-          <div className='register-text'>
-            Need an Account?
-          </div>
-          <NavLink to={'/signup'}>
-            <div className='register-text'>
-              Regithter Here
+      <div className='login-from-and-qr-code'>
+        <div className='login-form-container'>
+          <form onSubmit={onLogin}>
+            <div className='welcome-back'>
+            <div className='welcome-back-text'>Welcome back!</div>
+            <div className='qr-code-text'>we are tho exthited to thee you again</div>
             </div>
-          </NavLink>
+            <div>
+              {errors.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+            </div>
+            <div className='input'>
+              <label className='label-name' htmlFor='email'>EMAIL</label>
+              <input
+                name='email'
+                type='text'
+                placeholder='Email'
+                value={email}
+                onChange={updateEmail}
+                className='label'
+              />
+            </div>
+            <div className='input'>
+              <label className='label-name' htmlFor='password'>PATHWORD</label>
+              <input
+                name='password'
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={updatePassword}
+                className='label'
+              />
+              <button type='submit'>Login</button>
+            </div>
+          </form>
+          <div className='register'>
+            <div className='register-text'>
+              Need an Account?
+            </div>
+            <NavLink to='/sign-up'>
+              <div className='register-text'>
+                Regithter Here
+              </div>
+            </NavLink>
+          </div>
+        </div>
+        <div className='qr-code-container'>
+          <img className='qr-code' src='https://cdn.discordapp.com/attachments/1063590516068991177/1064979049304313926/stsmall507x507-pad600x600f8f8f8.png' alt='qr-code' />
+          <div className='qr-code-login'>Log in with QR Code</div>
+          <div className='qr-code-text'>Scan thith with the <strong style={{ fontSize: '16px' }}>Dithcord mobile app</strong> to log in inthantly</div>
         </div>
       </div>
     </div>
