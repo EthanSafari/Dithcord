@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { createServer, editServerById } from '../../../../store/server'
 import FormInput from './ServerFormInput';
+import { useModal } from '../../../../context/Modal';
 
 
 const EditServerForm = ({ server }) => {
+    const { closeModal } = useModal();
     const dispatch = useDispatch();
     const [editedServerData, setEditedServerData] = useState({
         channels: server.channels,
@@ -43,6 +45,7 @@ const EditServerForm = ({ server }) => {
     const handleSubmit = (e) => {
         e.preventDefault(); 
         return dispatch(editServerById(editedServerData))
+        .then(closeModal())
     }
 
     const onChange = (e) => {
