@@ -69,9 +69,9 @@ export const getChannelMessages = (channelId) => async (dispatch) => {
     }
 }
 
-export const createMessage = (message, channelId) => async (dispatch) => {
+export const createMessage = (message) => async (dispatch) => {
     const { body, channelId, authorId } = message;
-
+    console.log('INSIDE OF THUNK', message)
     const res = await fetch('/api/messages/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -138,8 +138,9 @@ const messageReducer = (state = initialState, action) => {
 
         case ADD_MESSAGE:
             {
+                console.log("IN REDUCER", action)
                 const newState = { channelMessages: {...state.channelMessages}, oneMessage: {...state.oneMessage}}
-                newState.channelMessages[action.messageId] = action.message
+                newState.channelMessages[action.message.id] = action.message
                 return newState
             }
 
