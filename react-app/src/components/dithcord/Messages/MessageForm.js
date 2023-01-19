@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from 'react-router-dom'
-import { addMessage, loadChannelMessages, createMessage } from "../../../store/message"
+import {io} from 'socket.io-client'
+import { addMessage, loadChannelMessages, createMessage, getChannelMessages } from "../../../store/message"
+import { getChannel } from "../../../store/channel"
+let socket;
 
-const MessageForm = ({ channelId }) => {
+const MessageForm = ({ channelId, messages }) => {
     const dispatch = useDispatch()
     const user =  useSelector(state => state.session.user.id)
     const [body, setBody] = useState('')
+    const [msgs, setMsgs] = useState([])
     const [validationErrors, setValidationErrors] = useState([])
     const [errors, setErrors] = useState(false)
+    const [chatInput, setChatInput] = useState('')
 
 
     const addBody = (e) => setBody(e.target.value)
@@ -17,7 +22,16 @@ const MessageForm = ({ channelId }) => {
         const errors = []
         if (!body || body.length > 750) errors.push('Message must be between 1 and 750 characters')
         setValidationErrors(errors)
-    }, [body, channelId])
+        socket = io()
+        
+
+        socket.on("chat", (chat) => {
+            setMsgs(msgs => [...msgs, chat])
+        })
+        return(() => {
+            socket.disconnect()
+        })
+    }, [body, dispatch])
 
 
 
@@ -26,6 +40,7 @@ const MessageForm = ({ channelId }) => {
         e.preventDefault();
         setErrors(true)
 
+
         if (!validationErrors.length) {
             const payload = {
                 body,
@@ -33,10 +48,11 @@ const MessageForm = ({ channelId }) => {
                 author_id: user
             }
 
-
+            socket.emit("chat", body)
+    
             let newMessage = await dispatch(createMessage(payload, channelId))
             if (newMessage) {
-                await dispatch(loadChannelMessages(channelId))
+                await dispatch(getChannel(channelId))
                 setErrors(false)
             }
         }

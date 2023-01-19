@@ -1,28 +1,24 @@
-import React, {useState, useEffect} from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MessageWrapper } from '../DithcordStyles';
-import {io} from 'socket.io-client'
+
 import MessageForm from './MessageForm'
+import { getChannelMessages } from '../../../store/message';
 
 let socket;
 
 
-function ChannelMessages({messages, channelId}) {
+function ChannelMessages({ messages, channelId }) {
     const channelMessages = messages
-    const [chatInput, setChatInput] = useState('')
-    const [msgs, setMsgs] = useState([])
+
+
+    const dispatch = useDispatch()
     console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
-    useEffect(() => {
-        socket = io()
+    // useEffect(() => {
 
-        socket.on("chat", (chat) => {
-            setMsgs(msgs => [...msgs, chat])
-        })
-        return(() => {
-            socket.disconnect()
-        })
-    })
+
+    // })
 
     return (
         <MessageWrapper>
@@ -33,7 +29,9 @@ function ChannelMessages({messages, channelId}) {
                     <div>-----</div>
                 </div>
             ))}
-            <MessageForm channelId={channelId}/>
+            {channelId &&
+                <MessageForm channelId={channelId} messages={messages} />
+            }
         </MessageWrapper>
     )
 }
