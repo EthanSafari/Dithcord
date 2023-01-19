@@ -10,11 +10,9 @@ import CurrentServer from './Servers/CurrentServer'
 
 
 function Dithcord() {
-    // const [ oneServer, getOneServer ] = useState()
-
     const currentUser = useSelector(state => state.session.user)
     const currentServer = useSelector(state => state.servers.oneServer)
-    console.log('', '\n', '--------------MAIN COMPONENT DATA--------------', '\n', currentServer, '\n', '')
+    // console.log('', '\n', '--------------MAIN COMPONENT DATA--------------', '\n', currentServer, '\n', '')
 
     return(
         <Wrapper>

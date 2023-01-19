@@ -9,7 +9,7 @@ function Servers({ user }) {
     const dispatch = useDispatch()
     const currentUser = user
     const servers = currentUser.servers
-    console.log('', '\n', '--------------SERVERS COMPONENT DATA--------------', '\n', servers, '\n', '')
+    // console.log('', '\n', '--------------SERVERS COMPONENT DATA--------------', '\n', servers, '\n', '')
 
     const oneServer = (serverId, channelId) => {
         dispatch(getOneServer(serverId))
