@@ -5,6 +5,7 @@ import { getOneServer } from '../../../store/server';
 import { getChannel, loadChannel } from '../../../store/channel';
 import EditServerFormModal from '../Forms/ServerForm/ServerFormModal';
 import ServerDropDownMenu from './ServerDropDownMenu';
+import { getChannelMessages } from '../../../store/message';
 
 function Servers({ user, servers }) {
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ function Servers({ user, servers }) {
         dispatch(getOneServer(serverId))
         if(channelId) {
             dispatch(getChannel(channelId))
+            dispatch(getChannelMessages(channelId))
         }
         else {
             dispatch(loadChannel({}))

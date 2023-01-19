@@ -129,7 +129,7 @@ const messageReducer = (state = initialState, action) => {
         case LOAD_CHANNEL_MESSAGES:
             {
                 // console.log('---REDUCER DATA---', action.messages.messages) //TODO
-                const newState = { channelMessages: {...state.channelMessages}, oneMessage: {...state.oneMessage}}
+                const newState = { channelMessages: {}, oneMessage: {...state.oneMessage}}
                 action.messages.messages.forEach(message => {
                     newState.channelMessages[message.id] = message;
                 })
