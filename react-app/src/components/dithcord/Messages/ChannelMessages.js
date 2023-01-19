@@ -1,18 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { MessageWrapper } from '../DithcordStyles';
 
+import MessageForm from './MessageForm'
+import { getChannelMessages } from '../../../store/message';
 
-function ChannelMessages({ messages }) {
+let socket;
+
+
+function ChannelMessages({ messages, channelId }) {
     const channelMessages = messages
-    // console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
+
+    const dispatch = useDispatch()
+    console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
     return (
         <MessageWrapper>
             {channelMessages && channelMessages.map((message) => (
                 <div key={message.id}>
+                    <h3>{message.author.username}</h3>
                     <p>{message.body}</p>
+                    <div>-----</div>
                 </div>
             ))}
+            {channelId &&
+                <MessageForm channelId={channelId} messages={messages} />
+            }
         </MessageWrapper>
     )
 }

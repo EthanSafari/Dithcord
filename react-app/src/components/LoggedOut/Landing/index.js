@@ -24,7 +24,6 @@ const NotLogInLanding = () => {
                             <NavLink to='/login'>
                                 <button>Login</button>
                             </NavLink>
-                            <button>Drop Down Menu</button>
                         </div>
                     </div>
                 </div>
@@ -60,14 +59,6 @@ const NotLogInLanding = () => {
                     <button>Thign Up</button>
                 </div>
             </div>
-            <Switch>
-                {/* <Route path='/login' exact={true}>
-                    <LoginForm />
-                </Route> */}
-                <Route path='/login-or-signup' exact={true}>
-                    <LoginSignUpPage />
-                </Route>
-            </Switch>
         </div>
     );
 };

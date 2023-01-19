@@ -8,6 +8,7 @@ import PrivateMessaging from './Messages/PrivateMessages'
 import Servers from './Servers/Servers'
 import CurrentServer from './Servers/CurrentServer'
 import { getServers } from '../../store/server';
+import ChannelMessages from './Messages/ChannelMessages';
 
 
 function Dithcord() {
