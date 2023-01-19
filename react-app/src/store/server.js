@@ -75,6 +75,7 @@ export const getAllServersByUserId = (userId) => async (dispatch) => {
 
     if(res.ok) {
         const data = await res.json();
+        console.log('get all servers thunk', data)
         dispatch(loadUserServers(data))
         return data
     }
@@ -160,7 +161,7 @@ const serverReducer = (state = initialState, action) => {
         case LOAD_USER_SERVERS:
             {
                 const newState = { allServers: {...state.allServers}, oneServer: {}}
-                action.servers.forEach(server => {
+                action.servers.userServers.forEach(server => {
                     newState.allServers[server.id] = server;
                 });
                 return newState;
