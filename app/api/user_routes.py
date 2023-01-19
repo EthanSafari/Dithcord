@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Server
 
 user_routes = Blueprint('users', __name__)
 
@@ -13,6 +13,15 @@ def users():
     """
     users = User.query.all()
     return {'users': [user.to_dict() for user in users]}
+
+
+@user_routes.route('/<int:id>/servers')
+@login_required
+def servers_by_user_id(id):
+    # servers = User.query(Server).join(User, User.id == Server.user_id).all()
+    user = User.query.get(id)
+    servers = Server.query.filter(Server.users.contains(user)).all()
+    return { 'userServers': [server.to_dict() for server in servers]}
 
 
 @user_routes.route('/<int:id>')
