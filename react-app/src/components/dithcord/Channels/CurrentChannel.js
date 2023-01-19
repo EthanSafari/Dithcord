@@ -6,19 +6,16 @@ import { getChannel } from '../../../store/channel';
 import { getChannelMessages } from '../../../store/message';
 
 function CurrentChannel({ channel }) {
-    const dispatch = useDispatch()
-    const currentChannel = useSelector(state => state.channels.oneChannel)
-    const channelMessages = useSelector(state => state.messages.channelMessages)
+    const dispatch = useDispatch();
+    const currentChannel = useSelector(state => state.channels.oneChannel);
+    const channelMessages = useSelector(state => state.messages.channelMessages);
 
     const channelMessagesArray = Object.values(channelMessages);
 
     useEffect(() => {
-        dispatch(getChannelMessages(currentChannel.id))
+        dispatch(getChannelMessages(currentChannel.id));
     }, [dispatch])
 
-
-
-    // const channelMessages = currentChannel?.messages
     // console.log('', '\n', '--------------CURRENT CHANNELS COMPONENT DATA--------------', '\n', currentChannel, '\n', '')
 
     return (

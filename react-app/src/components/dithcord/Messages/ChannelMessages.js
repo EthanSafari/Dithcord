@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { MessageWrapper } from '../DithcordStyles';
+import DeleteMessageButton from './DeleteMessageButton';
 
 import MessageForm from './MessageForm'
 import { getChannelMessages } from '../../../store/message';
@@ -20,6 +21,7 @@ function ChannelMessages({ messages, channelId }) {
                 <div key={message.id}>
                     <h3>{message.author.username}</h3>
                     <p>{message.body}</p>
+                    <DeleteMessageButton message={message}/>
                     <div>-----</div>
                 </div>
             ))}
