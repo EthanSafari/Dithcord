@@ -24,4 +24,4 @@ const DeleteChannelButton = () => {
     );
 };
 
-export default DeleteServerButton;
+export default DeleteChannelButton;
