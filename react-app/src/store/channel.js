@@ -95,7 +95,9 @@ export const destroyChannel = (channelId, serverId) => async dispatch => {
     if (res.ok) {
         // console.log('---THUNK DATA---' ) //TODO
         dispatch(deleteChannel(channelId));
-        dispatch(getAllChannelsByServerId(serverId)); //TODO needs to be tested on frontend
+        if (serverId) {
+            dispatch(getAllChannelsByServerId(serverId)); //TODO needs to be tested on frontend
+        };
         return { 'message' : 'Successfully Deleted' };
     };
 };
@@ -119,30 +121,31 @@ const channelReducer = (state = initialState, action) => {
             {
                 const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} };
                 newState.oneChannel = action.channel;
-                return newState;   
+                return newState;
             }
-            
+
         case ADD_CHANNEL:
             {
-                const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} };    
-                newState.allChannels[action.channel.id] = action.channel;
-                newState.oneChannel = action.channel;
-                return newState;            
-            }
-            
-        case EDIT_CHANNEL:
-            {
-                const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} }; 
+                const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} };
                 newState.allChannels[action.channel.id] = action.channel;
                 newState.oneChannel = action.channel;
                 return newState;
             }
-            
+
+        case EDIT_CHANNEL:
+            {
+                const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} };
+                newState.allChannels[action.channel.id] = action.channel;
+                newState.oneChannel = action.channel;
+                return newState;
+            }
+
         case DELETE_CHANNEL:
             {
                 // console.log('---REDUCER DATA---', action.channelId) //TODO
-                const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} }; 
+                const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} };
                 delete newState.allChannels[action.channelId]
+                newState.oneChannel = {}
                 return newState
             }
 
