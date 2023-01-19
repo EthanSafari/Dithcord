@@ -2,6 +2,7 @@
 
 const LOAD_SERVERS = 'servers/load'
 const LOAD_ONE_SERVER = 'server/loadOne'
+const LOAD_USER_SERVERS = 'servers/loadUserServers'
 const ADD_SERVER = 'server/add'
 const EDIT_SERVER = 'server/edit'
 const DELETE_SERVER = 'server/delete'
@@ -21,6 +22,13 @@ export const loadOneServer = (server) => {
     return {
         type: LOAD_ONE_SERVER,
         server
+    }
+}
+
+export const loadUserServers = (servers) => {
+    return {
+        type: LOAD_USER_SERVERS,
+        servers
     }
 }
 
@@ -59,6 +67,16 @@ export const getServers = () => async (dispatch) => {
     if(res.ok){
         const data = await res.json();
         dispatch(loadServers(data.servers))
+    }
+}
+
+export const getAllServersByUserId = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${userId}/servers`)
+
+    if(res.ok) {
+        const data = await res.json();
+        dispatch(loadUserServers(data))
+        return data
     }
 }
 
@@ -136,6 +154,15 @@ const serverReducer = (state = initialState, action) => {
             {
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
                 newState.oneServer = {...action.server};
+                return newState;
+            }
+
+        case LOAD_USER_SERVERS:
+            {
+                const newState = { allServers: {...state.allServers}, oneServer: {}}
+                action.servers.forEach(server => {
+                    newState.allServers[server.id] = server;
+                });
                 return newState;
             }
 
