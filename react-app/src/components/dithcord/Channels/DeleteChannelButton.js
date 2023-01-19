@@ -8,7 +8,7 @@ const DeleteChannelButton = () => {
     const currentChannel = useSelector(state => state.channels.oneChannel);
 
     const deleteChannelButton = async (e) => {
-        e.preventdefault();
+        e.preventDefault();
         await dispatch(destroyChannel(currentChannel.id));
     };
 

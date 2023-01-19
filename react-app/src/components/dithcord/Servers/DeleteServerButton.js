@@ -7,7 +7,7 @@ const DeleteServerButton = () => {
     const currentUser = useSelector(state => state.session.user);
 
     const deleteServerButton = async (e) => {
-        e.preventdefault();
+        e.preventDefault();
         await dispatch(deleteServer(currentServer.id));
     };
 

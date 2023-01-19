@@ -8,7 +8,7 @@ const DeleteMessageButton = () => {
     const currentMessage = useSelector(state => state.messages.oneMessage);
 
     const deleteMessageButton = async (e) => {
-        e.preventdefault();
+        e.preventDefault();
         await dispatch(deleteMessage(currentMessage.id));
     };
 
