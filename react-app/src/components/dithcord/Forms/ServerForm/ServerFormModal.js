@@ -1,10 +1,12 @@
 import OpenModalButton from "../../../OpenModalButton";
+import EditServerForm from "./EditServerForm";
 
-const EditServerFormModal = () => {
+const EditServerFormModal = ({ server }) => {
+    console.log('EDIT SERVER FORM MODAL:  ', server)
     return (
         <OpenModalButton
             buttonText="Edit Server"
-            modalComponent={<EditServerForm />}
+            modalComponent={<EditServerForm server={ server } />}
         />
     );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { Wrapper } from '../DithcordStyles';
 
 function ServerUsers({ server }) {
-    console.log('', '\n', '--------------SERVER USERS COMPONENT DATA--------------', '\n', '**DATA GOES HERE**', '\n', '')
+    // console.log('', '\n', '--------------SERVER USERS COMPONENT DATA--------------', '\n', '**DATA GOES HERE**', '\n', '')
 
     return (
         <div>

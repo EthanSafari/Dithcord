@@ -18,7 +18,7 @@ class Server(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     private = db.Column(db.Boolean, default=False, nullable=False)
     name = db.Column(db.String(255), nullable=False)
-    server_image = db.Column(db.String(255), nullable=False, default='/static/images/dithcord_server_image.png')
+    server_image = db.Column(db.String(255), nullable=False)
     owner_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')), nullable=False)
 
     owner = db.relationship('User', back_populates='server')

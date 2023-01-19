@@ -102,17 +102,11 @@ export const deleteServer = (serverId) => async (dispatch) => {
 }
 
 export const editServerById = (server) => async (dispatch) => {
-    const { id, privateStatus, name, serverImage, ownerId } = server
-    const res = await fetch(`/api/server/${id}`, {
+    console.log('EDITING SERVER THUNK DATA: ', server)
+    const res = await fetch(`/api/servers/${server.id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            id,
-            privateStatus,
-            name,
-            serverImage,
-            ownerId
-        })
+        body: JSON.stringify(server)
     })
     if(res.ok) {
         const data = await res.json();
@@ -155,6 +149,7 @@ const serverReducer = (state = initialState, action) => {
         case EDIT_SERVER:
             {
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
+                console.log('INSIDE REDUCER:  ', action.server)
                 newState.allServers[action.server.id] = action.server
                 newState.oneServer = action.server
                 return newState
