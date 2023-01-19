@@ -4,7 +4,7 @@ import { MessageWrapper } from '../DithcordStyles';
 
 function ChannelMessages({ messages }) {
     const channelMessages = messages
-    console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
+    // console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
     return (
         <MessageWrapper>

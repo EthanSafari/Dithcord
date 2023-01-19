@@ -5,11 +5,12 @@ import { getOneServer } from '../../../store/server';
 import { getChannel, loadChannel } from '../../../store/channel';
 import EditServerFormModal from '../Forms/ServerForm/ServerFormModal';
 
-function Servers({ user }) {
+function Servers({ user, servers }) {
     const dispatch = useDispatch()
-    const currentUser = user
-    const servers = currentUser.servers
-    // console.log('', '\n', '--------------SERVERS COMPONENT DATA--------------', '\n', servers, '\n', '')
+    const currentServers = user.servers
+    const realcurrent = Object.values(servers)
+    
+    console.log('', '\n', '--------------SERVERS COMPONENT DATA--------------', '\n', realcurrent, '\n', '')
 
     const oneServer = (serverId, channelId) => {
         dispatch(getOneServer(serverId))
@@ -24,10 +25,10 @@ function Servers({ user }) {
 
     return (
         <ServerWrapper>
-            {servers && servers.map((server) => (
+            {realcurrent && realcurrent?.map((server) => (
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>
                     <h2>{server.name}</h2>
-                    <ImageWrapper as="img" src={`/images/server_images/${server.server_image}`} />
+                    <ImageWrapper as="img" src={server.server_image} />
                     <EditServerFormModal server={ server } />
                 </div>
             ))}
