@@ -29,7 +29,7 @@ function Servers({ user, servers }) {
             {realcurrent && realcurrent?.map((server) => (
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>
                     <h2>{server.name}</h2>
-                    <ImageWrapper as="img" src={server.server_image} />
+                    <ImageWrapper as="img" src={server.serverImage} />
                     <ServerDropDownMenu />
                 </div>
             ))}
