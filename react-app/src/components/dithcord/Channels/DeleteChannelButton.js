@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
 import { destroyChannel } from "../../../store/channel";
-import { deleteServer } from "../../../store/server";
 
 const DeleteChannelButton = () => {
     const dispatch = useDispatch();
