@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getOneServer } from '../../../store/server';
 import { getAllChannelsByServerId, getChannel, loadChannel } from '../../../store/channel';
 import { clearMessages, getChannelMessages } from '../../../store/message';
+import NewServerFormModal from './NewServerButton';
 
 function Servers({ user, servers }) {
     const dispatch = useDispatch()
@@ -26,6 +27,7 @@ function Servers({ user, servers }) {
 
     return (
         <ServerWrapper>
+            <NewServerFormModal />
             {servers && servers?.map((server) => (
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>
                     {/* <h2>{server.name}</h2> */}

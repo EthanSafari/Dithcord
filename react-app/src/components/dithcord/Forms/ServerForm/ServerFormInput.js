@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const FormInput = (props) => {
+const ServerFormInput = (props) => {
     const [ focus, setFocus ] = useState(false);
     const { label, errorMessage, onChange, id, ...inputProps } = props;
 
@@ -17,4 +17,4 @@ const FormInput = (props) => {
     );
 };
 
-export default FormInput;
+export default ServerFormInput;
