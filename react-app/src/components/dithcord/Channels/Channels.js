@@ -8,7 +8,7 @@ import DeleteChannelButton from './DeleteChannelButton';
 function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
-    console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', currentChannels, '\n', '')
+    console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', channels, '\n', '')
     
     const getOneChannel = (channelId) => {
         if(channelId) {

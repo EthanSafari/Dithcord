@@ -18,7 +18,7 @@ function CurrentServer({ server }) {
     
     useEffect(() => {
         if(server.id) {
-            dispatch(getAllChannelsByServerId(server.id))
+            // dispatch(getAllChannelsByServerId(server.id))
         }
     },[dispatch, server.id])
 

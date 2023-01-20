@@ -3,6 +3,7 @@ const LOAD_CHANNEL = 'channels/loadChannel';
 const ADD_CHANNEL = 'channels/addChannel';
 const EDIT_CHANNEL = 'channels/editChannel';
 const DELETE_CHANNEL = 'channels/deleteChannel';
+const CLEAR_CHANNELS = 'channels/clearChannels'
 
 //------------------------------   ACTIONS   ------------------------------//
 
@@ -42,6 +43,13 @@ export const deleteChannel = (channelId) => {
     };
 };
 
+export const clearChannels = (empty = {}) => {
+    return {
+        type: CLEAR_CHANNELS,
+        empty
+    }
+}
+
 //------------------------------   THUNKS   ------------------------------//
 
 export const getAllChannelsByServerId = (serverId) => async (dispatch) => {
@@ -54,6 +62,7 @@ export const getAllChannelsByServerId = (serverId) => async (dispatch) => {
 
 export const getChannel = (channelId) => async (dispatch) => {
     const res = await fetch(`/api/channels/${channelId}`);
+    console.log('----GET CHANNEL THUNK----', channelId) 
     if (res.ok) {
         const data = await res.json();
         dispatch(loadChannel(data));
@@ -126,7 +135,7 @@ const channelReducer = (state = initialState, action) => {
             {
                 const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} };    
                 newState.allChannels[action.channel.id] = action.channel;
-                newState.oneChannel = action.channel;
+                newState.oneChannel[action.channel.id] = action.channel;
                 return newState;            
             }
             
@@ -142,8 +151,14 @@ const channelReducer = (state = initialState, action) => {
             {
                 // console.log('---REDUCER DATA---', action.channelId) //TODO
                 const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} }; 
-                newState.oneChannel = {}
+                delete newState.oneChannel[action.channelId]
                 delete newState.allChannels[action.channelId]
+                return newState
+            }
+        
+        case CLEAR_CHANNELS:
+            {
+                const newState = { allChannels: {...state.allChannels}, oneChannel: {}}
                 return newState
             }
 
