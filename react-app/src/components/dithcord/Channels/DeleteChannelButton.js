@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { destroyChannel } from "../../../store/channel";
 
-const DeleteChannelButton = () => {
+const DeleteChannelButton = ({ channelId }) => {
     const dispatch = useDispatch();
     const currentServer = useSelector(state => state.servers.oneServer);
     const currentUser = useSelector(state => state.session.user);
@@ -9,8 +9,10 @@ const DeleteChannelButton = () => {
 
     const deleteChannelButton = async (e) => {
         e.preventDefault();
-        await dispatch(destroyChannel(currentChannel.id));
+        dispatch(destroyChannel(channelId));
     };
+
+    console.log('TESTING IN DELETE CHANNEL BUTTON: ',currentServer)
 
     return (
         <div>

@@ -108,7 +108,7 @@ const channelReducer = (state = initialState, action) => {
 
         case LOAD_ALL_CHANNELS:
             {
-                const newState = { allChannels: {...state.allChannels}, oneChannel: {} };
+                const newState = { allChannels: {}, oneChannel: {} };
                 action.channels.channels.forEach(channel => {
                     newState.allChannels[channel.id] = channel
                 });

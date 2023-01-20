@@ -18,10 +18,10 @@ function Dithcord() {
     const userServersObj = useSelector(state => state.servers.allServers);
     const userServers = Object.values(userServersObj)
 
-    console.log('', '\n', '--------------MAIN COMPONENT DATA--------------', '\n', userServersObj, '\n', '');
+    // console.log('', '\n', '--------------MAIN COMPONENT DATA--------------', '\n', userServersObj, '\n', '');
 
     useEffect(() => {
-        dispatch(getServers())
+        // dispatch(getServers())
         dispatch(getAllServersByUserId(currentUser.id))
     }, [dispatch]);
 

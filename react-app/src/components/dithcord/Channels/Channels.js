@@ -7,9 +7,8 @@ import DeleteChannelButton from './DeleteChannelButton';
 
 function Channels({ channels }) {
     const dispatch = useDispatch();
-    const serverChannels = channels
-    const channelMessages = useSelector((state) => state.messages.channelMessages)
-    // console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
+    const currentChannels = Object.values(channels)
+    console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', currentChannels, '\n', '')
 
     const getOneChannel = (channelId) => {
         dispatch(getChannel(channelId))
@@ -19,10 +18,10 @@ function Channels({ channels }) {
     return (
         <div>
             <ServerDropDownMenu />
-            {serverChannels && serverChannels.map((channel) => (
+            {currentChannels && currentChannels.map((channel) => (
                 <div onClick={() => getOneChannel(channel.id)} key={channel.id}>
                     <h2>{channel.name}</h2>
-                    <DeleteChannelButton />
+                    <DeleteChannelButton channelId={channel.id}/>
                 </div>
             ))}
 
