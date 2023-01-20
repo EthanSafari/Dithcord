@@ -9,12 +9,14 @@ function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
     console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', currentChannels, '\n', '')
-
+    
     const getOneChannel = (channelId) => {
-        dispatch(getChannel(channelId))
-        dispatch(getChannelMessages(channelId))
+        if(channelId) {
+            dispatch(getChannel(channelId))
+            dispatch(getChannelMessages(channelId))
+        }
     }
-
+    
     return (
         <div>
             <ServerDropDownMenu />

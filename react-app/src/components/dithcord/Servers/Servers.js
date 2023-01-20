@@ -5,7 +5,7 @@ import { getOneServer } from '../../../store/server';
 import { getAllChannelsByServerId, getChannel, loadChannel } from '../../../store/channel';
 import EditServerFormModal from '../Forms/ServerForm/ServerFormModal';
 import ServerDropDownMenu from './ServerDropDownMenu';
-import { getChannelMessages } from '../../../store/message';
+import { clearMessages, getChannelMessages } from '../../../store/message';
 
 function Servers({ user, servers }) {
     const dispatch = useDispatch()
@@ -13,6 +13,7 @@ function Servers({ user, servers }) {
     // console.log('', '\n', '--------------SERVERS COMPONENT DATA--------------', '\n', currentServers, '\n', '')
 
     const oneServer = (serverId, channelId) => {
+        dispatch(clearMessages())
         dispatch(getAllChannelsByServerId(serverId))
         dispatch(getOneServer(serverId))
         if(channelId) {

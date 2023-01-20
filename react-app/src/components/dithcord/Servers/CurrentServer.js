@@ -17,10 +17,10 @@ function CurrentServer({ server }) {
     // console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', server, '\n', '')
     
     useEffect(() => {
-        if(server) {
+        if(server.id) {
             dispatch(getAllChannelsByServerId(server.id))
         }
-    },[dispatch])
+    },[dispatch, server.id])
 
     return (
         <Wrapper>

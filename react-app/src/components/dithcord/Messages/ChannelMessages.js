@@ -13,7 +13,7 @@ function ChannelMessages({ messages, channelId }) {
     const channelMessages = messages
 
     const dispatch = useDispatch()
-    // console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
+    console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
     return (
         <MessageWrapper>

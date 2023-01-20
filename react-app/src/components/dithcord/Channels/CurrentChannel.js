@@ -13,8 +13,11 @@ function CurrentChannel({ channel }) {
     const channelMessagesArray = Object.values(channelMessages);
 
     useEffect(() => {
-        dispatch(getChannelMessages(currentChannel.id));
-    }, [dispatch])
+        if(currentChannel.id) {
+            dispatch(getChannelMessages(currentChannel.id));
+        }
+        
+    }, [dispatch, currentChannel])
 
     // console.log('', '\n', '--------------CURRENT CHANNELS COMPONENT DATA--------------', '\n', currentChannel, '\n', '')
 
