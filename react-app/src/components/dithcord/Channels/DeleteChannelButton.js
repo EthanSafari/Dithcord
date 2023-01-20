@@ -4,7 +4,8 @@ import { clearMessages } from "../../../store/message";
 
 const DeleteChannelButton = ({ channelId }) => {
     const dispatch = useDispatch();
-    const currentServer = useSelector(state => state.servers.oneServer);
+    const currentServerObj = useSelector(state => state.servers.oneServer);
+    const currentServer = Object.values(currentServerObj)
     const currentUser = useSelector(state => state.session.user);
     const currentChannel = useSelector(state => state.channels.oneChannel);
 
@@ -15,11 +16,9 @@ const DeleteChannelButton = ({ channelId }) => {
         dispatch(destroyChannel(channelId));
     };
 
-    // console.log('TESTING IN DELETE CHANNEL BUTTON: ',currentServer)
-
     return (
         <div>
-            {currentUser.id === currentServer.ownerId && currentServer.id === currentChannel.server_id && (
+            {currentUser.id === currentServer[0]?.ownerId && currentServer[0]?.id === currentChannel.server_id && (
                 <button onClick={deleteChannelButton}>
                     Delete Channel
                 </button>

@@ -151,8 +151,8 @@ const serverReducer = (state = initialState, action) => {
 
         case LOAD_ONE_SERVER:
             {
-                const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
-                newState.oneServer = {...action.server};
+                const newState = { allServers: {...state.allServers}, oneServer: {}}
+                newState.oneServer[action.server.id] = action.server
                 return newState;
             }
 

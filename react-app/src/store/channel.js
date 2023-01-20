@@ -4,6 +4,7 @@ const ADD_CHANNEL = 'channels/addChannel';
 const EDIT_CHANNEL = 'channels/editChannel';
 const DELETE_CHANNEL = 'channels/deleteChannel';
 const CLEAR_CHANNELS = 'channels/clearChannels'
+const CLEAR_ALL_CHANNELS = 'channels/clearAllChannels'
 
 //------------------------------   ACTIONS   ------------------------------//
 
@@ -36,7 +37,6 @@ export const editChannel = (channel) => {
 };
 
 export const deleteChannel = (channelId) => {
-    // console.log('---ACTION DATA---', channelId) //TODO
     return {
         type: DELETE_CHANNEL,
         channelId,
@@ -46,6 +46,13 @@ export const deleteChannel = (channelId) => {
 export const clearChannels = (empty = {}) => {
     return {
         type: CLEAR_CHANNELS,
+        empty
+    }
+}
+
+export const clearAllChannels = (empty = {}) => {
+    return {
+        type: CLEAR_ALL_CHANNELS,
         empty
     }
 }
@@ -83,7 +90,7 @@ export const newChannel = (channel) => async (dispatch) => {
     };
 };
 
-export const putChannel = (channelId, channel) => async (dispatch) => {
+export const putChannel = (channelId, channel) => async (dispatch) => { //TODO consider removing channelId variable 
     const res = await fetch(`/api/channels/${channelId}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
@@ -155,13 +162,19 @@ const channelReducer = (state = initialState, action) => {
                 delete newState.allChannels[action.channelId]
                 return newState
             }
-        
+            
         case CLEAR_CHANNELS:
             {
                 const newState = { allChannels: {...state.allChannels}, oneChannel: {}}
                 return newState
             }
-
+                
+        case CLEAR_ALL_CHANNELS:
+            {
+                const newState = { allChannels: {}, oneChannel: {}}
+                return newState
+            }
+            
         default:
             return state;
     }

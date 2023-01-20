@@ -8,7 +8,6 @@ import DeleteChannelButton from './DeleteChannelButton';
 function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
-    console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', channels, '\n', '')
     
     const getOneChannel = (channelId) => {
         if(channelId) {
@@ -21,10 +20,15 @@ function Channels({ channels }) {
         <div>
             <ServerDropDownMenu />
             {currentChannels && currentChannels.map((channel) => (
-                <div onClick={() => getOneChannel(channel.id)} key={channel.id}>
-                    <h2>{channel.name}</h2>
-                    <DeleteChannelButton channelId={channel.id}/>
-                </div>
+                <div key={channel.id}>
+                    <div onClick={() => getOneChannel(channel.id)} key={channel.id}>
+                        {/* {console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', channel, '\n', '')} */}
+                        <h2 key={channel.id}>{channel.name}</h2>
+                    </div>
+                    <div>
+                        <DeleteChannelButton key={channel.id} channelId={channel.id}/>
+                    </div>   
+                </div> 
             ))}
 
         </div>

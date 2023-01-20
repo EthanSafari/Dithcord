@@ -14,13 +14,13 @@ function Servers({ user, servers }) {
 
     const oneServer = (serverId, channelId) => {
         dispatch(clearMessages())
-        dispatch(getAllChannelsByServerId(serverId))
-        dispatch(getOneServer(serverId))
-        if(channelId) {
+        if(serverId) {
+            dispatch(getAllChannelsByServerId(serverId))
+            dispatch(getOneServer(serverId))    
+        }if(channelId) {
             dispatch(getChannel(channelId))
             dispatch(getChannelMessages(channelId))
-        }
-        else {
+        }else {
             dispatch(loadChannel({}))
         }
         return
