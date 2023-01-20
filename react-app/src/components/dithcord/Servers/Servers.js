@@ -1,5 +1,5 @@
 import React from 'react';
-import { ServerWrapper, Wrapper, ImageWrapper } from '../DithcordStyles';
+import { ServerWrapper, Wrapper, ImageWrapper, ServerImageWrapper } from '../DithcordStyles';
 import { useDispatch } from 'react-redux';
 import { getOneServer } from '../../../store/server';
 import { getChannel, loadChannel } from '../../../store/channel';
@@ -29,10 +29,13 @@ function Servers({ user, servers }) {
     return (
         <ServerWrapper>
             {realcurrent && realcurrent?.map((server) => (
+
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>
-                    <h2>{server.name}</h2>
+                    {/* <h2>{server.name}</h2> */}
+                    <ServerImageWrapper>
                     <ImageWrapper as="img" src={server.serverImage} />
-                    <ServerDropDownMenu />
+                    </ServerImageWrapper>
+                    {/* <ServerDropDownMenu /> */}
                 </div>
             ))}
         </ServerWrapper>
