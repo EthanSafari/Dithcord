@@ -108,7 +108,7 @@ const channelReducer = (state = initialState, action) => {
 
         case LOAD_ALL_CHANNELS:
             {
-                const newState = { allChannels: {...state.allChannels}, oneChannel: {} };
+                const newState = { allChannels: {}, oneChannel: {} };
                 action.channels.channels.forEach(channel => {
                     newState.allChannels[channel.id] = channel
                 });
@@ -142,6 +142,7 @@ const channelReducer = (state = initialState, action) => {
             {
                 // console.log('---REDUCER DATA---', action.channelId) //TODO
                 const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} }; 
+                newState.oneChannel = {}
                 delete newState.allChannels[action.channelId]
                 return newState
             }

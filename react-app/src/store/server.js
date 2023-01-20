@@ -75,7 +75,6 @@ export const getAllServersByUserId = (userId) => async (dispatch) => {
 
     if(res.ok) {
         const data = await res.json();
-        console.log('get all servers thunk', data)
         dispatch(loadUserServers(data))
         return data
     }
@@ -121,7 +120,6 @@ export const deleteServer = (serverId) => async (dispatch) => {
 }
 
 export const editServerById = (server) => async (dispatch) => {
-    console.log('EDITING SERVER THUNK DATA: ', server)
     const res = await fetch(`/api/servers/${server.id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
@@ -142,14 +140,14 @@ const initialState = { allServers: {}, oneServer: {} }
 const serverReducer = (state = initialState, action) => {
     switch(action.type) {
 
-        case LOAD_SERVERS:
-            {
-                const newState = { allServers: {...state.allServers}, oneServer: {}}
-                action.servers.forEach(server => {
-                    newState.allServers[server.id] = server;
-                });
-                return newState;
-            }
+        // case LOAD_SERVERS:
+        //     {
+        //         const newState = { allServers: {...state.allServers}, oneServer: {}}
+        //         action.servers.forEach(server => {
+        //             newState.allServers[server.id] = server;
+        //         });
+        //         return newState;
+        //     }
 
         case LOAD_ONE_SERVER:
             {

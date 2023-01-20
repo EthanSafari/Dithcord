@@ -6,6 +6,7 @@ const LOAD_CHANNEL_MESSAGES = 'messages/loadChannelMessages'
 const ADD_MESSAGE = 'messages/add'
 const EDIT_MESSAGE = 'messages/edit'
 const DELETE_MESSAGE = 'messages/delete'
+const CLEAR_MESSAGES = 'messages/clearall'
 
 
 //------------------------------   ACTIONS   ------------------------------//
@@ -44,6 +45,13 @@ export const removeMessage = (messageId) => {
     return {
         type: DELETE_MESSAGE,
         messageId
+    }
+}
+
+export const clearMessages = (empty = {}) => {
+    return {
+        type: CLEAR_MESSAGES,
+        empty
     }
 }
 
@@ -157,6 +165,12 @@ const messageReducer = (state = initialState, action) => {
                 const newState = { channelMessages: {...state.channelMessages}, oneMessage: {...state.oneMessage}}
                 delete newState.channelMessages[action.messageId]
                 delete newState.oneMessage[action.messageId]
+                return newState
+            }
+
+        case CLEAR_MESSAGES:
+            {
+                const newState = { channelMessages: {} , oneMessage: {}}
                 return newState
             }
 

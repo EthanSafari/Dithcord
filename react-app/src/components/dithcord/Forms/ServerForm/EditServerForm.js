@@ -17,7 +17,7 @@ const EditServerForm = ({ server }) => {
         server_image: server?.server_image,
     });
 
-    console.log('EDIT SERVER FORM: ', editedServerData)
+    // console.log('EDIT SERVER FORM: ', editedServerData)
 
     const serverInputs = [
         {
