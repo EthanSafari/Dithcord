@@ -1,5 +1,5 @@
-import OpenModalButton from "../../../OpenModalButton";
-import NewServerForm from "./EditServerForm";
+import OpenModalButton from "../../../../OpenModalButton";
+import NewServerForm from "../Add/NewServerForm"
 
 const NewServerFormModal = () => {
     // console.log('EDIT SERVER FORM MODAL:  ', server)

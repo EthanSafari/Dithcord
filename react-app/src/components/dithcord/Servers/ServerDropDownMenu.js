@@ -1,6 +1,5 @@
 import DeleteServerButton from "./DeleteServerButton"
-import EditServerFormModal from '../Forms/ServerForm/ServerFormModal';
-import NewServerFormModal from '../Forms/ServerForm/ServerFormModal'
+import EditServerFormModal from '../Forms/ServerForm/Edit/EditServerFormModal'
 import { useSelector } from "react-redux";
 
 

@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getOneServer } from '../../../store/server';
 import { getAllChannelsByServerId, getChannel, loadChannel } from '../../../store/channel';
 import { clearMessages, getChannelMessages } from '../../../store/message';
-import NewServerFormModal from './NewServerButton';
+import NewServerFormModal from '../Forms/ServerForm/Add/NewServerFormModal'
 
 function Servers({ user, servers }) {
     const dispatch = useDispatch()

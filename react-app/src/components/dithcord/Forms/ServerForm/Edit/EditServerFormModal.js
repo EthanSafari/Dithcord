@@ -1,4 +1,4 @@
-import OpenModalButton from "../../../OpenModalButton";
+import OpenModalButton from "../../../../OpenModalButton";
 import EditServerForm from "./EditServerForm";
 
 const EditServerFormModal = ({ server }) => {

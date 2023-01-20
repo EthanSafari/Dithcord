@@ -72,4 +72,3 @@ def get_channels_by_server(id):
         return { 'channels': [channel.to_dict() for channel in server_channels]}
     else:
         return { "error": "Server not found", "errorCode" : 404 }, 404
-

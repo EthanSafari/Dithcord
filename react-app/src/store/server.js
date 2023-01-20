@@ -91,20 +91,17 @@ export const getOneServer = (serverId) => async (dispatch) => {
 }
 
 export const createServer = (server) => async (dispatch) => {
-    const {name, privateStatus, serverImage} = server;
-
+    console.log('INSIDE CREATE SERVER THUNK', server)
+    // const {name, private, serverImage} = server;
     const res = await fetch('/api/servers/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            name,
-            privateStatus,
-            serverImage
-        })
+        body: JSON.stringify(server)
     })
-
+    
     if(res.ok) {
         const data = await res.json();
+        console.log('INSIDE OF CREATESERVER THUNK', data)
         dispatch(addServer(data))
     }
 }
@@ -167,6 +164,7 @@ const serverReducer = (state = initialState, action) => {
 
         case ADD_SERVER:
             {
+                console.log('inside of ADD SERVER: ', action.server)
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
                 newState.allServers[action.server.id] = action.server
                 return newState

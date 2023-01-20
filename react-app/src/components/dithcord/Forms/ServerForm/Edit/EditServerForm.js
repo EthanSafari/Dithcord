@@ -1,22 +1,20 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { createServer } from '../../../../store/server'
-import { useModal } from '../../../../context/Modal';
-import ServerFormInput from './ServerFormInput';
+import { createServer, editServerById } from '../../../../../store/server'
+import FormInput from '../ServerFormInput';
+import { useModal } from '../../../../../context/Modal';
 
 
-const NewServerForm = ( ) => {
+const EditServerForm = ({ server }) => {
     const { closeModal } = useModal();
     const dispatch = useDispatch();
-    const currentUser = useSelector(state => state.session.user)
-
     const [editedServerData, setEditedServerData] = useState({
-        // channels: server.channels,
-        // id: server.id,
-        name: '',
-        ownerId: currentUser.id,
-        private: false,
-        server_image: '',
+        channels: server.channels,
+        id: server.id,
+        name: server?.name,
+        ownerId: server.ownerId,
+        private: server.private,
+        server_image: server?.server_image,
     });
 
     // console.log('EDIT SERVER FORM: ', editedServerData)
@@ -46,7 +44,7 @@ const NewServerForm = ( ) => {
 
     const handleSubmit = (e) => {
         e.preventDefault(); 
-        return dispatch(createServer(editedServerData))
+        return dispatch(editServerById(editedServerData))
         .then(closeModal())
     }
 
@@ -58,7 +56,7 @@ const NewServerForm = ( ) => {
         <>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
-                    <ServerFormInput className={input.name} key={input.id} {...input} value={editedServerData[input.name]} onChange={onChange} />
+                    <FormInput className={input.name} key={input.id} {...input} value={editedServerData[input.name]} onChange={onChange} />
                 ))}
                 <span id='api-error'></span>
                 <button className='editServerButton'>Submit Changes</button>
@@ -69,4 +67,4 @@ const NewServerForm = ( ) => {
 }
 
 
-export default NewServerForm
+export default EditServerForm
