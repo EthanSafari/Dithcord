@@ -9,11 +9,13 @@ const DeleteChannelButton = ({ channelId }) => {
     const currentUser = useSelector(state => state.session.user);
     const currentChannel = useSelector(state => state.channels.oneChannel);
 
+    // console.log('INSIDE DELETE CHANNEL BUTTON -----------------------------------------------', currentServer)
+
     const deleteChannelButton = async (e) => {
         e.preventDefault();
         dispatch(clearMessages())
         dispatch(clearChannels())
-        dispatch(destroyChannel(channelId));
+        dispatch(destroyChannel(channelId, currentServer[0]?.id));
     };
 
     return (

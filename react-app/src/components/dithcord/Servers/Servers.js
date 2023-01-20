@@ -1,10 +1,8 @@
 import React from 'react';
-import { ServerWrapper, Wrapper, ImageWrapper, ServerImageWrapper } from '../DithcordStyles';
+import { ServerWrapper, ImageWrapper, ServerImageWrapper } from '../DithcordStyles';
 import { useDispatch } from 'react-redux';
 import { getOneServer } from '../../../store/server';
 import { getAllChannelsByServerId, getChannel, loadChannel } from '../../../store/channel';
-import EditServerFormModal from '../Forms/ServerForm/ServerFormModal';
-import ServerDropDownMenu from './ServerDropDownMenu';
 import { clearMessages, getChannelMessages } from '../../../store/message';
 
 function Servers({ user, servers }) {

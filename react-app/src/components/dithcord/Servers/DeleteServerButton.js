@@ -8,13 +8,13 @@ const DeleteServerButton = ( server ) => {
     const currentServer = useSelector(state => state.servers.oneServer[1]);
     const currentUser = useSelector(state => state.session.user);
 
-    console.log('INSIDE OF SERVER BUTTON', currentServer)
+    // console.log('INSIDE OF SERVER BUTTON', currentServer)
 
     const deleteServerButton = async (e) => {
         e.preventDefault();
         dispatch(clearMessages())
         dispatch(clearAllChannels())
-        dispatch(deleteServer(currentServer.id));
+        dispatch(deleteServer(currentServer.id)); //TODO possibly get rid of this dispatch later.
     };
 
     return (
