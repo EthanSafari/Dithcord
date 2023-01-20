@@ -142,6 +142,7 @@ const channelReducer = (state = initialState, action) => {
             {
                 // console.log('---REDUCER DATA---', action.channelId) //TODO
                 const newState = { allChannels: {...state.allChannels}, oneChannel: {...state.oneChannel} }; 
+                newState.oneChannel = {}
                 delete newState.allChannels[action.channelId]
                 return newState
             }

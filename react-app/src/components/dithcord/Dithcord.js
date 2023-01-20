@@ -13,8 +13,10 @@ import ChannelMessages from './Messages/ChannelMessages';
 
 function Dithcord() {
     const dispatch = useDispatch();
+    
     const currentUser = useSelector(state => state.session.user);
     const currentServer = useSelector(state => state.servers.oneServer);
+
     const userServersObj = useSelector(state => state.servers.allServers);
     const userServers = Object.values(userServersObj)
 
