@@ -21,17 +21,13 @@ function ChannelMessages({ messages, channelId }) {
                 <div key={message.id}>
                     <div>
                         <TopPartMessage>
-                    <h3>{message.author.username}</h3>
-                    <DeleteMessageButton message={message}/>
+                            <h3>{message.author.username}</h3>
+                            <DeleteMessageButton message={message} />
                         </TopPartMessage>
                     </div>
                     <p>{message.body}</p>
-                    <div>-----</div>
                 </div>
             ))}
-            {channelId &&
-                <MessageForm channelId={channelId} messages={messages} />
-            }
         </MessageContainerWrapper>
     )
 }

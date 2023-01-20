@@ -32,6 +32,7 @@ export const ImageWrapper = styled.div`
 export const MessageContainerWrapper = styled.div`
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
     width: 80%;
     border: 1px solid black;
     overflow: auto;
@@ -49,4 +50,14 @@ export const TopPartMessage = styled.div`
     justify-content: space-between;
     padding: 1% 1%;
     border-top: 1px solid black;
+`
+export const MessagesAndNewMessageWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+`
+
+export const NewMessageLine = styled.div`
+    display: flex;
+    width: 100%;
 `
