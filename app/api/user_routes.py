@@ -20,7 +20,7 @@ def users():
 def servers_by_user_id(id):
     # servers = User.query(Server).join(User, User.id == Server.user_id).all()
     user = User.query.get(id)
-    servers = Server.query.filter(Server.users.contains(user)).all()   //TODO 
+    servers = Server.query.filter(Server.users.contains(user)).all()
     return { 'userServers': [server.to_dict() for server in servers]}
 
 
