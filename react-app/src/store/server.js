@@ -100,6 +100,15 @@ export const createServer = (server) => async (dispatch) => {
     })
     if (res.ok) {
         const data = await res.json();
+        const addGeneralChat = await fetch('/api/channels/new', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                private: false,
+                name: 'General',
+                server_id: data.id,
+            }),
+        });
         const userServerAdd = await fetch(`/api/users/${data.ownerId}/servers/${data.id}`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
