@@ -6,10 +6,14 @@ import AddChannelFormModal from '../Forms/ChannelForm/Add/AddChannelFormModal';
 import EditChannelFormModal from '../Forms/ChannelForm/Edit/EditChannelFormModal';
 import ServerDropDownMenu from '../Servers/ServerDropDownMenu';
 import DeleteChannelButton from './DeleteChannelButton';
+import { io } from 'socket.io-client'
+
+let socket;
 
 function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
+    const currentUser = useSelector(state => state.session.user)
     // const currentServerObj = useSelector(state => state.servers.oneServer)
     // const currentServer = Object.values(currentServerObj)
 
@@ -17,6 +21,8 @@ function Channels({ channels }) {
     
     const getOneChannel = (channelId) => {
         if(channelId) {
+            socket = io();
+            socket.emit("join", currentUser.username, channelId)
             dispatch(getChannel(channelId))
             dispatch(getChannelMessages(channelId))
         }

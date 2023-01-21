@@ -1,14 +1,19 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client'
 
 let socket;
 
 const Chat = () => {
+    const dispatch = useDispatch()
+
     const [messages, setMessages] = useState([])
     const [chatInput, setChatInput] = useState("")
 
     const currentUser = useSelector(state => state.session.user)
+    const currentChannel = useSelector(state => state.channels.oneChannel)
+
+    console.log('========CHAT========', currentChannel.id)
 
     useEffect(() => {
         socket = io();
@@ -17,10 +22,11 @@ const Chat = () => {
             setMessages(messages => [...messages, chat])
         })
 
+
         return (() => {
             socket.disconnect()
         })
-    }, [])
+    }, [dispatch, currentChannel.id])
 
 
     const sendChat = (e) => {
