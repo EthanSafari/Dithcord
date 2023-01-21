@@ -9,7 +9,8 @@ const EditChannelForm = ({ server }) => {
     const { closeModal } = useModal();
     const dispatch = useDispatch();
 
-    const currentServer = useSelector(state => state.servers.oneServer)
+    const currentServerObj = useSelector(state => state.servers.oneServer)
+    const currentServer = Object.values(currentServerObj)
     const currentChannel = useSelector(state => state.channels.oneChannel)
 
     const [editedChannelData, setEditedChannelData] = useState({
@@ -17,10 +18,10 @@ const EditChannelForm = ({ server }) => {
         // id: server.id,
         name: currentChannel.name,
         private: false,
-        server_id: currentServer[1].id,
+        server_id: currentServer[0].id,
     });
 
-    // console.log('EDIT SERVER FORM: ', editedServerData)
+    console.log('----------------------------EDIT CHANNEL FORM: ', currentServer[0])
 
     const serverInputs = [
         {
