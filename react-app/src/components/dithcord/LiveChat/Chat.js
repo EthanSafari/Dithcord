@@ -13,7 +13,7 @@ const Chat = () => {
     const currentUser = useSelector(state => state.session.user)
     const currentChannel = useSelector(state => state.channels.oneChannel)
 
-    console.log('========CHAT========', currentChannel.id)
+    console.log('========CHAT========', chatInput)
 
     useEffect(() => {
         socket = io();
@@ -21,6 +21,8 @@ const Chat = () => {
         socket.on("chat", (chat) => {
             setMessages(messages => [...messages, chat])
         })
+
+        socket.on("join", )
 
 
         return (() => {
@@ -32,13 +34,14 @@ const Chat = () => {
     const sendChat = (e) => {
         e.preventDefault()
         //emitting message
-        socket.emit("chat", { user: currentUser.username, msg: chatInput });
+        socket.emit("chat", { user: `${currentUser.username}`, msg: `${chatInput}` });
         //clear input field
         setChatInput("")
     }
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
+        console.log('=====UPDATE CHAT INPUT FUNC======', e.target.value)
     }
 
     return (
@@ -53,7 +56,7 @@ const Chat = () => {
                     value={chatInput}
                     onChange={updateChatInput}
                 />
-                <button type="submit">Send It</button>
+                <button type="submit">Send</button>
             </form>
         </>
     )

@@ -7,24 +7,27 @@ import EditChannelFormModal from '../Forms/ChannelForm/Edit/EditChannelFormModal
 import ServerDropDownMenu from '../Servers/ServerDropDownMenu';
 import DeleteChannelButton from './DeleteChannelButton';
 import { io } from 'socket.io-client'
+import CurrentChannel from './CurrentChannel';
 
 let socket;
 
 function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
+    const currentChannel = useSelector(state => state.channels.oneChannel)
     const currentUser = useSelector(state => state.session.user)
     // const currentServerObj = useSelector(state => state.servers.oneServer)
     // const currentServer = Object.values(currentServerObj)
 
-    // console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0]?.id)
+    console.log('===INSIDE OF CHANNELS COMPONENT===', currentChannel)
     
     const getOneChannel = (channelId) => {
+        socket = io();
+        // socket.emit("leave", { username: currentUser.username, room: currentChannel.id })
         if(channelId) {
-            socket = io();
-            socket.emit("join", currentUser.username, channelId)
             dispatch(getChannel(channelId))
             dispatch(getChannelMessages(channelId))
+            socket.emit("join", currentUser.username, channelId)
         }
     }
     
