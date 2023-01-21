@@ -98,11 +98,16 @@ export const createServer = (server) => async (dispatch) => {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(server)
     })
-    
-    if(res.ok) {
+    if (res.ok) {
         const data = await res.json();
-        console.log('INSIDE OF CREATESERVER THUNK', data)
-        dispatch(addServer(data))
+        const userServerAdd = await fetch(`/api/users/${data.ownerId}/servers/${data.id}`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+        });
+        if (userServerAdd.ok){
+            dispatch(addServer(data));
+            return data;
+        }
     }
 }
 
