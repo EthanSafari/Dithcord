@@ -109,13 +109,15 @@ export const createServer = (server) => async (dispatch) => {
                 server_id: data.id,
             }),
         });
-        const userServerAdd = await fetch(`/api/users/${data.ownerId}/servers/${data.id}`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-        });
-        if (userServerAdd.ok){
-            dispatch(addServer(data));
-            return data;
+        if (addGeneralChat.ok) {
+            const userServerAdd = await fetch(`/api/users/${data.ownerId}/servers/${data.id}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+            });
+            if (userServerAdd.ok){
+                dispatch(addServer(data));
+                return data;
+            }
         }
     }
 }
