@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
 import { getChannelMessages } from '../../../store/message';
 
-function CurrentChannel({ channel }) {
+function CurrentChannel({ channel, channels }) {
     const dispatch = useDispatch();
     const currentChannel = useSelector(state => state.channels.oneChannel);
     const channelMessages = useSelector(state => state.messages.channelMessages);
@@ -23,7 +23,7 @@ function CurrentChannel({ channel }) {
 
     return (
         <Wrapper>
-            <ChannelMessages messages={channelMessagesArray} channelId={currentChannel.id} />
+            <ChannelMessages messages={channelMessagesArray} channelId={currentChannel.id} channels={channels} />
         </Wrapper>
     )
 }

@@ -25,7 +25,7 @@ function CurrentServer({ server }) {
     return (
         <Wrapper>
             <Channels channels={serverChannels}/>
-            <CurrentChannel channel={currentChannel}/>
+            <CurrentChannel channel={currentChannel} channels={serverChannels}/>
             <ServerUsers />
         </Wrapper>
     )

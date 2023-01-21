@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { clearChannels, destroyChannel } from "../../../store/channel";
 import { clearMessages } from "../../../store/message";
 
-const DeleteChannelButton = ({ channelId }) => {
+const DeleteChannelButton = ({ channelId, roomNum }) => {
     const dispatch = useDispatch();
     const currentServer = useSelector(state => state.servers.oneServer);
     const currentUser = useSelector(state => state.session.user);

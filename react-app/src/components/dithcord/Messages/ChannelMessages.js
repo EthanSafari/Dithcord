@@ -6,10 +6,9 @@ import DeleteMessageButton from './DeleteMessageButton';
 import MessageForm from './MessageForm'
 import { getChannelMessages } from '../../../store/message';
 
-let socket;
 
 
-function ChannelMessages({ messages, channelId }) {
+function ChannelMessages({ messages, channelId, channels }) {
     const channelMessages = messages
 
     // console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
@@ -25,7 +24,7 @@ function ChannelMessages({ messages, channelId }) {
                         </TopPartMessage>
                     </div>
                     <p>{message.body}</p>
-                    <div>-----</div>
+                    <div>-----------------------</div>
                 </div>
             ))}
             {channelId &&

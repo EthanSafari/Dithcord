@@ -4,7 +4,10 @@ import { useParams } from 'react-router-dom'
 import {io} from 'socket.io-client'
 import { addMessage, loadChannelMessages, createMessage, getChannelMessages } from "../../../store/message"
 import { getChannel } from "../../../store/channel"
-let socket;
+import { sendMessage } from "../socket"
+
+const socket = io('http://localhost:5000')
+
 
 const MessageForm = ({ channelId, messages }) => {
     const dispatch = useDispatch()
@@ -14,23 +17,16 @@ const MessageForm = ({ channelId, messages }) => {
     const [validationErrors, setValidationErrors] = useState([])
     const [errors, setErrors] = useState(false)
     const [chatInput, setChatInput] = useState('')
+    // const room = 
 
-
+    console.log(channelId)
     const addBody = (e) => setBody(e.target.value)
 
     useEffect(() => {
         const errors = []
         if (!body || body.length > 750) errors.push('Message must be between 1 and 750 characters')
         setValidationErrors(errors)
-        socket = io()
-        
-
-        socket.on("chat", (chat) => {
-            setMsgs(msgs => [...msgs, chat])
-        })
-        return(() => {
-            socket.disconnect()
-        })
+       
     }, [body, dispatch])
 
 
@@ -40,15 +36,16 @@ const MessageForm = ({ channelId, messages }) => {
         e.preventDefault();
         setErrors(true)
 
-
+        
         if (!validationErrors.length) {
             const payload = {
                 body,
                 channel_id: channelId,
                 author_id: user
             }
-
-            socket.emit("chat", body)
+            
+            socket.emit("chat", {"message": payload, "room": channelId})
+            
     
             let newMessage = await dispatch(createMessage(payload, channelId))
             if (newMessage) {
