@@ -6,7 +6,7 @@ import DeleteMessageButton from './DeleteMessageButton';
 import MessageForm from './MessageForm'
 import { getChannelMessages } from '../../../store/message';
 
-let socket;
+import Chat from '../LiveChat/Chat'
 
 
 function ChannelMessages({ messages, channelId }) {
@@ -16,7 +16,7 @@ function ChannelMessages({ messages, channelId }) {
 
     return (
         <MessageContainerWrapper>
-            {channelMessages && channelMessages.map((message) => (
+            {/* {channelMessages && channelMessages.map((message) => (
                 <div key={message.id}>
                     <div>
                         <TopPartMessage>
@@ -30,7 +30,8 @@ function ChannelMessages({ messages, channelId }) {
             ))}
             {channelId &&
                 <MessageForm channelId={channelId} messages={messages} />
-            }
+            } */}
+            <Chat />
         </MessageContainerWrapper>
     )
 }
