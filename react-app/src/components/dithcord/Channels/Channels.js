@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getChannel } from '../../../store/channel';
 import { getChannelMessages } from '../../../store/message';
 import AddChannelFormModal from '../Forms/ChannelForm/Add/AddChannelFormModal';
@@ -10,6 +10,10 @@ import DeleteChannelButton from './DeleteChannelButton';
 function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
+    // const currentServerObj = useSelector(state => state.servers.oneServer)
+    // const currentServer = Object.values(currentServerObj)
+
+    // console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0]?.id)
     
     const getOneChannel = (channelId) => {
         if(channelId) {
