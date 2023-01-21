@@ -15,7 +15,7 @@ const Chat = () => {
     const user = useSelector(state => state.session.user)
     const channelMessagesObj = useSelector(state => state.messages.channelMessages)
     const channelMessages = Object.values(channelMessagesObj)
-    console.log("--------channel messages--------", channelId)
+    console.log("--------channel messages--------", channelMessages)
 
     useEffect(() => {
         dispatch(getChannelMessages(channelId))
