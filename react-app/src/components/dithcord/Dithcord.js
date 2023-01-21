@@ -9,11 +9,12 @@ import Servers from './Servers/Servers'
 import CurrentServer from './Servers/CurrentServer'
 import { getAllServersByUserId, getServers } from '../../store/server';
 import ChannelMessages from './Messages/ChannelMessages';
+import UsersList from '../UsersList';
 
 
 function Dithcord() {
     const dispatch = useDispatch();
-    
+
     const currentUser = useSelector(state => state.session.user);
     const currentServerObj = useSelector(state => state.servers.oneServer);
     const currentServer = Object.values(currentServerObj)
@@ -33,9 +34,10 @@ function Dithcord() {
             <PrivateMessaging />
             <Servers user={currentUser} servers={userServers} />
             <CurrentServer server={currentServer}/>
+            <UsersList />
         </Wrapper>
     )
-        
+
 }
 
 
