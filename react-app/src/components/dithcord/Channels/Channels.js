@@ -6,31 +6,11 @@ import AddChannelFormModal from '../Forms/ChannelForm/Add/AddChannelFormModal';
 import EditChannelFormModal from '../Forms/ChannelForm/Edit/EditChannelFormModal';
 import ServerDropDownMenu from '../Servers/ServerDropDownMenu';
 import DeleteChannelButton from './DeleteChannelButton';
-<<<<<<< HEAD
-import { io } from 'socket.io-client'
-import CurrentChannel from './CurrentChannel';
-
-let socket;
-=======
 import LogoutButton from '../../auth/LogoutButton';
->>>>>>> origin/styling-website
 
 function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
-<<<<<<< HEAD
-    const currentChannel = useSelector(state => state.channels.oneChannel)
-    const currentUser = useSelector(state => state.session.user)
-    // const currentServerObj = useSelector(state => state.servers.oneServer)
-    // const currentServer = Object.values(currentServerObj)
-
-    console.log('===INSIDE OF CHANNELS COMPONENT===', currentChannel)
-    
-    const getOneChannel = (channelId) => {
-        socket = io();
-        // socket.emit("leave", { username: currentUser.username, room: currentChannel.id })
-        if(channelId) {
-=======
     const currentServerObj = useSelector(state => state.servers.oneServer)
     const currentServer = Object.values(currentServerObj)
     const sessionUser = useSelector(state => state.session.user)
@@ -40,7 +20,6 @@ function Channels({ channels }) {
 
     const getOneChannel = (channelId) => {
         if (channelId) {
->>>>>>> origin/styling-website
             dispatch(getChannel(channelId))
             dispatch(getChannelMessages(channelId))
             // socket.emit("join", {user: currentUser.username, roomId: channelId})
