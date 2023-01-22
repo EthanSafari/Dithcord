@@ -95,3 +95,24 @@
     width: 18rem;
     padding: 5px;
 }
+
+.user-buttons {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+#left,
+#right {
+    max-width: 50%;
+}
+
+#right {
+    border-radius: 0 5px 5px 0;
+    border-left:  1px solid orangered;;
+}
+
+#left {
+    border-radius: 5px 0 0 5px ;
+    border-right: 1px solid orangered;
+}

@@ -28,7 +28,7 @@ def seed_servers():
     )
 
     all_servers = [ server1, server2, server3, server4 ]
-    all_users = User.query.all()
+    all_users = User.query.filter(User.id <= 5).all()
     for i in range(len(all_users)):
         for j in range(len(all_servers)):
             all_users[i].servers.append(all_servers[j])

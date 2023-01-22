@@ -69,6 +69,16 @@ const LoginForm = () => {
               />
               <button type='submit' className='submit-button'>Login</button>
             </div>
+            <div className='user-buttons'>
+              <button className='submit-button' id='left' onClick={() => {
+                setEmail('demo1@aa.io')
+                setPassword('password1')
+              }}>DemoUser1</button>
+              <button className='submit-button' id='right' onClick={() => {
+                setEmail('demo2@aa.io')
+                setPassword('password2')
+              }}>DemoUser2</button>
+            </div>
           </form>
           <div className='register'>
             <div className='register-text'>

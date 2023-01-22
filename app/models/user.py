@@ -6,16 +6,19 @@ from .server import server_users
 import random
 
 profile_images = [
-    'a-bards-curse-hallucinated-dog.png',
-    'astro-tyson.png',
-    'drunk-pidgeon.png',
-    'MTM_UnsolvedSituations_Still07.png',
-    'ogopogo.png',
-    'pox.png',
-    'the-bards-curse-bisexual-license-plate.png',
-    'Yung_Hee_29.jpg',
-    'yung-hee.png'
+    'https://th.bing.com/th/id/OIP.Z1ybH2lsvZ754eON_B7dzQAAAA?w=141&h=169&c=7&r=0&o=5&pid=1.7',
+    'https://th.bing.com/th/id/OIP.thG6mpaRjW8OrRhjj0F4sQAAAA?w=141&h=169&c=7&r=0&o=5&pid=1.7',
+    'https://th.bing.com/th/id/OIP.Y_HIP8Xl5JtXCh_uTENSFgAAAA?w=136&h=169&c=7&r=0&o=5&pid=1.7',
+    'https://th.bing.com/th/id/OIP.NKa4nQaNXZxhGGaVTKSXbwAAAA?w=136&h=169&c=7&r=0&o=5&pid=1.7',
+    'https://th.bing.com/th/id/OIP.bCTP_MxMGAn53G3nGlWCqwHaId?w=136&h=169&c=7&r=0&o=5&pid=1.7',
+    'https://th.bing.com/th/id/OIP.kZId7zwqAws54JCIhM-rawAAAA?w=148&h=169&c=7&r=0&o=5&pid=1.7',
+    'https://th.bing.com/th/id/OIP.q1YJLemsikAjoj1_8KLsvwHaId?w=148&h=169&c=7&r=0&o=5&pid=1.7',
+    'https://th.bing.com/th/id/OIP.lhlPvMUiN12T1WJw0R-HJgAAAA?w=148&h=169&c=7&r=0&o=5&pid=1.7'
 ]
+
+def random_image_picker():
+    image = random.choice(profile_images)
+    return image
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -27,7 +30,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_img = db.Column(db.String(255), nullable=False, default=f'/static/images/profile_images/{random.choice(profile_images)}')
+    profile_img = db.Column(db.String(255), nullable=False, default=random_image_picker())
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow, onupdate=datetime.datetime.utcnow)
 
