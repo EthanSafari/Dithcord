@@ -42,7 +42,6 @@ function Servers({ user, servers }) {
                     <ImageWrapper as="img" src={server.serverImage} />
                         )}
                     </ServerImageWrapper>
-                    {/* <ServerDropDownMenu /> */}
                 </div>
             ))}
         </ServerWrapper>

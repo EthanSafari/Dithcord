@@ -15,7 +15,6 @@ export const ServerWrapper = styled.div`
     border: 1px solid black;
     align-items: center;
     padding: 1rem;
-    height: 80vh;
 `;
 
 export const ImageWrapper = styled.div`
@@ -35,9 +34,8 @@ export const MessageContainerWrapper = styled.div`
     width: 100%;
     border-top: 1px solid black;
     overflow: auto;
-    height: 70vh;
+    height: 90%;
     border-bottom: 1px solid black;
-    border-left: 1px solid black;
 `;
 
 

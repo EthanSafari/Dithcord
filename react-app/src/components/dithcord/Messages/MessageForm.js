@@ -59,15 +59,16 @@ const MessageForm = ({ channelId }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="message-bar-submit">
+            <form onSubmit={handleSubmit} className='message-form-submit-and-input'>
                 <input
                     type='text'
                     placeholder="Type message here"
                     value={body}
                     onChange={addBody}
+                    className='message-input'
                 />
-                <button type="submit">Submit</button>
+                <button type="submit" className="message-form-button">Submit</button>
             </form>
         </div>
     )

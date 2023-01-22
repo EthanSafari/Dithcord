@@ -27,9 +27,6 @@ function ChannelMessages({ messages, channelId }) {
                     <p className='message-body'>{message.body}</p>
                 </div>
             ))}
-            {channelId &&
-                <MessageForm channelId={channelId} />
-            }
         </MessageContainerWrapper>
     )
 }
