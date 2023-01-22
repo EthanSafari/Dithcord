@@ -32,5 +32,5 @@ def channel_leave(data):
     room = data['room']
     leave_room(room)
     send(username + ' has left the room.', room=room)
-    print('===========INSIDE OF LEAVE ROUTE===========', data)
+    print('===========***************************LEAVING ROOM**************************===========', data)
     
