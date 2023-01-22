@@ -3,7 +3,7 @@ import { clearAllChannels } from "../../../store/channel";
 import { clearMessages } from "../../../store/message";
 import { deleteServer } from "../../../store/server";
 
-const DeleteServerButton = ( server ) => {
+const DeleteServerButton = () => {
     const dispatch = useDispatch();
     const currentServerObj = useSelector(state => state.servers.oneServer);
     const currentServer = Object.values(currentServerObj)

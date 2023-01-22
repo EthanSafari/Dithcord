@@ -11,7 +11,7 @@ const ServerDropDownMenu = () => {
 
     return (
         <div>
-            <EditServerFormModal server={ server } />
+            {<EditServerFormModal server={ server } />}
             <DeleteServerButton server={ server } />
         </div>
     )
