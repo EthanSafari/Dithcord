@@ -6,7 +6,7 @@ import { addMessage, loadChannelMessages, createMessage, getChannelMessages } fr
 import { getChannel } from "../../../store/channel"
 let socket;
 
-const MessageForm = ({ channelId, messages }) => {
+const MessageForm = ({ channelId }) => {
     const dispatch = useDispatch()
     const user =  useSelector(state => state.session.user.id)
     const [body, setBody] = useState('')
@@ -23,7 +23,7 @@ const MessageForm = ({ channelId, messages }) => {
         if (!body || body.length > 750) errors.push('Message must be between 1 and 750 characters')
         setValidationErrors(errors)
         socket = io()
-        
+
 
         socket.on("chat", (chat) => {
             setMsgs(msgs => [...msgs, chat])
@@ -49,7 +49,7 @@ const MessageForm = ({ channelId, messages }) => {
             }
 
             socket.emit("chat", body)
-    
+
             let newMessage = await dispatch(createMessage(payload, channelId))
             if (newMessage) {
                 await dispatch(getChannel(channelId))
@@ -59,15 +59,16 @@ const MessageForm = ({ channelId, messages }) => {
     }
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
+        <div className="message-bar-submit">
+            <form onSubmit={handleSubmit} className='message-form-submit-and-input'>
                 <input
                     type='text'
                     placeholder="Type message here"
                     value={body}
                     onChange={addBody}
+                    className='message-input'
                 />
-                <button type="submit">Submit</button>
+                <button type="submit" className="message-form-button">Submit</button>
             </form>
         </div>
     )

@@ -91,7 +91,6 @@ export const getOneServer = (serverId) => async (dispatch) => {
 }
 
 export const createServer = (server) => async (dispatch) => {
-    console.log('INSIDE CREATE SERVER THUNK', server)
     // const {name, private, serverImage} = server;
     const res = await fetch('/api/servers/new', {
         method: 'POST',
@@ -145,6 +144,45 @@ export const editServerById = (server) => async (dispatch) => {
     }
 }
 
+
+export const createPrivateServerAndChat = (user1, user2) => async (dispatch) => {
+    const serverRes = await fetch('/api/servers/new', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            private: true,
+            name: `${user1.username} & ${user2.username}`,
+            server_image: `${user1.username[0].toUpperCase()}&${user2.username[0].toUpperCase()}`,
+            owner_id: user1.id
+        })
+    })
+    if (serverRes.ok) {
+        const serverData = await serverRes.json();
+        const addPrivateChat = await fetch('/api/channels/new', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                private: true,
+                name: `Private Chat`,
+                server_id: serverData.id,
+            }),
+        });
+        if (addPrivateChat.ok) {
+            const user1PrivateServerAdd = await fetch(`/api/users/${user1.id}/servers/${serverData.id}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+            });
+            const user2PrivateServerAdd = await fetch(`/api/users/${user2.id}/servers/${serverData.id}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+            });
+            if (user1PrivateServerAdd && user2PrivateServerAdd) {
+                dispatch(addServer(serverData));
+                return serverData;
+            }
+        }
+    }
+}
 
 
 //------------------------------   REDUCER   ------------------------------//

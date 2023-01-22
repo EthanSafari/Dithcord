@@ -15,7 +15,7 @@ function Servers({ user, servers }) {
         dispatch(clearMessages())
         if(serverId) {
             dispatch(getAllChannelsByServerId(serverId))
-            dispatch(getOneServer(serverId))    
+            dispatch(getOneServer(serverId))
         }if(channelId) {
             dispatch(getChannel(channelId))
             dispatch(getChannelMessages(channelId))
@@ -32,9 +32,16 @@ function Servers({ user, servers }) {
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>
                     {/* <h2>{server.name}</h2> */}
                     <ServerImageWrapper>
+                        {server.serverImage.length === 3 ? (
+                            <ImageWrapper>
+                                <div className='private-server-imagename'>
+                                {server.serverImage}
+                                </div>
+                            </ImageWrapper>
+                        ) : (
                     <ImageWrapper as="img" src={server.serverImage} />
+                        )}
                     </ServerImageWrapper>
-                    {/* <ServerDropDownMenu /> */}
                 </div>
             ))}
         </ServerWrapper>

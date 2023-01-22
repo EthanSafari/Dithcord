@@ -15,7 +15,7 @@ function CurrentServer({ server }) {
     const currentChannel = useSelector((state) => state.channels.oneChannel)
     const currentServer = useSelector((state) => state.servers.oneServer)
     console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', currentServer, '\n', '')
-    
+
     useEffect(() => {
         if(server.id) {
             // dispatch(getAllChannelsByServerId(server.id))
@@ -24,7 +24,7 @@ function CurrentServer({ server }) {
 
     return (
         <Wrapper>
-            <Channels channels={serverChannels}/>
+            <Channels channels={serverChannels} server={currentServer}/>
             <CurrentChannel channel={currentChannel}/>
             <ServerUsers />
         </Wrapper>
