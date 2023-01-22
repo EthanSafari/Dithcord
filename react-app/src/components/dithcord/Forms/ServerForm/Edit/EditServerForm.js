@@ -19,7 +19,7 @@ const EditServerForm = ({ server }) => {
         server_image: thisServer[0]?.server_image,
     });
 
-    console.log('===============EDIT SERVER FORM===================', thisServer[0])
+    // console.log('===============EDIT SERVER FORM===================', thisServer[0])
 
     const serverInputs = [
         {
@@ -28,9 +28,9 @@ const EditServerForm = ({ server }) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            errorMessage: "Name must be 3-10 characters",
+            errorMessage: "Name must be 3-20 characters",
             required: true,
-            pattern: "^[a-zA-Z ]{2,10}$",
+            pattern: "^[a-zA-Z ]{2,20}$",
         },
         {
             id: 2,
