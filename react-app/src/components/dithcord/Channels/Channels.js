@@ -10,21 +10,21 @@ import DeleteChannelButton from './DeleteChannelButton';
 function Channels({ channels }) {
     const dispatch = useDispatch();
     const currentChannels = Object.values(channels)
-    // const currentServerObj = useSelector(state => state.servers.oneServer)
-    // const currentServer = Object.values(currentServerObj)
+    const currentServerObj = useSelector(state => state.servers.oneServer)
+    const currentServer = Object.values(currentServerObj)
 
-    // console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0]?.id)
-    
+    console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0])
+
     const getOneChannel = (channelId) => {
         if(channelId) {
             dispatch(getChannel(channelId))
             dispatch(getChannelMessages(channelId))
         }
     }
-    
+
     return (
         <div>
-            <ServerDropDownMenu />
+            <ServerDropDownMenu server={currentServer[0]} />
             {currentChannels && currentChannels.map((channel) => (
                 <div key={channel.id}>
                     <div onClick={() => getOneChannel(channel.id)} key={channel.id}>
@@ -34,8 +34,8 @@ function Channels({ channels }) {
                     <div>
                         <EditChannelFormModal />
                         <DeleteChannelButton key={channel.id} channelId={channel.id}/>
-                    </div>   
-                </div> 
+                    </div>
+                </div>
             ))}
             <AddChannelFormModal />
         </div>
