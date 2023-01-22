@@ -75,6 +75,7 @@ button {
 .channels-container {
     width: 13rem;
     border-top: 1px solid black;
+    height: 80%;
 }
 
 .channel-and-channel-options {
@@ -113,4 +114,24 @@ button {
 
 .message-form-button {
     width: 9%;
+}
+
+.user-info {
+    height: 10%;
+    width: 100%;
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.channel-box {
+    display: flex;
+    flex-direction: column;
+}
+
+.server-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
 }
