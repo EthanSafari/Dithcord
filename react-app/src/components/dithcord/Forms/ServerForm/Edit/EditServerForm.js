@@ -8,6 +8,7 @@ import { useModal } from '../../../../../context/Modal';
 const EditServerForm = ({ server }) => {
     const { closeModal } = useModal();
     const dispatch = useDispatch();
+    // const server = useSelector(state => state.servers.oneServer)
     const [editedServerData, setEditedServerData] = useState({
         channels: server.channels,
         id: server.id,
@@ -43,7 +44,7 @@ const EditServerForm = ({ server }) => {
     ];
 
     const handleSubmit = (e) => {
-        e.preventDefault(); 
+        e.preventDefault();
         return dispatch(editServerById(editedServerData))
         .then(closeModal())
     }
