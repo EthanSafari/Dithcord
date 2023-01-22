@@ -45,9 +45,9 @@ function UsersList() {
 
   const userComponents = users.map((user) => {
     return (
-      <div>
+      <div key={user.id}>
         {sessionUser.id !== user.id && (
-          <div key={user.id} className='private-message-name'>
+          <div className='private-message-name'>
             <div onClick={() => startPrivateChat(sessionUser, user)} className='user-image-and-name-container'>
               {console.log(user)}
               <img className='user-image' src={user.profile_img}></img>

@@ -15,23 +15,7 @@ function ChannelMessages({ messages, channelId }) {
     // console.log('', '\n', '--------------CHANNEL MESSAGES COMPONENT DATA--------------', '\n', channelMessages, '\n', '')
 
     return (
-        <MessageContainerWrapper>
-            {/* {channelMessages && channelMessages.map((message) => (
-                <div key={message.id}>
-                    <div>
-                        <TopPartMessage>
-                            <h3>{message.author.username}</h3>
-                            <DeleteMessageButton message={message} />
-                        </TopPartMessage>
-                    </div>
-                    <p className='message-body'>{message.body}</p>
-                </div>
-            ))}
-            {channelId &&
-                <MessageForm channelId={channelId} messages={messages} />
-            } */}
-            <Chat />
-        </MessageContainerWrapper>
+        <Chat />
     )
 }
 

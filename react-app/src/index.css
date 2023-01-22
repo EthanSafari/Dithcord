@@ -126,11 +126,6 @@ button {
     flex-direction: column;
 }
 
-.channel-box {
-    display: flex;
-    flex-direction: column;
-}
-
 .server-name {
     display: flex;
     justify-content: center;

@@ -26,6 +26,8 @@ function Servers({ user, servers }) {
         return
     }
 
+    
+
     return (
         <ServerWrapper>
             <AllServersModal />
