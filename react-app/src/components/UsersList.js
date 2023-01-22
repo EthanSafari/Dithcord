@@ -37,7 +37,7 @@ function UsersList() {
       const sessionUserSessionsData = await sessionUserSessions.json();
       if (sessionUserSessionsData.userPrivateServerToUser.length < 1) {
         await dispatch(createPrivateServerAndChat(user1, user2))
-      }else {
+      } else {
         await dispatch(getAllServersByUserId(user1.id))
       }
     }
@@ -49,7 +49,8 @@ function UsersList() {
         {sessionUser.id !== user.id && (
           <div key={user.id} className='private-message-name'>
             <div onClick={() => startPrivateChat(sessionUser, user)} className='user-image-and-name-container'>
-              <img className='user-image' src={`${userImageArray[Math.floor((Math.random() * userImageArray.length))]}`}></img>
+              {console.log(user)}
+              <img className='user-image' src={user.profile_img}></img>
               <div className='user-name'>
                 {user.username}
               </div>

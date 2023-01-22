@@ -5,6 +5,7 @@ import { getOneServer } from '../../../store/server';
 import { getAllChannelsByServerId, getChannel, loadChannel } from '../../../store/channel';
 import { clearMessages, getChannelMessages } from '../../../store/message';
 import NewServerFormModal from '../Forms/ServerForm/Add/NewServerFormModal'
+import AllServersModal from './AllServersList';
 
 function Servers({ user, servers }) {
     const dispatch = useDispatch()
@@ -27,6 +28,7 @@ function Servers({ user, servers }) {
 
     return (
         <ServerWrapper>
+            <AllServersModal />
             <NewServerFormModal />
             {servers && servers?.map((server) => (
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>

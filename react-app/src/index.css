@@ -48,6 +48,7 @@ button {
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .user-image-and-name-container {
@@ -58,6 +59,7 @@ button {
 
 .user-name {
     margin-left: .6rem;
+    width: 200px
 }
 
 .private-server-imagename {
