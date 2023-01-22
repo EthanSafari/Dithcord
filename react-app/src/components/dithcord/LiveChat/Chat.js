@@ -4,7 +4,7 @@ import { io } from 'socket.io-client'
 
 let socket;
 
-const Chat = () => {
+const Chat = ({ props }) => {
     const dispatch = useDispatch()
 
     const [messages, setMessages] = useState([])
@@ -15,33 +15,33 @@ const Chat = () => {
 
     console.log('========CHAT========', chatInput)
 
+
     useEffect(() => {
         socket = io();
-
+        socket.emit("join", {user: currentUser.username, roomId: currentChannel.id})
         socket.on("chat", (chat) => {
+            console.log("=====ON CHAT====", chat)
             setMessages(messages => [...messages, chat])
         })
-
-        socket.on("join", )
 
 
         return (() => {
             socket.disconnect()
         })
-    }, [dispatch, currentChannel.id])
+    }, [currentChannel.id])
 
 
     const sendChat = (e) => {
         e.preventDefault()
         //emitting message
-        socket.emit("chat", { user: `${currentUser.username}`, msg: `${chatInput}` });
+        socket.emit("chat", { roomId: currentChannel.id, user: `${currentUser.username}`, msg: `${chatInput}` });
         //clear input field
         setChatInput("")
     }
 
     const updateChatInput = (e) => {
         setChatInput(e.target.value)
-        console.log('=====UPDATE CHAT INPUT FUNC======', e.target.value)
+        // console.log('=====UPDATE CHAT INPUT FUNC======', e.target.value)
     }
 
     return (

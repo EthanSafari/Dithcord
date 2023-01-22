@@ -27,7 +27,7 @@ function Channels({ channels }) {
         if(channelId) {
             dispatch(getChannel(channelId))
             dispatch(getChannelMessages(channelId))
-            socket.emit("join", currentUser.username, channelId)
+            // socket.emit("join", {user: currentUser.username, roomId: channelId})
         }
     }
     
