@@ -24,7 +24,6 @@ const AddChannelForm = ( ) => {
         server_id: currentServer[0].id,
     });
 
-    console.log('EDIT SERVER FORM: ', addedChannelData)
 
     const serverInputs = [
         {
@@ -33,9 +32,9 @@ const AddChannelForm = ( ) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            // errorMessage: "Name must be at least 1 character",
+            errorMessage: "Name must be 3-12 characters",
             required: true,
-            // pattern: "",
+            pattern: "^[a-zA-Z ]{2,12}$",
         },
     ];
 

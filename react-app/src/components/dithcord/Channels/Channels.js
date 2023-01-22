@@ -15,8 +15,7 @@ function Channels({ channels }) {
     const currentServer = Object.values(currentServerObj)
     const sessionUser = useSelector(state => state.session.user)
 
-    console.log(currentServerObj)
-    console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0])
+    // console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0])
 
     const getOneChannel = (channelId) => {
         if (channelId) {
@@ -33,7 +32,6 @@ function Channels({ channels }) {
                     {currentServer && currentServer[0]?.name}
                 </div>
                 <ServerDropDownMenu />
-                <AddChannelFormModal />
             </div>
             <div className='channels-container'>
                 {currentChannels && currentChannels.map((channel) => (
@@ -48,6 +46,7 @@ function Channels({ channels }) {
                         </div>
                     </div>
                 ))}
+                <AddChannelFormModal />
             </div>
             <div className='user-info'>
                 <div>

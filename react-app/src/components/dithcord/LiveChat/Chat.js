@@ -13,7 +13,7 @@ const Chat = ({ props }) => {
     const currentUser = useSelector(state => state.session.user)
     const currentChannel = useSelector(state => state.channels.oneChannel)
 
-    console.log('========CHAT========', chatInput)
+    // console.log('========CHAT========', chatInput)
 
 
     useEffect(() => {

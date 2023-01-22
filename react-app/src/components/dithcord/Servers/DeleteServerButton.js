@@ -5,21 +5,22 @@ import { deleteServer } from "../../../store/server";
 
 const DeleteServerButton = ( server ) => {
     const dispatch = useDispatch();
-    const currentServer = useSelector(state => state.servers.oneServer[1]);
+    const currentServerObj = useSelector(state => state.servers.oneServer);
+    const currentServer = Object.values(currentServerObj)
     const currentUser = useSelector(state => state.session.user);
 
-    // console.log('INSIDE OF SERVER BUTTON', currentServer)
+    // console.log('=====================INSIDE OF DELETE SERVER BUTTON=========================', currentServer[0])
 
     const deleteServerButton = async (e) => {
         e.preventDefault();
         dispatch(clearMessages())
         dispatch(clearAllChannels())
-        dispatch(deleteServer(currentServer.id)); //TODO possibly get rid of this dispatch later.
+        dispatch(deleteServer(currentServer[0].id)); 
     };
 
     return (
         <div>
-            {currentUser.id === currentServer?.ownerId && (
+            {currentUser.id === currentServer[0]?.ownerId && (
                 <button onClick={deleteServerButton}>
                     Delete Server
                 </button>

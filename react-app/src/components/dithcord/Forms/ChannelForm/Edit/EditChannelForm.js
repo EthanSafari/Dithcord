@@ -30,9 +30,9 @@ const EditChannelForm = ({ server }) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            // errorMessage: "Name must be at least 1 character",
+            errorMessage: "Name must be 3-12 characters",
             required: true,
-            // pattern: "",
+            pattern: "^[a-zA-Z ]{2,12}$",
         },
     ];
 
