@@ -29,9 +29,9 @@ const NewServerForm = ( ) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            // errorMessage: "Name must be at least 1 character",
+            errorMessage: "Name must be 3-20 characters",
             required: true,
-            // pattern: "",
+            pattern: "^[a-zA-Z ]{2,20}$",
         },
         {
             id: 2,
@@ -39,9 +39,9 @@ const NewServerForm = ( ) => {
             type: "server_image",
             placeholder: "server_image",
             label: "server_image",
-            // errorMessage: "Must be valid URL",
+            errorMessage: "Must be valid URL containing https",
             required: true,
-            // pattern: "",
+            pattern: "^https?://.*"
         }
     ];
 
