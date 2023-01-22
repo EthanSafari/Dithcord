@@ -10,7 +10,7 @@ const EditServerForm = ({ server }) => {
     const dispatch = useDispatch();
     // const server = useSelector(state => state.servers.oneServer)
     const [editedServerData, setEditedServerData] = useState({
-        channels: server.channels,
+        // channels: server.channels,
         id: server.id,
         name: server?.name,
         ownerId: server.ownerId,
