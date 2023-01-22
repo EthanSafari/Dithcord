@@ -79,9 +79,9 @@ function Channels({ channels }) {
             </ChannelsContainer>
 
             <UserInfo>
-                <div>
-                    <img src={sessionUser.profile_img} alt={sessionUser.username} />
-                    {sessionUser.username}
+                <div className="logout-div">
+                    <img className="current-user-image" src={sessionUser.profile_img} alt={sessionUser.username} />
+                    <p className='logout-username'>{sessionUser.username}</p>
                 </div>
                     <LogoutButton />
             </UserInfo>

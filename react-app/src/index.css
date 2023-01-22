@@ -132,3 +132,28 @@ button {
     align-items: center;
     margin: 10px;
 }
+
+.logout-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.logout-username {
+    margin: 9px;
+    color: beige;
+}
+.logout-button {
+    position: absolute;
+    bottom: 0;
+    align-self: center;
+    background-color: azure;
+    border-radius: 20%;
+    border: grey;
+    margin-bottom: 4px;
+}
+.current-user-image {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin: 7px;
+}
