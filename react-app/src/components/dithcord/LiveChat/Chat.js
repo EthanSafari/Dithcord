@@ -6,6 +6,7 @@ import styled from 'styled-components'
 
 let socket;
 
+
 const Chat = ({ props }) => {
     const dispatch = useDispatch()
     let postedMessage;
@@ -16,7 +17,7 @@ const Chat = ({ props }) => {
     const currentChannel = useSelector(state => state.channels.oneChannel)
     const channelMessages = currentChannel.messages
     
-    console.log('========CHAT========', postedMessage)
+    // console.log('========CHAT========', postedMessage)
     
     useEffect(() => {
         socket = io();
@@ -32,7 +33,7 @@ const Chat = ({ props }) => {
             socket.disconnect()
             setMessages([])
         })
-    }, [currentChannel.id])
+    }, [currentChannel.id, currentUser.username])
     
     
     
@@ -56,16 +57,6 @@ const Chat = ({ props }) => {
         // console.log('=====UPDATE CHAT INPUT FUNC======', e.target.value)
     }
 
-    const MessageButton = styled.button`
-        display : flex;
-    
-    `
-
-    const MessageForm = styled.div`
-        display : flex; 
-
-    `
-
     return (
         <>
             <div>
@@ -87,5 +78,16 @@ const Chat = ({ props }) => {
         </>
     )
 }
+
+
+const MessageButton = styled.button`
+display : flex;
+
+`
+
+// const MessageForm = styled.div`
+// display : flex; 
+
+// `
 
 export default Chat

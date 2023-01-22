@@ -26,35 +26,9 @@ function Channels({ channels }) {
         }
     }
 
-    const ChannelsContainer = styled.div`
-        width: 100%;
-        border-top: 1px solid black;
-        background-color: rgba(49, 49, 49, 0.8);
-        height: 70%;
-    `
-
-    const DropDown = styled.div`
-        background-color: rgba(10, 10, 10, 0.8);
-        height: 20%;
-    `
-
-    const UserInfo = styled.div`
-        width: 100%;
-        height: 10%;
-        border-top: 1px solid black;
-        display: flex;
-        flex-direction: column;
-        background-color: rgba(10, 10, 10, 0.8);
-    `
-
-    const ChannelsWrapper = styled.div`
-        display: flex;
-        flex-direction: column;
-    `
 
     return (
-        <ChannelsWrapper>
-
+        <>
             <DropDown>
                 <div className='server-name'>
                     {currentServer && currentServer[0]?.name}
@@ -85,11 +59,31 @@ function Channels({ channels }) {
                 </div>
                     <LogoutButton />
             </UserInfo>
-
-        </ChannelsWrapper>
+        </>
     )
 }
 
+
+const ChannelsContainer = styled.div`
+    width: 100%;
+    border-top: 1px solid black;
+    background-color: rgba(49, 49, 49, 0.8);
+    height: 70%;
+`
+
+const DropDown = styled.div`
+    background-color: rgba(10, 10, 10, 0.8);
+    height: 20%;
+`
+
+const UserInfo = styled.div`
+    width: 100%;
+    height: 10%;
+    border-top: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(10, 10, 10, 0.8);
+`
 
 
 export default Channels

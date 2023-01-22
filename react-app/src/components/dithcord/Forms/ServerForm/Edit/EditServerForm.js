@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { createServer, editServerById } from '../../../../../store/server'
+import { editServerById } from '../../../../../store/server'
 import FormInput from '../ServerFormInput';
 import { useModal } from '../../../../../context/Modal';
 

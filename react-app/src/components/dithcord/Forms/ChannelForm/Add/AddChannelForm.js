@@ -11,7 +11,7 @@ const AddChannelForm = ( ) => {
 
     const currentServerObj = useSelector(state => state.servers.oneServer)
     const currentServer = Object.values(currentServerObj)
-    const currentChannelObj = useSelector(state => state.channels.oneChannel)
+    // const currentChannelObj = useSelector(state => state.channels.oneChannel)
 
     // console.log('-----INSIDE OF ADD CHANNEL-------', currentServer[0])
 
