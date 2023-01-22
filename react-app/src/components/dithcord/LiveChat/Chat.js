@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client'
 import { createMessage } from '../../../store/message';
+import styled from 'styled-components'
 
 let socket;
 
@@ -55,6 +56,16 @@ const Chat = ({ props }) => {
         // console.log('=====UPDATE CHAT INPUT FUNC======', e.target.value)
     }
 
+    const MessageButton = styled.button`
+        display : flex;
+    
+    `
+
+    const MessageForm = styled.div`
+        display : flex; 
+
+    `
+
     return (
         <>
             <div>
@@ -67,13 +78,12 @@ const Chat = ({ props }) => {
                     <div key={ind}>{`${message.user}: ${message.msg}`}</div>
                 ))}
             </div>
+
+            
             <form onSubmit={sendChat}>
-                <input
-                    value={chatInput}
-                    onChange={updateChatInput}
-                />
-                <button type="submit">Send</button>
-            </form>
+                <input value={chatInput} onChange={updateChatInput}/>
+                <MessageButton as="button">Send</MessageButton>
+            </form>     
         </>
     )
 }

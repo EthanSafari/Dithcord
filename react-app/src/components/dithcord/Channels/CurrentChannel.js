@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import ChannelMessages from '../Messages/ChannelMessages';
-import { Wrapper } from '../DithcordStyles';
 import { useDispatch, useSelector } from 'react-redux';
-import { getChannel } from '../../../store/channel';
 import { getChannelMessages } from '../../../store/message';
-import MessageForm from '../Messages/MessageForm';
+import { MessageContainerWrapper } from '../DithcordStyles';
+
 
 function CurrentChannel({ channel }) {
     const dispatch = useDispatch();
@@ -23,13 +22,9 @@ function CurrentChannel({ channel }) {
     // console.log('', '\n', '--------------CURRENT CHANNELS COMPONENT DATA--------------', '\n', currentChannel, '\n', '')
 
     return (
-        <div className='channel-messages-container'>
-
+        <MessageContainerWrapper>
             <ChannelMessages messages={channelMessagesArray} channelId={currentChannel.id} />
-            {channel.id &&
-                <MessageForm channelId={channel.id} />
-            }
-        </div>
+        </MessageContainerWrapper>
     )
 }
 

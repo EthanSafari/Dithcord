@@ -7,6 +7,7 @@ import EditChannelFormModal from '../Forms/ChannelForm/Edit/EditChannelFormModal
 import ServerDropDownMenu from '../Servers/ServerDropDownMenu';
 import DeleteChannelButton from './DeleteChannelButton';
 import LogoutButton from '../../auth/LogoutButton';
+import styled from 'styled-components';
 
 function Channels({ channels }) {
     const dispatch = useDispatch();
@@ -25,15 +26,43 @@ function Channels({ channels }) {
         }
     }
 
+    const ChannelsContainer = styled.div`
+        width: 100%;
+        border-top: 1px solid black;
+        background-color: rgba(49, 49, 49, 0.8);
+        height: 70%;
+    `
+
+    const DropDown = styled.div`
+        background-color: rgba(10, 10, 10, 0.8);
+        height: 20%;
+    `
+
+    const UserInfo = styled.div`
+        width: 100%;
+        height: 10%;
+        border-top: 1px solid black;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(10, 10, 10, 0.8);
+    `
+
+    const ChannelsWrapper = styled.div`
+        display: flex;
+        flex-direction: column;
+    `
+
     return (
-        <div className='channel-box'>
-            <div>
+        <ChannelsWrapper>
+
+            <DropDown>
                 <div className='server-name'>
                     {currentServer && currentServer[0]?.name}
                 </div>
                 <ServerDropDownMenu />
-            </div>
-            <div className='channels-container'>
+            </DropDown>
+
+            <ChannelsContainer>
                 {currentChannels && currentChannels.map((channel) => (
                     <div key={channel.id} className='channel-and-channel-options'>
                         <div onClick={() => getOneChannel(channel.id)} key={channel.id}>
@@ -47,15 +76,17 @@ function Channels({ channels }) {
                     </div>
                 ))}
                 <AddChannelFormModal />
-            </div>
-            <div className='user-info'>
+            </ChannelsContainer>
+
+            <UserInfo>
                 <div>
                     <img src={sessionUser.profile_img} alt={sessionUser.username} />
                     {sessionUser.username}
                 </div>
                     <LogoutButton />
-            </div>
-        </div>
+            </UserInfo>
+
+        </ChannelsWrapper>
     )
 }
 
