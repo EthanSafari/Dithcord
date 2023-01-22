@@ -1,8 +1,7 @@
 from flask import Blueprint, request
 
 from app.forms.server_form import ServerForm
-from ..models import Server, Channel, db
-
+from ..models import Server, Channel, db, User
 
 server_bp = Blueprint('servers', __name__)
 
@@ -72,3 +71,11 @@ def get_channels_by_server(id):
         return { 'channels': [channel.to_dict() for channel in server_channels]}
     else:
         return { "error": "Server not found", "errorCode" : 404 }, 404
+
+
+@server_bp.route('/private/<int:user1Id>/<int:user2Id>')
+def get_private_servers_user_list(user1Id, user2Id):
+    user1 = User.query.get(user1Id)
+    user2 = User.query.get(user2Id)
+    servers = Server.query.filter(Server.users.contains(user1), Server.users.contains(user2), Server.private == True).all()
+    return {'userPrivateServerToUser' : [server.to_dict() for server in servers]}

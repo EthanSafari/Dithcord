@@ -6,6 +6,7 @@ const LOAD_CHANNEL_MESSAGES = 'messages/loadChannelMessages'
 const ADD_MESSAGE = 'messages/add'
 const EDIT_MESSAGE = 'messages/edit'
 const DELETE_MESSAGE = 'messages/delete'
+const CLEAR_MESSAGES = 'messages/clearall'
 
 
 //------------------------------   ACTIONS   ------------------------------//
@@ -25,10 +26,11 @@ export const loadChannelMessages = (messages) => {
     }
 }
 
-export const addMessage = (message) => {
+export const addMessage = (message, channelId) => {
     return {
         type: ADD_MESSAGE,
-        message
+        message,
+        channelId
     }
 }
 
@@ -43,6 +45,13 @@ export const removeMessage = (messageId) => {
     return {
         type: DELETE_MESSAGE,
         messageId
+    }
+}
+
+export const clearMessages = (empty = {}) => {
+    return {
+        type: CLEAR_MESSAGES,
+        empty
     }
 }
 
@@ -70,20 +79,16 @@ export const getChannelMessages = (channelId) => async (dispatch) => {
 
 export const createMessage = (message) => async (dispatch) => {
     const { body, channelId, authorId } = message;
-
+    console.log('INSIDE OF THUNK', message)
     const res = await fetch('/api/messages/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            body,
-            channelId,
-            authorId
-        })
+        body: JSON.stringify(message)
     })
 
     if(res.ok) {
         const data = await res.json();
-        dispatch(addMessage(data))
+        dispatch(addMessage(data, channelId))
     }
 }
 
@@ -132,7 +137,7 @@ const messageReducer = (state = initialState, action) => {
         case LOAD_CHANNEL_MESSAGES:
             {
                 // console.log('---REDUCER DATA---', action.messages.messages) //TODO
-                const newState = { channelMessages: {...state.channelMessages}, oneMessage: {...state.oneMessage}}
+                const newState = { channelMessages: {}, oneMessage: {...state.oneMessage}}
                 action.messages.messages.forEach(message => {
                     newState.channelMessages[message.id] = message;
                 })
@@ -141,8 +146,9 @@ const messageReducer = (state = initialState, action) => {
 
         case ADD_MESSAGE:
             {
+                console.log("IN REDUCER", action)
                 const newState = { channelMessages: {...state.channelMessages}, oneMessage: {...state.oneMessage}}
-                newState.channelMessages[action.server.id] = action.message
+                newState.channelMessages[action.message.id] = action.message
                 return newState
             }
 
@@ -159,6 +165,12 @@ const messageReducer = (state = initialState, action) => {
                 const newState = { channelMessages: {...state.channelMessages}, oneMessage: {...state.oneMessage}}
                 delete newState.channelMessages[action.messageId]
                 delete newState.oneMessage[action.messageId]
+                return newState
+            }
+
+        case CLEAR_MESSAGES:
+            {
+                const newState = { channelMessages: {} , oneMessage: {}}
                 return newState
             }
 

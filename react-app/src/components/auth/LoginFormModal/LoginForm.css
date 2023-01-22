@@ -1,0 +1,97 @@
+.login-signup-form-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://static3.srcdn.com/wordpress/wp-content/uploads/2019/08/mike-tyson-mysteries-poster.jpg');
+    background-size: cover;
+}
+
+.login-from-and-qr-code {
+    /* border: 2px solid red; */
+    background-color: orangered;
+    border-radius: 5px;
+    display: flex;
+    width: fit-content;
+    flex-direction: row;
+    padding: 1rem;
+    min-width: 30rem;
+    min-height: 15rem;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.login-form-container {
+    margin: 10px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-name {
+    font-size: 12px;
+    color: white;
+}
+
+.register {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+}
+
+.register-text {
+    font-size: 12px;
+    margin: 1px;
+}
+
+.qr-code {
+    width: 175px;
+    border-radius: 5px;
+}
+
+.qr-code-container {
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.qr-code-login {
+    font-size: 25px;
+    margin: 10px 0;
+    color: white;
+    font-weight: bold;
+}
+
+.qr-code-text {
+    font-size: 16px;
+    text-align: center;
+    color: whitesmoke;
+}
+
+.welcome-back {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 10px;
+}
+
+.welcome-back-text {
+    font-weight: bold;
+    font-size: 24px;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.label {
+    margin: 5px 0;
+    border-radius: 5px;
+    border: none;
+    width: 18rem;
+    padding: 5px;
+}

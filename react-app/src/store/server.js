@@ -2,6 +2,7 @@
 
 const LOAD_SERVERS = 'servers/load'
 const LOAD_ONE_SERVER = 'server/loadOne'
+const LOAD_USER_SERVERS = 'servers/loadUserServers'
 const ADD_SERVER = 'server/add'
 const EDIT_SERVER = 'server/edit'
 const DELETE_SERVER = 'server/delete'
@@ -21,6 +22,13 @@ export const loadOneServer = (server) => {
     return {
         type: LOAD_ONE_SERVER,
         server
+    }
+}
+
+export const loadUserServers = (servers) => {
+    return {
+        type: LOAD_USER_SERVERS,
+        servers
     }
 }
 
@@ -62,31 +70,54 @@ export const getServers = () => async (dispatch) => {
     }
 }
 
+export const getAllServersByUserId = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/users/${userId}/servers`)
+
+    if(res.ok) {
+        const data = await res.json();
+        dispatch(loadUserServers(data))
+        return data
+    }
+}
+
 export const getOneServer = (serverId) => async (dispatch) => {
     const res = await fetch(`/api/servers/${serverId}`)
 
     if(res.ok){
         const data = await res.json();
         dispatch(loadOneServer(data))
+        return data
     }
 }
 
 export const createServer = (server) => async (dispatch) => {
-    const {name, privateStatus, serverImage} = server;
-
+    // const {name, private, serverImage} = server;
     const res = await fetch('/api/servers/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            name,
-            privateStatus,
-            serverImage
-        })
+        body: JSON.stringify(server)
     })
-
-    if(res.ok) {
+    if (res.ok) {
         const data = await res.json();
-        dispatch(addServer(data))
+        const addGeneralChat = await fetch('/api/channels/new', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                private: false,
+                name: 'General',
+                server_id: data.id,
+            }),
+        });
+        if (addGeneralChat.ok) {
+            const userServerAdd = await fetch(`/api/users/${data.ownerId}/servers/${data.id}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+            });
+            if (userServerAdd.ok){
+                dispatch(addServer(data));
+                return data;
+            }
+        }
     }
 }
 
@@ -101,17 +132,10 @@ export const deleteServer = (serverId) => async (dispatch) => {
 }
 
 export const editServerById = (server) => async (dispatch) => {
-    const { id, privateStatus, name, serverImage, ownerId } = server
-    const res = await fetch(`/api/server/${id}`, {
+    const res = await fetch(`/api/servers/${server.id}`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-            id,
-            privateStatus,
-            name,
-            serverImage,
-            ownerId
-        })
+        body: JSON.stringify(server)
     })
     if(res.ok) {
         const data = await res.json();
@@ -121,6 +145,45 @@ export const editServerById = (server) => async (dispatch) => {
 }
 
 
+export const createPrivateServerAndChat = (user1, user2) => async (dispatch) => {
+    const serverRes = await fetch('/api/servers/new', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+            private: true,
+            name: `${user1.username} & ${user2.username}`,
+            server_image: `${user1.username[0].toUpperCase()}&${user2.username[0].toUpperCase()}`,
+            owner_id: user1.id
+        })
+    })
+    if (serverRes.ok) {
+        const serverData = await serverRes.json();
+        const addPrivateChat = await fetch('/api/channels/new', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                private: true,
+                name: `Private Chat`,
+                server_id: serverData.id,
+            }),
+        });
+        if (addPrivateChat.ok) {
+            const user1PrivateServerAdd = await fetch(`/api/users/${user1.id}/servers/${serverData.id}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+            });
+            const user2PrivateServerAdd = await fetch(`/api/users/${user2.id}/servers/${serverData.id}`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+            });
+            if (user1PrivateServerAdd && user2PrivateServerAdd) {
+                dispatch(addServer(serverData));
+                return serverData;
+            }
+        }
+    }
+}
+
 
 //------------------------------   REDUCER   ------------------------------//
 
@@ -128,24 +191,34 @@ const initialState = { allServers: {}, oneServer: {} }
 const serverReducer = (state = initialState, action) => {
     switch(action.type) {
 
-        case LOAD_SERVERS:
+        // case LOAD_SERVERS:
+        //     {
+        //         const newState = { allServers: {...state.allServers}, oneServer: {}}
+        //         action.servers.forEach(server => {
+        //             newState.allServers[server.id] = server;
+        //         });
+        //         return newState;
+        //     }
+
+        case LOAD_ONE_SERVER:
             {
                 const newState = { allServers: {...state.allServers}, oneServer: {}}
-                action.servers.forEach(server => {
+                newState.oneServer[action.server.id] = action.server
+                return newState;
+            }
+
+        case LOAD_USER_SERVERS:
+            {
+                const newState = { allServers: {...state.allServers}, oneServer: {}}
+                action.servers.userServers.forEach(server => {
                     newState.allServers[server.id] = server;
                 });
                 return newState;
             }
 
-        case LOAD_ONE_SERVER:
-            {
-                const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
-                newState.oneServer = {...action.server};
-                return newState;
-            }
-
         case ADD_SERVER:
             {
+                console.log('inside of ADD SERVER: ', action.server)
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
                 newState.allServers[action.server.id] = action.server
                 return newState
@@ -154,8 +227,9 @@ const serverReducer = (state = initialState, action) => {
         case EDIT_SERVER:
             {
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
+                console.log('INSIDE REDUCER:  ', action.server)
                 newState.allServers[action.server.id] = action.server
-                newState.oneServer = action.server
+                newState.oneServer[action.server.id] = action.server
                 return newState
             }
 

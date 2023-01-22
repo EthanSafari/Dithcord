@@ -9,6 +9,7 @@ from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
 from .seeds import seed_commands
 from .config import Config
+from .socketTest.socket import socketio
 
 from .routes import server_bp, channel_bp, message_bp
 
@@ -37,10 +38,14 @@ app.register_blueprint(message_bp, url_prefix='/api/messages')
 
 db.init_app(app)
 Migrate(app, db)
+socketio.init_app(app)
 
 # Application Security
 CORS(app)
 
+
+if __name__ == "__main__":
+    socketio.run(app)
 
 # Since we are deploying with Docker and Flask,
 # we won't be using a buildpack when we deploy to Heroku.
