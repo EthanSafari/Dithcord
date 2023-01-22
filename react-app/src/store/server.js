@@ -145,15 +145,15 @@ export const editServerById = (server) => async (dispatch) => {
 }
 
 
-export const createPrivateServerAndChat = (user1id, user2) => async (dispatch) => {
+export const createPrivateServerAndChat = (user1, user2) => async (dispatch) => {
     const serverRes = await fetch('/api/servers/new', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
             private: true,
-            name: `${user2.username}`,
-            server_image: `${user2.username[0]}`,
-            owner_id: user1id
+            name: `${user1.username} & ${user2.username}`,
+            server_image: `${user1.username[0].toUpperCase()}&${user2.username[0].toUpperCase()}`,
+            owner_id: user1.id
         })
     })
     if (serverRes.ok) {
@@ -163,12 +163,12 @@ export const createPrivateServerAndChat = (user1id, user2) => async (dispatch) =
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({
                 private: true,
-                name: `${user2.username}`,
+                name: `Private Chat`,
                 server_id: serverData.id,
             }),
         });
         if (addPrivateChat.ok) {
-            const user1PrivateServerAdd = await fetch(`/api/users/${user1id}/servers/${serverData.id}`, {
+            const user1PrivateServerAdd = await fetch(`/api/users/${user1.id}/servers/${serverData.id}`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
             });

@@ -32,10 +32,12 @@ export const ImageWrapper = styled.div`
 export const MessageContainerWrapper = styled.div`
     display: flex;
     flex-direction: column;
-    width: 80%;
-    border: 1px solid black;
+    width: 100%;
+    border-top: 1px solid black;
     overflow: auto;
     height: 70vh;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
 `;
 
 

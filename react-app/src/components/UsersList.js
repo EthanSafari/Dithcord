@@ -3,6 +3,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { createPrivateServerAndChat, getOneServer } from '../store/server';
 
+const userImageArray = [
+  'https://th.bing.com/th/id/OIP.2ho_6d77d9hcA_Tr5hDzSAAAAA?pid=ImgDet&rs=1',
+  'https://vignette.wikia.nocookie.net/mike-tyson-mysteries/images/6/60/JohnUpdike.png/revision/latest?cb=20150305165010',
+  'https://th.bing.com/th/id/OIP.MWhiy9DoVs61Gr-nwqySigHaGW?pid=ImgDet&rs=1',
+  'https://vignette.wikia.nocookie.net/mike-tyson-mysteries/images/3/37/Miketysonmysteries_trailer_sdcc14.jpg/revision/latest?cb=20170703025337',
+  'https://th.bing.com/th/id/OIP.ocBGJzV1HEtKuJ2N3HCnBQAAAA?pid=ImgDet&rs=1',
+  'https://th.bing.com/th/id/OIP.D9greJe8UNFrlzuaJCctEwAAAA?pid=ImgDet&rs=1',
+  'https://i1.sndcdn.com/avatars-000414334878-fyyas3-t500x500.jpg',
+  'https://th.bing.com/th/id/OIP.c0jFYmPau8vp-LU01UkD0wAAAA?pid=ImgDet&rs=1',
+  'https://th.bing.com/th/id/OIP.KpFLU2fyaCHLTwR9xGOxHQAAAA?pid=ImgDet&rs=1',
+  'https://th.bing.com/th/id/OIP.aFY5Lh9wiPhd6RWL8NEITgAAAA?pid=ImgDet&rs=1',
+  'https://freddyo.com/wp-content/uploads/2014/10/image31.jpg'
+]
+
 function UsersList() {
   const [users, setUsers] = useState([]);
   const dispatch = useDispatch();
@@ -17,29 +31,39 @@ function UsersList() {
     fetchData();
   }, []);
 
-  const startPrivateChat = async (user1id, user2) => {
-    if (user1id != useDispatch.id){
-      const sessionUserSessions = await fetch(`/api/servers/private/${user1id}/${user2.id}`);
+  const startPrivateChat = async (user1, user2) => {
+    if (user1.id != user2.id) {
+      const sessionUserSessions = await fetch(`/api/servers/private/${user1.id}/${user2.id}`);
       const sessionUserSessionsData = await sessionUserSessions.json();
       if (sessionUserSessionsData.userPrivateServerToUser.length < 1) {
-        await dispatch(createPrivateServerAndChat(user1id, user2))
+        await dispatch(createPrivateServerAndChat(user1, user2))
       }
     }
   }
 
   const userComponents = users.map((user) => {
     return (
-      <li key={user.id}>
-        {/* <NavLink to={`/users/${user.id}`}>{user.username}</NavLink> */}
-        <div onClick={() => startPrivateChat(sessionUser.id, user)}>{user.username}</div>
-      </li>
+      <div>
+        {sessionUser.id !== user.id && (
+          <div key={user.id} className='private-message-name'>
+            <div onClick={() => startPrivateChat(sessionUser, user)} className='user-image-and-name-container'>
+              <img className='user-image' src={`${userImageArray[Math.floor((Math.random() * userImageArray.length))]}`}></img>
+              <div className='user-name'>
+                {user.username}
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     );
   });
 
   return (
     <>
-      <h1>User List: </h1>
-      <ul>{userComponents}</ul>
+      <div className='private-messaging'>
+        <div className='private-message-heading'>Private Message: </div>
+        <div className='private-messaging-list'>{userComponents}</div>
+      </div>
     </>
   );
 }

@@ -20,3 +20,77 @@ button {
 .submit-button:hover {
     background-color: darkorange;
 }
+
+.private-message-heading {
+    font-family: 'Kanit', sans-serif;
+    font-size: 25px;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    padding: .5rem 0;
+}
+
+.private-messaging {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    border: 1px solid black;
+}
+
+.private-message-name {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 10px;
+}
+
+.user-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.user-image-and-name-container {
+    display: flex;
+    align-items: center;
+    width: 7rem;
+}
+
+.user-name {
+    margin-left: .6rem;
+}
+
+.private-server-imagename {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-family: 'Unbounded', cursive;
+    font-size: 20px;
+    background-color: orange;
+    color: white;
+    border-radius: 50px;
+}
+
+.channels-container {
+    width: 13rem;
+    border-top: 1px solid black;
+}
+
+.channel-and-channel-options {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.message-body {
+    padding: 1% 1%;
+    word-wrap: normal
+}
+
+.channel-messages-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
