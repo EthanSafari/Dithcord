@@ -27,6 +27,7 @@ const Chat = ({ props }) => {
 
         return (() => {
             socket.disconnect()
+            setMessages([])
         })
     }, [currentChannel.id])
 
