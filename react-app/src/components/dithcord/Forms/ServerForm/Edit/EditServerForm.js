@@ -8,17 +8,18 @@ import { useModal } from '../../../../../context/Modal';
 const EditServerForm = ({ server }) => {
     const { closeModal } = useModal();
     const dispatch = useDispatch();
-    // const server = useSelector(state => state.servers.oneServer)
+    const thisServerObj = useSelector(state => state.servers.oneServer)
+    const thisServer = Object.values(thisServerObj)
     const [editedServerData, setEditedServerData] = useState({
-        channels: server.channels,
-        id: server.id,
-        name: server?.name,
-        ownerId: server.ownerId,
-        private: server.private,
-        server_image: server?.server_image,
+        // channels: thisServer[0].channels,
+        id: thisServer[0]?.id,
+        name: thisServer[0]?.name,
+        ownerId: thisServer[0].ownerId,
+        private: thisServer[0].private,
+        server_image: thisServer[0]?.server_image,
     });
 
-    // console.log('EDIT SERVER FORM: ', editedServerData)
+    console.log('===============EDIT SERVER FORM===================', thisServer[0])
 
     const serverInputs = [
         {

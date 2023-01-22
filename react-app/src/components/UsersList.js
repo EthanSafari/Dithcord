@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { createPrivateServerAndChat, getOneServer } from '../store/server';
+import { createPrivateServerAndChat, getAllServersByUserId, getOneServer } from '../store/server';
 
 const userImageArray = [
   'https://th.bing.com/th/id/OIP.2ho_6d77d9hcA_Tr5hDzSAAAAA?pid=ImgDet&rs=1',
@@ -37,6 +37,8 @@ function UsersList() {
       const sessionUserSessionsData = await sessionUserSessions.json();
       if (sessionUserSessionsData.userPrivateServerToUser.length < 1) {
         await dispatch(createPrivateServerAndChat(user1, user2))
+      }else {
+        await dispatch(getAllServersByUserId(user1.id))
       }
     }
   }

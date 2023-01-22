@@ -6,6 +6,7 @@ import CurrentChannel from '../Channels/CurrentChannel'
 import ServerUsers from './ServerUsers';
 import { useDispatch, useSelector } from 'react-redux';
 import { getAllChannelsByServerId } from '../../../store/channel';
+import { getOneServer } from '../../../store/server';
 
 
 
@@ -14,13 +15,14 @@ function CurrentServer({ server }) {
     const serverChannels = useSelector((state) => state.channels.allChannels)
     const currentChannel = useSelector((state) => state.channels.oneChannel)
     const currentServer = useSelector((state) => state.servers.oneServer)
+
     console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', currentServer, '\n', '')
 
     useEffect(() => {
         if(server.id) {
-            // dispatch(getAllChannelsByServerId(server.id))
+            dispatch(getOneServer(server.id))
         }
-    },[dispatch, server.id])
+    },[dispatch, server])
 
     return (
         <Wrapper>

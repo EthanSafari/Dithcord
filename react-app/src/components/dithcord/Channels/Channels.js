@@ -16,7 +16,7 @@ function Channels({ channels }) {
     const sessionUser = useSelector(state => state.session.user)
 
     console.log(currentServerObj)
-    // console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0]?.id)
+    console.log('INSIDE OF CHANNELS COMPONENT', currentServer[0])
 
     const getOneChannel = (channelId) => {
         if (channelId) {
@@ -30,7 +30,7 @@ function Channels({ channels }) {
         <div className='channel-box'>
             <div>
                 <div className='server-name'>
-                    {currentServer[0]?.name}
+                    {currentServer && currentServer[0]?.name}
                 </div>
                 <ServerDropDownMenu />
                 <AddChannelFormModal />

@@ -27,7 +27,7 @@ function Dithcord() {
     useEffect(() => {
         // dispatch(getServers())
         dispatch(getAllServersByUserId(currentUser.id))
-    }, [dispatch]);
+    }, [dispatch, currentServer.id]);
 
     return(
         <Wrapper>

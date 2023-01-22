@@ -229,7 +229,7 @@ const serverReducer = (state = initialState, action) => {
                 const newState = { allServers: {...state.allServers}, oneServer: {...state.oneServer}}
                 console.log('INSIDE REDUCER:  ', action.server)
                 newState.allServers[action.server.id] = action.server
-                newState.oneServer = action.server
+                newState.oneServer[action.server.id] = action.server
                 return newState
             }
 
