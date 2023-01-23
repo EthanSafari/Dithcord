@@ -27,33 +27,40 @@ const NotLogInLanding = () => {
                 <div className='top-portion-content'>
                     <h1 className='top-portion-heading'>IMAGINE A PLATHE...</h1>
                     <div className='top-portion-description'>
-                        <div style={{ width: '45rem' }}>
+                        <div style={{ width: '45rem', backgroundColor: 'rgba(0,0,0,.6)', borderRadius: '15px' }}>
                             ...where you can belong to a thchool club, a gaming group, or a worldwide art community. Where juth you and a handful of friendth can thpend time together. A place that maketh it eathy to talk every day and hang out more often.</div>
                     </div>
                     <div className='top-portion-buttons'>
                         <div className='top-buttons'>
-                            <button className='top-portion-button'>Download for Windowth</button>
-                            <button className='top-portion-button'>Open Dithcord in your browther</button>
+                            <button className='top-portion-button submit-button no-link'>Download for Windowth</button>
+                            <button className='top-portion-button submit-button no-link'>Open Dithcord in your browther</button>
                         </div>
                     </div>
                 </div>
-                <div>picture</div>
             </div>
             <NotLoggedInParts partsArray={partsArray} />
-            <div>Ready to thart your journey?</div>
-            <button>Download for Windowth</button>
             <div>
-                <div className='bottom-portion'>
-                    <div className='bottom-portion-top'>
-                        <div>IMAGINE A PLACE</div>
-                        <div>Englith, USA</div>
-                        <div>Thocial Media</div>
-                    </div>
-                    <DropDownMenuFrontPage />
+                <div className='download-container'>
+
+                    <div className='ready'>Ready to thart your journey?</div>
+                    <button className='top-portion-button submit-button submit-button no-link'>Download for Windowth</button>
                 </div>
-                <div className='bottom-portion-bottom'>
-                    <div>Dithcord</div>
-                    <button>Thign Up</button>
+                <div className='actual-bottom-part'>
+
+                    <div className='bottom-portion'>
+                        <div className='bottom-portion-top'>
+                            <div>IMAGINE A PLACE</div>
+                            <div>Englith, USA</div>
+                            <div>Thocial Media</div>
+                        </div>
+                        <DropDownMenuFrontPage />
+                    </div>
+                    <div className='bottom-portion-bottom'>
+                        <div>Dithcord</div>
+                        <NavLink to='/sign-up'>
+                            <button>Thign Up</button>
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         </div>

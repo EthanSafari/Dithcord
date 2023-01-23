@@ -175,3 +175,12 @@ button {
     color: white;
 
 }
+
+.error-messages {
+    max-width: 19rem;
+    color: white;
+}
+
+.sign-up-label {
+    min-width: 20rem;
+}

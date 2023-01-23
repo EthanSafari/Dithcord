@@ -31,7 +31,7 @@ const SignUpForm = () => {
     const errors = []
     if (!username) errors.push('Username required')
     if (username.length < 2 || username.length > 15) errors.push('Uthername length mutht be between 2 and 15 characters')
-    if (!email) errors.push('Email required')
+    if (!email || !email.includes('@')) errors.push('Email required')
     if (!password) errors.push('Password required')
     if (!repeatPassword) errors.push('Please confirm password')
     if (password !== repeatPassword) errors.push('Passwords do not match')
@@ -63,6 +63,13 @@ const SignUpForm = () => {
     <div className='login-signup-form-page'>
       <div className='sign-up-form'>
         <div className='welcome-back-text'>Create an account</div>
+        <ul className="sign-up-errors">
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+        <ul>
+          {submit && validationErrors.length > 0 && validationErrors.map(error => (
+            <li className="error-messages" key={error}>{error}</li>))}
+        </ul>
         <form onSubmit={onSignUp}>
           <div>
             {errors.map((error, ind) => (
@@ -76,7 +83,7 @@ const SignUpForm = () => {
               name='email'
               onChange={updateEmail}
               value={email}
-              className='label'
+              className='label sign-up-label'
             ></input>
           </div>
           <div className='input input-margin'>
@@ -86,7 +93,7 @@ const SignUpForm = () => {
               name='username'
               onChange={updateUsername}
               value={username}
-              className='label'
+              className='label sign-up-label'
             ></input>
           </div>
           <div className='input input-margin'>
@@ -96,7 +103,7 @@ const SignUpForm = () => {
               name='password'
               onChange={updatePassword}
               value={password}
-              className='label'
+              className='label sign-up-label'
             ></input>
           </div>
           <div className='input input-margin'>
@@ -107,25 +114,18 @@ const SignUpForm = () => {
               onChange={updateRepeatPassword}
               value={repeatPassword}
               required={true}
-              className='label'
+              className='label sign-up-label'
             ></input>
           </div>
-          <button type='submit' className='submit-button'>Thign Up</button>
+          <button type='submit' className='submit-button' >Thign Up</button>
         </form>
         <NavLink to={'/login'}>
-        <div className='have-an-account'>Already have an account?</div>
+          <div className='have-an-account'>Already have an account?</div>
         </NavLink>
-      <div className='terms-agreement'>
-        By regithering, you agree to Dithcord'th termth of Thervithe and Privathy Polithy
+        <div className='terms-agreement'>
+          By regithering, you agree to Dithcord'th termth of Thervithe and Privathy Polithy
+        </div>
       </div>
-      </div>
-      <ul className="sign-up-errors">
-          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
-        <ul>
-          {submit && validationErrors.length > 0 && validationErrors.map(error => (
-            <li className="error-messages" key={error}>{error}</li>))}
-        </ul>
     </div>
   );
 };
