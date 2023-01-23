@@ -55,7 +55,7 @@ const AddChannelForm = ( ) => {
                     <ChannelFormIput className={input.name} key={input.id} {...input} value={addedChannelData[input.name]} onChange={onChange} />
                 ))}
                 <span id='api-error'></span>
-                <button className='editServerButton'>Add Channel</button>
+                <button className='btn btn-edit'>Add Channel</button>
             </form>
         </div>
     )
