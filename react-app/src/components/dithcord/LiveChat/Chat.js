@@ -71,12 +71,12 @@ const Chat = ({ props }) => {
             </div>
 
             {/* <MessagesForm> */}
-                <div className='message-form'>
+                <MessagesForm>
                     <form onSubmit={sendChat}>
                         <input className="message-input" value={chatInput} onChange={updateChatInput} />
-                        <button className='message-button' type='submit'>Send</button>
+                        <MessageButton as="button" type='submit'>Send</MessageButton>
                     </form>
-                </div>
+                </MessagesForm>
 
             {/* </MessagesForm> */}
         </>
@@ -84,16 +84,21 @@ const Chat = ({ props }) => {
 }
 
 
-// const MessageButton = styled.button`
-// display : flex;
+const MessageButton = styled.button`
+    width: 100px;
+    height: 28.8px;
+    float: left;
+    position: relative;
+    background-color: antiquewhite;
+    border: 0;
+`
 
-// `
-
-// const MessagesForm = styled.div`
-//     display: flex;
-//     align-items: center;
-//     position: absolute;
-//     bottom: 0;
-// `
+const MessagesForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    padding: 20px;
+    background-color: rgb(143, 176, 165);
+`
 
 export default Chat

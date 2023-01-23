@@ -137,7 +137,10 @@ button {
 
 .logout-div{
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: flex-start;
 }
 
 .logout-username {
@@ -162,13 +165,6 @@ button {
     border-radius: 50%;
     margin: 7px;
 }
-.message-form {
-    display: flex;
-    flex-direction: column;
-    margin-top: auto;
-    padding: 20px;
-    background-color: rgb(143, 176, 165);
-}
 
 .message-input {
     /* margin-top: 2px; */
@@ -180,14 +176,6 @@ button {
 }
 
 
-.message-button {
-    width: 100px;
-    height: 28.8px;
-    float: left;
-    position: relative;
-    background-color: antiquewhite;
-    border: 0;
-}
 .server-option-button {
     border: none;
     background-color: transparent;
