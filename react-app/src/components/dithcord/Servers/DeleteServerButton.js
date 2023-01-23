@@ -2,30 +2,42 @@ import { useDispatch, useSelector } from "react-redux"
 import { clearAllChannels } from "../../../store/channel";
 import { clearMessages } from "../../../store/message";
 import { deleteServer } from "../../../store/server";
+import styled from "styled-components";
 
-const DeleteServerButton = ( server ) => {
+const DeleteServerButton = () => {
     const dispatch = useDispatch();
-    const currentServer = useSelector(state => state.servers.oneServer[1]);
+    const currentServerObj = useSelector(state => state.servers.oneServer);
+    const currentServer = Object.values(currentServerObj)
     const currentUser = useSelector(state => state.session.user);
 
-    // console.log('INSIDE OF SERVER BUTTON', currentServer)
+    // console.log('=====================INSIDE OF DELETE SERVER BUTTON=========================', currentServer[0])
 
     const deleteServerButton = async (e) => {
         e.preventDefault();
         dispatch(clearMessages())
         dispatch(clearAllChannels())
-        dispatch(deleteServer(currentServer.id)); //TODO possibly get rid of this dispatch later.
+        dispatch(deleteServer(currentServer[0].id)); 
     };
 
     return (
         <div>
-            {currentUser.id === currentServer?.ownerId && (
-                <button onClick={deleteServerButton}>
+            {currentUser.id === currentServer[0]?.ownerId && (
+                <DropDownButton as="button" onClick={deleteServerButton}>
                     Delete Server
-                </button>
+                </DropDownButton>
             )}
         </div>
     );
 };
+
+const DropDownButton = styled.button`
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    border: 1px solid black;
+`
 
 export default DeleteServerButton;

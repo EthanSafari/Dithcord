@@ -69,7 +69,7 @@ export const getAllChannelsByServerId = (serverId) => async (dispatch) => {
 
 export const getChannel = (channelId) => async (dispatch) => {
     const res = await fetch(`/api/channels/${channelId}`);
-    console.log('----GET CHANNEL THUNK----', channelId) 
+    // console.log('----GET CHANNEL THUNK----', channelId) 
     if (res.ok) {
         const data = await res.json();
         dispatch(loadChannel(data));

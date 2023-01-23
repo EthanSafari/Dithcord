@@ -1,14 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux"
-
-// import styled from 'styled-components';
 import { Wrapper } from './DithcordStyles';
-
 import PrivateMessaging from './Messages/PrivateMessages'
 import Servers from './Servers/Servers'
 import CurrentServer from './Servers/CurrentServer'
-import { getAllServersByUserId, getServers } from '../../store/server';
-import ChannelMessages from './Messages/ChannelMessages';
+import { getAllServersByUserId } from '../../store/server';
 import UsersList from '../UsersList';
 
 
@@ -27,7 +23,7 @@ function Dithcord() {
     useEffect(() => {
         // dispatch(getServers())
         dispatch(getAllServersByUserId(currentUser.id))
-    }, [dispatch, currentServer.id]);
+    }, [dispatch, currentServer.id, currentUser.id]);
 
     return(
         <Wrapper>

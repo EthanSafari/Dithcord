@@ -11,7 +11,7 @@ const AddChannelForm = ( ) => {
 
     const currentServerObj = useSelector(state => state.servers.oneServer)
     const currentServer = Object.values(currentServerObj)
-    const currentChannelObj = useSelector(state => state.channels.oneChannel)
+    // const currentChannelObj = useSelector(state => state.channels.oneChannel)
 
     // console.log('-----INSIDE OF ADD CHANNEL-------', currentServer[0])
 
@@ -24,7 +24,6 @@ const AddChannelForm = ( ) => {
         server_id: currentServer[0].id,
     });
 
-    console.log('EDIT SERVER FORM: ', addedChannelData)
 
     const serverInputs = [
         {
@@ -33,9 +32,9 @@ const AddChannelForm = ( ) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            // errorMessage: "Name must be at least 1 character",
+            errorMessage: "Name must be 3-12 characters",
             required: true,
-            // pattern: "",
+            pattern: "^[a-zA-Z ]{2,12}$",
         },
     ];
 
@@ -50,7 +49,7 @@ const AddChannelForm = ( ) => {
     }
 
     return (
-        <>
+        <div className='edit'>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
                     <ChannelFormIput className={input.name} key={input.id} {...input} value={addedChannelData[input.name]} onChange={onChange} />
@@ -58,7 +57,7 @@ const AddChannelForm = ( ) => {
                 <span id='api-error'></span>
                 <button className='editServerButton'>Add Channel</button>
             </form>
-        </>
+        </div>
     )
 
 }

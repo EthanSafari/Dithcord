@@ -5,7 +5,7 @@ import { deleteMessage } from "../../../store/message";
 const DeleteMessageButton = ({ message }) => {
     const dispatch = useDispatch();
     const currentUser = useSelector(state => state.session.user);
-    const currentMessage = useSelector(state => state.messages.oneMessage);
+    // const currentMessage = useSelector(state => state.messages.oneMessage);
 
     const deleteMessageButton = async (e) => {
         e.preventDefault();

@@ -1,0 +1,249 @@
+#api-error {
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 3px;
+    text-align: center;
+    font-size: 14px;
+}
+
+input {
+    display: flex;
+    padding: 8px;
+    margin-top: 8px;
+    border-radius: 3px;
+    border: 1px solid gray;
+}
+
+input:invalid[focused="true"] {
+    border-radius: 3px;
+    border: solid 1px rgb(255, 79, 138);
+    background-color: rgba(255, 225, 225, 0.329) !important;
+}
+
+input:invalid[focused="true"]:focus {
+    outline: 1px solid rgb(227, 28, 95);
+}
+
+input:invalid[focused="true"] ~ span {
+    display: block;
+}
+
+
+#modal {
+    font-family: 'Manrope', sans-serif; 
+    z-index: 3000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+    
+  #modal-background {
+    /* border: solid red 2px; */
+    animation: fadeIn 0.2s;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), 5%, rgba(0, 0, 0, 0.85), 95%, rgb(0, 0, 0, 0.92));
+    backdrop-filter: blur(10px);
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  #modal-content {
+    /* border: red solid 2px; */
+    animation: fadeIn 0.5s !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    max-width: 600px;
+    height: 35vh;
+    position: absolute;
+    background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(243, 243, 243));
+    border-radius: 15px;
+    overflow: auto;
+    scrollbar-gutter: stable both-edges;
+  }
+  
+  #modal-content::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #afafafab;
+    border-radius: 9px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #868686;
+  }
+  
+
+
+
+
+
+
+
+  #modal {
+    font-family: 'Manrope', sans-serif; 
+    z-index: 3000;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+  }
+    
+  #modal-background {
+    /* border: solid red 2px; */
+    animation: fadeIn 0.2s;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.92), 5%, rgba(0, 0, 0, 0.85), 95%, rgb(0, 0, 0, 0.92));
+    backdrop-filter: blur(10px);
+  }
+  
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  
+  #modal-content {
+    /* border: red solid 2px; */
+    animation: fadeIn 0.5s !important;
+    display: flex;
+    justify-content: center;
+    width: 48%;
+    max-width: 600px;
+    height: 35vh;
+    position: absolute;
+    background-image: linear-gradient(to bottom right, rgb(255, 255, 255), rgb(243, 243, 243));
+    border-radius: 15px;
+    overflow: auto;
+    scrollbar-gutter: stable both-edges;
+  }
+  
+  #modal-content::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #afafafab;
+    border-radius: 9px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #868686;
+  }
+  
+
+
+
+
+
+  .edit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75%;
+    margin: auto;
+}
+
+.formInput {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px;
+    font-size: 12px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 0px;
+    max-width: 400px;
+}
+
+.btn {
+    /* margin-top: 5px; */
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    font-size: 13pt;
+    position: relative;
+    overflow: hidden;
+    /* cursor: pointer; */
+
+    --background-color: rgb(227, 28, 95);
+    --border-size: 2px;
+    --accent-color: rgb(94, 94, 94);
+}
+
+.btn.btn-edit {
+    z-index: 1;
+}
+
+.btn.btn-edit::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--background-color);
+    z-index: -1;
+    border: var(--border-size) solid var(--background-color);
+    transition: transform 150ms ease-in-out;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.btn.btn-edit:hover::before {
+    transform: scaleX(.08);
+}
+
+form > h1 {
+    text-align: center;
+    color: rgb(227, 28, 95);
+}
+
+.edit span {
+    color: rgb(227, 28, 95);
+    font-size: 10pt;
+    display: none;
+    margin-top: 0px;
+}

@@ -78,7 +78,7 @@ export const getChannelMessages = (channelId) => async (dispatch) => {
 }
 
 export const createMessage = (message) => async (dispatch) => {
-    const { body, channelId, authorId } = message;
+    const { channelId } = message;
     console.log('INSIDE OF THUNK', message)
     const res = await fetch('/api/messages/new', {
         method: 'POST',

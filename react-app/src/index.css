@@ -22,32 +22,46 @@ button {
 }
 
 .private-message-heading {
-    font-family: 'Kanit', sans-serif;
     font-size: 25px;
+    font-weight: bold;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: center;
     padding: .5rem 0;
+    background-color: rgb(59,59,59);
+    color: white;
 }
+
 
 .private-messaging {
     display: flex;
     flex-direction: column;
     width: 20rem;
     border: 1px solid black;
+    background-color: rgb(90,90,90);
 }
 
 .private-message-name {
     display: flex;
     justify-content: flex-start;
-    width: 93%;
-    margin: 10px 0 10px 10px;
+    width: 100%;
+    cursor: pointer;
+    color: white;
+}
+.private-message-options {
+    margin: 10px;
+}
+
+.private-message-options:hover {
+    background-color: grey;
+    border-radius: 50px 0 0 50px;
 }
 
 .user-image {
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    object-fit: cover;
 }
 
 .user-image-and-name-container {
@@ -58,6 +72,9 @@ button {
 
 .user-name {
     margin-left: .6rem;
+    width: max-content;
+    font-size: 17px;
+    white-space: nowrap;
 }
 
 .private-server-imagename {
@@ -72,48 +89,14 @@ button {
     border-radius: 50px;
 }
 
+.private-server-imagename:hover {
+    border-radius: 30%;
+}
+
 .channels-container {
     width: 13rem;
     border-top: 1px solid black;
     height: 80%;
-}
-
-.channel-and-channel-options {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-}
-
-.message-body {
-    padding: 1% 1%;
-    word-wrap: normal
-}
-
-.channel-messages-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    border-left: 1px solid black;
-}
-
-.message-bar-submit {
-    width: 98%;
-    display: flex;
-    padding: 2% 1%;
-}
-
-.message-input {
-    width: 90%;
-
-}
-
-.message-form-submit-and-input {
-    width: 100%;
-}
-
-.message-form-button {
-    width: 9%;
 }
 
 .user-info {
@@ -124,14 +107,72 @@ button {
     flex-direction: column;
 }
 
-.channel-box {
-    display: flex;
-    flex-direction: column;
-}
-
 .server-name {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: bold;
+    color: rgb(241, 241, 241);
     margin: 10px;
+}
+
+.logout-div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-around;
+}
+
+.currentuser-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-bottom: 3px;
+}
+
+.logout-username {
+    margin: 9px;
+    color: white;
+    font-family: sans-serif;
+}
+
+.logout-button {
+    width: 100%;
+    display: flex;
+    bottom: 0;
+    align-self: center;
+    background-color: transparent;
+    border-radius: 25px;
+    border: none;
+    font-family: sans-serif;
+    width: inherit;
+    color: white;
+}
+
+.logout-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-button-container:hover {
+    background-color: grey;
+}
+
+.current-user-image {
+    height: 35px;
+    width: 35px;
+    border-radius: 50%;
+    margin: 7px;
+}
+
+
+
+.server-option-button {
+    border: none;
+    background-color: transparent;
+    color: white;
+
 }

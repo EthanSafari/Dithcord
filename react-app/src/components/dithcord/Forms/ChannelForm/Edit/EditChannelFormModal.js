@@ -1,11 +1,12 @@
 import OpenModalButton from "../../../../OpenModalButton";
 import EditChannelForm from "./EditChannelForm";
+import ChannelsModalButton from "../../../../OpenModalButton/ChannelsModalButton";
 
 const EditChannelFormModal = ({ server }) => {
     // console.log('EDIT SERVER FORM MODAL:  ', server)
     return (
-        <OpenModalButton
-            buttonText="Edit Channel"
+        <ChannelsModalButton
+            buttonText="Edit"
             modalComponent={<EditChannelForm server={ server } />}
         />
     );

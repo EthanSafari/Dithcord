@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createServer } from '../../../../../store/server'
 import { useModal } from '../../../../../context/Modal';
 import ServerFormInput from '../ServerFormInput';
-import { getAllServersByUserId } from '../../../../../store/server';
+
 
 
 const NewServerForm = ( ) => {
@@ -29,9 +29,9 @@ const NewServerForm = ( ) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            // errorMessage: "Name must be at least 1 character",
+            errorMessage: "Name must be 3-20 characters",
             required: true,
-            // pattern: "",
+            pattern: "^[a-zA-Z ]{2,20}$",
         },
         {
             id: 2,
@@ -39,9 +39,9 @@ const NewServerForm = ( ) => {
             type: "server_image",
             placeholder: "server_image",
             label: "server_image",
-            // errorMessage: "Must be valid URL",
+            errorMessage: "Must be valid URL containing https",
             required: true,
-            // pattern: "",
+            pattern: "^https?://.*"
         }
     ];
 
@@ -56,15 +56,15 @@ const NewServerForm = ( ) => {
     }
 
     return (
-        <>
+        <div className='edit'>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
                     <ServerFormInput className={input.name} key={input.id} {...input} value={editedServerData[input.name]} onChange={onChange} />
                 ))}
                 <span id='api-error'></span>
-                <button className='editServerButton'>Submit Changes</button>
+                <button className="btn btn-edit">Create Server</button>
             </form>
-        </>
+        </div>
     )
 
 }

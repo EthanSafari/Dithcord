@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { createServer, editServerById } from '../../../../../store/server'
+import { editServerById } from '../../../../../store/server'
 import FormInput from '../ServerFormInput';
 import { useModal } from '../../../../../context/Modal';
 
@@ -19,7 +19,7 @@ const EditServerForm = ({ server }) => {
         server_image: thisServer[0]?.server_image,
     });
 
-    console.log('===============EDIT SERVER FORM===================', thisServer[0])
+    // console.log('===============EDIT SERVER FORM===================', thisServer[0])
 
     const serverInputs = [
         {
@@ -28,9 +28,9 @@ const EditServerForm = ({ server }) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            // errorMessage: "Name must be at least 1 character",
+            errorMessage: "Name must be 3-20 characters",
             required: true,
-            // pattern: "",
+            pattern: "^[a-zA-Z ]{2,20}$",
         },
         {
             id: 2,
@@ -38,9 +38,9 @@ const EditServerForm = ({ server }) => {
             type: "server_image",
             placeholder: "server_image",
             label: "server_image",
-            // errorMessage: "Must be valid URL",
+            errorMessage: "Must be valid URL containing https",
             required: true,
-            // pattern: "",
+            pattern: "^https?://.*"
         }
     ];
 
@@ -55,7 +55,7 @@ const EditServerForm = ({ server }) => {
     }
 
     return (
-        <>
+        <div className='edit'>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
                     <FormInput className={input.name} key={input.id} {...input} value={editedServerData[input.name]} onChange={onChange} />
@@ -63,7 +63,7 @@ const EditServerForm = ({ server }) => {
                 <span id='api-error'></span>
                 <button className='editServerButton'>Submit Changes</button>
             </form>
-        </>
+        </div>
     )
 
 }

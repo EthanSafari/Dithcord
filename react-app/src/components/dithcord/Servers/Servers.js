@@ -5,6 +5,7 @@ import { getOneServer } from '../../../store/server';
 import { getAllChannelsByServerId, getChannel, loadChannel } from '../../../store/channel';
 import { clearMessages, getChannelMessages } from '../../../store/message';
 import NewServerFormModal from '../Forms/ServerForm/Add/NewServerFormModal'
+import AllServersModal from './AllServersList';
 
 function Servers({ user, servers }) {
     const dispatch = useDispatch()
@@ -25,13 +26,15 @@ function Servers({ user, servers }) {
         return
     }
 
+    
+
     return (
         <ServerWrapper>
+            <AllServersModal />
             <NewServerFormModal />
             {servers && servers?.map((server) => (
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>
                     {/* <h2>{server.name}</h2> */}
-                    <ServerImageWrapper>
                         {server.serverImage.length === 3 ? (
                             <ImageWrapper>
                                 <div className='private-server-imagename'>
@@ -41,7 +44,6 @@ function Servers({ user, servers }) {
                         ) : (
                     <ImageWrapper as="img" src={server.serverImage} />
                         )}
-                    </ServerImageWrapper>
                 </div>
             ))}
         </ServerWrapper>

@@ -30,9 +30,9 @@ const EditChannelForm = ({ server }) => {
             type: "name",
             placeholder: "Name",
             label: "Name",
-            // errorMessage: "Name must be at least 1 character",
+            errorMessage: "Name must be 3-12 characters",
             required: true,
-            // pattern: "",
+            pattern: "^[a-zA-Z ]{2,12}$",
         },
     ];
 
@@ -47,7 +47,7 @@ const EditChannelForm = ({ server }) => {
     }
 
     return (
-        <>
+        <div className='edit'>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
                     <FormInput className={input.name} key={input.id} {...input} value={editedChannelData[input.name]} onChange={onChange} />
@@ -55,7 +55,7 @@ const EditChannelForm = ({ server }) => {
                 <span id='api-error'></span>
                 <button className='editChannelButton'>Submit Changes</button>
             </form>
-        </>
+        </div>
     )
 
 }

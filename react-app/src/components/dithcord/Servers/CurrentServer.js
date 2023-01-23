@@ -1,14 +1,17 @@
 import React, { useEffect } from 'react';
-import { Wrapper } from '../DithcordStyles';
-
+import styled from 'styled-components';
 import Channels from '../Channels/Channels'
 import CurrentChannel from '../Channels/CurrentChannel'
 import ServerUsers from './ServerUsers';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllChannelsByServerId } from '../../../store/channel';
 import { getOneServer } from '../../../store/server';
 
 
+const ChannelsWrapper = styled.div`
+display: flex;
+flex-direction: column;
+width: 25%;
+`
 
 function CurrentServer({ server }) {
     const dispatch = useDispatch();
@@ -16,7 +19,7 @@ function CurrentServer({ server }) {
     const currentChannel = useSelector((state) => state.channels.oneChannel)
     const currentServer = useSelector((state) => state.servers.oneServer)
 
-    console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', currentServer, '\n', '')
+    // console.log('', '\n', '--------------CURRENT SERVERS COMPONENT DATA--------------', '\n', currentServer, '\n', '')
 
     useEffect(() => {
         if(server.id) {
@@ -25,11 +28,13 @@ function CurrentServer({ server }) {
     },[dispatch, server])
 
     return (
-        <Wrapper>
+        <>
+        <ChannelsWrapper>
             <Channels channels={serverChannels} server={currentServer}/>
-            <CurrentChannel channel={currentChannel}/>
-            <ServerUsers />
-        </Wrapper>
+        </ChannelsWrapper>
+        <CurrentChannel channel={currentChannel}/>
+        <ServerUsers />
+        </>
     )
 }
 
