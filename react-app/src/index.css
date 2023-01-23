@@ -141,15 +141,18 @@ button {
 .logout-username {
     margin: 9px;
     color: beige;
+    font-family: sans-serif;
 }
 .logout-button {
     position: absolute;
     bottom: 0;
     align-self: center;
     background-color: azure;
-    border-radius: 20%;
+    border-radius: 25px;
     border: grey;
     margin-bottom: 4px;
+    font-family: sans-serif;
+    width: 80px;
 }
 .current-user-image {
     height: 30px;
