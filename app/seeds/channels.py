@@ -29,12 +29,12 @@ def seed_channels():
 
     channel5 = Channel(
         private=True,
-        name='Champions',
+        name='Championth',
         server_id=3
     )
     channel6 = Channel(
         private=False,
-        name='Cool Guys',
+        name='Cool Guyth',
         server_id=3
     )
 

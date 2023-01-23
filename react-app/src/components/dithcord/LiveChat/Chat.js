@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client'
 import { createMessage } from '../../../store/message';
 import styled from 'styled-components'
+import tysonify from '../../../tysonify-text';
 
 let socket;
 
@@ -23,7 +24,7 @@ const Chat = ({ props }) => {
         socket = io();
         socket.emit("join", { user: currentUser.username, roomId: currentChannel.id })
         socket.on("chat", (chat) => {
-            console.log("=====ON CHAT====", chat)
+            // console.log("=====ON CHAT====", chat)
             setMessages(messages => [...messages, chat])
         })
 
@@ -41,12 +42,12 @@ const Chat = ({ props }) => {
     const sendChat = (e) => {
         e.preventDefault()
         postedMessage = {
-            "body": chatInput,
+            "body": tysonify(chatInput),
             "channel_id": currentChannel.id,
             "author_id": currentUser.id
         }
         //emitting message
-        socket.emit("chat", { roomId: currentChannel.id, user: `${currentUser.username}`, msg: `${chatInput}` });
+        socket.emit("chat", { roomId: currentChannel.id, user: `${currentUser.username}`, msg: tysonify(chatInput) });
         //clear input field
         dispatch(createMessage(postedMessage))
         setChatInput("")
@@ -126,14 +127,14 @@ const MessageFormWrapper = styled.div`
     background-color: rgba(69, 69, 69, 1);
     width: 100%; /* Need a specific value to work */
     .message-input {
-        height: 50%;
-        margin-top: auto;
+        height: 30%;
+        margin-top: 10%;
         margin-bottom: auto;
+        background-color: rgba(200, 200, 200, 1);
     }
     .message-button {
        visibility: hidden;
     }
-}
 `
 
 

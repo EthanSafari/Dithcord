@@ -33,11 +33,16 @@ const DeleteServerButton = () => {
 const DropDownButton = styled.button`
     box-sizing: border-box;
     display: flex;
+    background-color: transparent;
     justify-content: center;
     align-items: center;
+    color: white;
     width: 100%;
     height: 20px;
-    border: 1px solid black;
+    border: none;
+    &:hover{
+        background-color: grey;
+    }
 `
 
 export default DeleteServerButton;

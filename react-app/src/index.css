@@ -24,11 +24,10 @@ button {
 .private-message-heading {
     font-size: 25px;
     font-weight: bold;
-    border-bottom: 1px solid black;
     display: flex;
     justify-content: center;
     padding: .5rem 0;
-    background-color: rgb(59,59,59);
+    background-color: #454545;
     color: white;
 }
 
@@ -129,7 +128,7 @@ button {
     justify-content: center;
     align-items: center;
     border-bottom: 1px solid black;
-    margin-bottom: 3px;
+    margin: 10px 0px;
 }
 
 .logout-username {
@@ -175,4 +174,13 @@ button {
     background-color: transparent;
     color: white;
 
+}
+
+.error-messages {
+    max-width: 19rem;
+    color: white;
+}
+
+.sign-up-label {
+    min-width: 20rem;
 }

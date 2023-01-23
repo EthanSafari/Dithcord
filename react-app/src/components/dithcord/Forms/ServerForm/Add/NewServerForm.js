@@ -31,7 +31,7 @@ const NewServerForm = ( ) => {
             label: "Name",
             errorMessage: "Name must be 3-20 characters",
             required: true,
-            pattern: "^[a-zA-Z ]{2,20}$",
+            pattern: "^[a-zA-Z0-9 ]{3,20}$",
         },
         {
             id: 2,

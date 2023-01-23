@@ -34,7 +34,7 @@ const AddChannelForm = ( ) => {
             label: "Name",
             errorMessage: "Name must be 3-12 characters",
             required: true,
-            pattern: "^[a-zA-Z ]{2,12}$",
+            pattern: "^[a-zA-Z0-9 ]{3,12}$",
         },
     ];
 
@@ -55,7 +55,7 @@ const AddChannelForm = ( ) => {
                     <ChannelFormIput className={input.name} key={input.id} {...input} value={addedChannelData[input.name]} onChange={onChange} />
                 ))}
                 <span id='api-error'></span>
-                <button className='editServerButton'>Add Channel</button>
+                <button className='btn btn-edit'>Add Channel</button>
             </form>
         </div>
     )

@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { useState } from 'react';
 import AddChannelFormModal from '../Forms/ChannelForm/Add/AddChannelFormModal';
 import { ServerOptions } from '../DithcordStyles';
+import styled from 'styled-components';
 
 
 const ServerDropDownMenu = () => {
@@ -25,20 +26,24 @@ const ServerDropDownMenu = () => {
                     setShowMenu(!showMenu)}}
                     className='server-option-button'>Server Options</button>
                         </ServerOptions>
-                {showMenu && (
-<div>
-
-
-
-                        <EditServerFormModal server={server} />
-                        <DeleteServerButton server={server} />
-                        <AddChannelFormModal />
-
-</div>
-                )}
+        {showMenu && (
+            <DropDownWrapper>
+                <EditServerFormModal server={server} />
+                <DeleteServerButton server={server} />
+                <AddChannelFormModal />
+            </DropDownWrapper>
+        )}
         </div>
     )
 }
+
+const DropDownWrapper = styled.div`
+    margin-top: 10px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`
 
 
 export default ServerDropDownMenu
