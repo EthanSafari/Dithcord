@@ -64,57 +64,88 @@ const Chat = ({ props }) => {
                     {messages.map((message, ind) => (
                         <div key={ind}>{`${message.user}: ${message.msg}`}</div>
                     ))}
-                </NewMessage>    
+                </NewMessage>
+
                 <Message>
                     {currentChannel && channelMessages && channelMessages.map(message => (
                         <div key={message.id}>{`${message.author.username}: ${message.body}`}</div>
-                    ))}
+                        ))}
                 </Message>
             </MessageContainer>
         
-            <MessagesForm>
-                <form onSubmit={sendChat}>
-                    <input className="message-input" value={chatInput} onChange={updateChatInput} />
-                    <MessageButton as="button" type='submit'>Send</MessageButton>
+            {currentChannel.id && <MessageFormWrapper>
+                <form className='message-form' onSubmit={sendChat}>
+
+                    <input className='message-input' value={chatInput} onChange={updateChatInput} />
+
+                    <button className='message-button' type='submit'>Send</button>
+
                 </form>
-            </MessagesForm>
+           </MessageFormWrapper>}
         </>
     )
 }
 
+export default Chat
+
+
 const MessageContainer = styled.div`
-    margin: 4%;
-    overflow: auto;
+    box-sizing: border-box;
+    padding: 4%;
+    overflow-y: auto;
     display: flex;
     flex-direction: column-reverse;
+    background-color: rgba(107, 107, 107, 1);
+    width: 100%;
+    height: 85%;
 `
 
 const Message = styled.address`
     display: flex;
     flex-direction: column;
     gap: 10px;
+    color: rgba(184, 184, 184, 1);
+    width: 100%;
 `
 const NewMessage = styled.address`
     margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    color: rgba(184, 184, 184, 1);
+    width: 100%;
 `
 
-const MessageButton = styled.button`
-    width: 100px;
-    height: 28.8px;
-    float: left;
-    position: relative;
-    background-color: white;
-    border: 0;
-`
-
-const MessagesForm = styled.div`
+const MessageFormWrapper = styled.div`
     display: flex;
-    margin-top: auto;
-    padding: 20px;
-    background-color: rgb(143, 176, 165);
+    flex-direction: row;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 15%;
+    background-color: rgba(69, 69, 69, 1);
+    width: 100%; /* Need a specific value to work */
+    .message-input {
+        height: 50%;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .message-button {
+       visibility: hidden;
+    }
+}
 `
 
-export default Chat
+
+const MessageInput = styled.input`
+    width: 90%;
+    height: 10%;
+`
+const MessageForm = styled.form`
+    display: flex;
+    width: 100%;
+    background-color: red;
+    justify-content: center;
+    flex-direction: row;
+    height: 15%;
+`

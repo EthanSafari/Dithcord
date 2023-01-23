@@ -22,8 +22,8 @@ button {
 }
 
 .private-message-heading {
-    font-family: 'Kanit', sans-serif;
     font-size: 25px;
+    font-weight: bold;
     border-bottom: 1px solid black;
     display: flex;
     justify-content: center;
@@ -80,44 +80,6 @@ button {
     height: 80%;
 }
 
-.channel-and-channel-options {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px;
-}
-
-.message-body {
-    padding: 1% 1%;
-    word-wrap: normal
-}
-
-.channel-messages-container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100vh;
-    border-left: 1px solid black;
-}
-
-.message-bar-submit {
-    width: 98%;
-    display: flex;
-    padding: 2% 1%;
-}
-
-.message-input {
-    width: 90%;
-
-}
-
-.message-form-submit-and-input {
-    width: 100%;
-}
-
-.message-form-button {
-    width: 9%;
-}
-
 .user-info {
     height: 10%;
     width: 100%;
@@ -166,14 +128,6 @@ button {
     margin: 7px;
 }
 
-.message-input {
-    /* margin-top: 2px; */
-    float: left;
-    margin-left: 22px;
-    background-color: azure;
-    border: 0;
-    height: 28.8px;
-}
 
 
 .server-option-button {

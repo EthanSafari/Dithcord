@@ -4,7 +4,8 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: row;
     width: 100%;
-    max-height: 100vh;
+    height: 100vh;
+    /* background-color: rgba(107, 107, 107); */
 `;
 
 export const ServerWrapper = styled.div`
@@ -34,7 +35,7 @@ export const MessageContainerWrapper = styled.div`
     flex-direction: column;
     width: 100%;
     height: 100vh;
-    border-left: 1px solid black;
+    background-color: rgba(44, 44, 44, 1)
 `;
 
 
