@@ -127,8 +127,8 @@ const MessageFormWrapper = styled.div`
     background-color: rgba(69, 69, 69, 1);
     width: 100%; /* Need a specific value to work */
     .message-input {
-        height: 50%;
-        margin-top: auto;
+        height: 30%;
+        margin-top: 10%;
         margin-bottom: auto;
         background-color: rgba(200, 200, 200, 1);
     }
