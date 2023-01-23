@@ -5,13 +5,13 @@ const DropDownMenuFrontPage = () => {
     return (
         <div className="bottom-portion-middle">
             {dropDownMenus.map(menu => (
-                <div>
-                    <div>{menu.heading}</div>
+                <div className='social-container'>
+                    <div style={{borderBottom: '1px solid white'}}>{menu.heading}</div>
                     <ul>
                         {menu.options.map(option => (
-                            <li>
-                                <a href={option.link}>
-                                    <div>{option.optionHeading}</div>
+                            <li style={{ listStyle: 'none' }}>
+                                <a style={{  textDecoration:'none', color: 'white'}} href={option.link}>
+                                    <div> * {option.optionHeading}</div>
                                 </a>
                             </li>
                         ))}

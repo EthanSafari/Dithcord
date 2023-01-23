@@ -19,7 +19,7 @@ const NotLogInLanding = () => {
                     <div>
                         <div>
                             <NavLink to='/login'>
-                                <button>Login</button>
+                                <button className='top-portion-button submit-button login-link-button'>Login</button>
                             </NavLink>
                         </div>
                     </div>
@@ -48,19 +48,19 @@ const NotLogInLanding = () => {
                 <div className='actual-bottom-part'>
 
                     <div className='bottom-portion'>
-                        <div className='bottom-portion-top'>
+                        {/* <div className='bottom-portion-top'>
                             <div>IMAGINE A PLACE</div>
                             <div>Englith, USA</div>
                             <div>Thocial Media</div>
-                        </div>
+                        </div> */}
                         <DropDownMenuFrontPage />
                     </div>
-                    <div className='bottom-portion-bottom'>
+                    {/* <div className='bottom-portion-bottom'>
                         <div>Dithcord</div>
                         <NavLink to='/sign-up'>
                             <button>Thign Up</button>
                         </NavLink>
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>

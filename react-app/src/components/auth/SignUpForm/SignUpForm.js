@@ -117,7 +117,7 @@ const SignUpForm = () => {
               className='label sign-up-label'
             ></input>
           </div>
-          <button type='submit' className='submit-button' >Thign Up</button>
+          <button type='submit' className='submit-button'>Thign Up</button>
         </form>
         <NavLink to={'/login'}>
           <div className='have-an-account'>Already have an account?</div>
