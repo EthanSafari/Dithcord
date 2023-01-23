@@ -101,6 +101,7 @@ const ChannelOptions = styled.div`
 const ChannelOptionButtons = styled.div`
     display: flex;
     flex-direction: row;
+    gap: 5px;
 `
 
 
