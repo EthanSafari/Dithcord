@@ -40,10 +40,9 @@ export const MessageContainerWrapper = styled.div`
     background-color: rgba(44, 44, 44, 1)
 `;
 
+/* export const ServerImageWrapper = styled.div`
 
-export const ServerImageWrapper = styled.div`
-
-`
+`; */
 
 export const TopPartMessage = styled.div`
     display: flex;
@@ -51,7 +50,7 @@ export const TopPartMessage = styled.div`
     justify-content: space-between;
     padding: 1% 1%;
     border-top: 1px solid black;
-`
+`;
 
 export const ServerOptions = styled.div`
     display: flex;
@@ -63,14 +62,12 @@ export const ServerOptions = styled.div`
     &:hover {
         background-color: grey;
     }
-    `
-
+`;
 
 export const ServerOptionsButtons = styled.button`
     border: none;
     background-color: transparent;
-`
-
+`;
 
 export const ChannelButtons = styled.button`
     display: flex;
@@ -80,8 +77,24 @@ export const ChannelButtons = styled.button`
     &:hover {
         background-color: rgba(89, 89, 89, 1);
     }
-`
+`;
+
 export const ServerDropDownMenu = styled.div`
     position: absolute;
     z-index: 1;
-`
+`;
+
+export const DropDownButton = styled.button`
+    box-sizing: border-box;
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 100%;
+    height: 20px;
+    border: none;
+    &:hover{
+        background-color: grey;
+    }
+`;
