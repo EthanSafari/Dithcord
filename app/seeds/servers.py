@@ -5,28 +5,28 @@ def seed_servers():
 
     server1 = Server(
         name = 'Mike Tyson Mysteries',
-        server_image = 'http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcSFe9ShSurjuKqi5axvhoY3162zMSRNn6yy66o3vKH9V-GkmocA8DjSJSYDnddMvjrYlGKwoLccdB7yk2c',
+        server_image = 'https://m.media-amazon.com/images/M/MV5BODc2MjAzOTY5Nl5BMl5BanBnXkFtZTgwOTcxNDM5MzE@._V1_.jpg',
         owner_id = 1,
         private = False
     )
 
     server2 = Server(
         name = 'Boxing',
-        server_image = 'https://bnz05pap002files.storage.live.com/y4myQ4UU9vEEbGHtAvRpm_GlMwt99tMbDidiSnRw9jp6UgWPohUi8yBQuKOEs1AAaPogd64A4CxPVNStDU0DxAuyN-hnTv_fkein1-QFoSATJGpUmfU4cV1j8gDKy_RbLIOaRAxp2jqh69fKCx9slcH_aDE1sNrQFn_uXm5dpAK12qewJjhvGn8kbcs17-Bi7u4oMtf4ANg6FQK53m3z7wtpt7M9sNsZKWvy5BqS6JPLtk?encodeFailures=1&width=424&height=373',
+        server_image = 'https://www.soniceditions.com/library/tyson-SFLF_o_tn.jpg',
         owner_id = 2,
         private = False
     )
 
     server3 = Server(
         name = 'Tyson\'s Tigers',
-        server_image = 'https://bnz05pap002files.storage.live.com/y4m67g_H2kiKbQyONzpAtEEq-X2rpG49sZjt1cgfMN9xEtQoKKlydz2CP4sDcQhJY10NSKetpOpCGCPMaTvqow0SXXGmRb1N0zDkZ21gYwr6Rs2Br2EtNIbnYH5wS6gbZmPSUpkQ5ygsj6NFb6VK73teh9MFCLDhmgrsdpJIbG5w_JJtbSbAMiKEYNQ6qD9ZZ9jukMsW9Awramlw-1p9GFhV9BKOzKZx450WFU4jOyybeA?encodeFailures=1&width=394&height=306',
+        server_image = 'https://theadultswimsquad.files.wordpress.com/2016/05/the-bards-curse-bisexual-license-plate.png',
         owner_id = 3,
         private = False
     )
 
     server4 = Server(
         name = 'Face Tattoos',
-        server_image = 'https://bnz05pap002files.storage.live.com/y4m_amPq2a19ITgQi52NU0-qigl0cJbt1s7JFP8GUnCSwMV1Nhyizrv1f4ldrnwyP4HMuptn760amu4NH4ax5lFL8xTbYCmcyPPQdfdi5G9XMjzHE2UUx10NI8iI1MR0y73VRUP2ZGrL2bXMMrHVB98u9NFLB2lvhgSalUkvIlFJGXZ_sc0TdQJQRbm_BNc-okKYTHq0RoRbLku9Ph9fm6JaOtdo-ajyFl_VpgtHR4Owm8?encodeFailures=1&width=1566&height=956',
+        server_image = 'https://sportshub.cbsistatic.com/i/2021/09/14/fcca73e3-3537-4b6e-823b-0eabc425a66d/mike-tyson-mysteries-pigeon.jpg',
         owner_id = 4,
         private = False
     )
