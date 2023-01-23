@@ -24,7 +24,7 @@ const Chat = ({ props }) => {
         socket = io();
         socket.emit("join", { user: currentUser.username, roomId: currentChannel.id })
         socket.on("chat", (chat) => {
-            console.log("=====ON CHAT====", chat)
+            // console.log("=====ON CHAT====", chat)
             setMessages(messages => [...messages, chat])
         })
 
@@ -130,6 +130,7 @@ const MessageFormWrapper = styled.div`
         height: 50%;
         margin-top: auto;
         margin-bottom: auto;
+        background-color: rgba(200, 200, 200, 1);
     }
     .message-button {
        visibility: hidden;
