@@ -14,8 +14,6 @@ const ServerDropDownMenu = () => {
 
     // console.log('=========INSIDE OF SERVER DROP DOWN========', currentServer?.ownerId)
 
-    console.log(server)
-
     if (server && (sessionUser.id !== server.ownerId)) return null;
     if (!server) return null;
     return (
@@ -28,11 +26,15 @@ const ServerDropDownMenu = () => {
                     className='server-option-button'>Server Options</button>
                         </ServerOptions>
                 {showMenu && (
-                    <div style={{border:'1px solid red'}}>
+<div>
+
+
+
                         <EditServerFormModal server={server} />
                         <DeleteServerButton server={server} />
                         <AddChannelFormModal />
-                    </div>
+
+</div>
                 )}
         </div>
     )
