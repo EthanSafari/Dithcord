@@ -43,7 +43,9 @@ const NotLogInLanding = () => {
                 <div className='download-container'>
 
                     <div className='ready'>Ready to thart your journey?</div>
-                    <button className='top-portion-button submit-button submit-button no-link'>Download for Windowth</button>
+                    <NavLink to='/sign-up'>
+                    <button className='top-portion-button submit-button submit-button'>Thign Up Today!</button>
+                    </NavLink>
                 </div>
                 <div className='actual-bottom-part'>
 
@@ -57,9 +59,9 @@ const NotLogInLanding = () => {
                     </div>
                     {/* <div className='bottom-portion-bottom'>
                         <div>Dithcord</div>
-                        <NavLink to='/sign-up'>
+
                             <button>Thign Up</button>
-                        </NavLink>
+
                     </div> */}
                 </div>
             </div>
