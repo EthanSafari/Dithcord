@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom';
 import { signUp } from '../../../store/session';
@@ -11,11 +11,14 @@ const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [validationErrors, setValidationErrors] = useState([])
+  const [submit, setSubmit] = useState(false)
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    setSubmit(true)
     if (password === repeatPassword) {
       const data = await dispatch(signUp(username, email, password));
       if (data) {
@@ -23,6 +26,17 @@ const SignUpForm = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const errors = []
+    if (!username) errors.push('Username required')
+    if (username.length < 2 || username.length > 15) errors.push('Uthername length mutht be between 2 and 15 characters')
+    if (!email) errors.push('Email required')
+    if (!password) errors.push('Password required')
+    if (!repeatPassword) errors.push('Please confirm password')
+    if (password !== repeatPassword) errors.push('Passwords do not match')
+    setValidationErrors(errors)
+  }, [email, username, password, repeatPassword])
 
   const updateUsername = (e) => {
     setUsername(e.target.value);
@@ -104,6 +118,13 @@ const SignUpForm = () => {
         By regithering, you agree to Dithcord'th termth of Thervithe and Privathy Polithy
       </div>
       </div>
+      <ul className="sign-up-errors">
+          {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+        </ul>
+        <ul>
+          {submit && validationErrors.length > 0 && validationErrors.map(error => (
+            <li className="error-messages" key={error}>{error}</li>))}
+        </ul>
     </div>
   );
 };
