@@ -1,5 +1,3 @@
-import react from "react";
-import { Link } from "react-router-dom";
 import './DropDownMenu.css'
 import { dropDownMenus } from "../data";
 

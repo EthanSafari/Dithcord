@@ -1,14 +1,16 @@
 import React, { useEffect } from 'react';
-import { Wrapper } from '../DithcordStyles';
-
+import styled from 'styled-components';
 import Channels from '../Channels/Channels'
 import CurrentChannel from '../Channels/CurrentChannel'
 import ServerUsers from './ServerUsers';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllChannelsByServerId } from '../../../store/channel';
 import { getOneServer } from '../../../store/server';
 
 
+const ChannelsWrapper = styled.div`
+display: flex;
+flex-direction: column;
+`
 
 function CurrentServer({ server }) {
     const dispatch = useDispatch();
@@ -25,11 +27,13 @@ function CurrentServer({ server }) {
     },[dispatch, server])
 
     return (
-        <Wrapper>
+        <>
+        <ChannelsWrapper>
             <Channels channels={serverChannels} server={currentServer}/>
-            <CurrentChannel channel={currentChannel}/>
-            <ServerUsers />
-        </Wrapper>
+        </ChannelsWrapper>
+        <CurrentChannel channel={currentChannel}/>
+        <ServerUsers />
+        </>
     )
 }
 

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { createServer } from '../../../../../store/server'
 import { useModal } from '../../../../../context/Modal';
 import ServerFormInput from '../ServerFormInput';
-import { getAllServersByUserId } from '../../../../../store/server';
+
 
 
 const NewServerForm = ( ) => {

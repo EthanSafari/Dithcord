@@ -1,14 +1,11 @@
 import React from 'react';
 import './Landing.css';
 import logo from '../images/dithcord_logo.png'
-
 import NotLoggedInParts from '../MiddleParts';
 import DropDownMenuFrontPage from '../DropDownMenu';
 import { partsArray } from '../data';
-import LoginForm from '../../auth/LoginFormModal/LoginForm';
-import { NavLink, Route, Switch } from 'react-router-dom';
-import LoginModal from '../../auth/LoginFormModal';
-import LoginSignUpPage from '../LoginSignUpPage';
+import { NavLink } from 'react-router-dom';
+
 
 const NotLogInLanding = () => {
     return (
