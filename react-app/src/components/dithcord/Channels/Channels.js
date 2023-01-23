@@ -39,10 +39,10 @@ function Channels({ channels }) {
             <ChannelsContainer>
                 {currentChannels && currentChannels.map((channel) => (
                     <ChannelOptions key={channel.id} >
-                        <div onClick={() => getOneChannel(channel.id)} key={channel.id}>
+                        <Channel onClick={() => getOneChannel(channel.id)} key={channel.id}>
                             {/* {console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', channel, '\n', '')} */}
                             <h2 key={channel.id}>{channel.name}</h2>
-                        </div>
+                        </Channel>
                         <ChannelOptionButtons>
                             <EditChannelFormModal />
                             <DeleteChannelButton key={channel.id} channelId={channel.id} />
@@ -73,7 +73,12 @@ const ChannelsContainer = styled.div`
     justify-content: flex-start;
     gap: 3vh;
     box-sizing: border-box;
-    padding: 50px 10px;
+`
+
+const Channel = styled.div`
+    box-sizing: border-box;
+    color: rgba(178, 178, 178, 1);
+    margin: 10px 20px;
 `
 
 const DropDown = styled.div`
@@ -93,15 +98,22 @@ const UserInfo = styled.div`
 const ChannelOptions = styled.div`
     box-sizing: border-box;
     display: flex;
+    width: 100%;
     padding-top: 20px;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     padding: 0px;
+    &:hover{
+        background-color: rgba(111, 111, 111, 1);
+        cursor: pointer;
+    }
 `
 const ChannelOptionButtons = styled.div`
     display: flex;
     flex-direction: row;
     gap: 5px;
+    margin: 0px 10px;
 `
 
 

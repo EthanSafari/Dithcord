@@ -70,15 +70,10 @@ export const ServerOptionsButtons = styled.button`
 
 
 export const ChannelButtons = styled.button`
-    box-sizing: border-box;
-    padding: 0px 5px;
+    display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: rgba(45, 45, 45, 1);
-    color: rgba(178, 178, 178, 1);
-    font-weight: bold;
+    height: 25px;
     &:hover {
         background-color: rgba(89, 89, 89, 1);
     }
