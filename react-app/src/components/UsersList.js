@@ -44,7 +44,7 @@ function UsersList() {
 
   const userComponents = users.map((user) => {
     return (
-      <div key={user.id}>
+      <div key={user.id} className='private-message-options'>
         {sessionUser.id !== user.id && (
           <div className='private-message-name'>
             <div onClick={() => startPrivateChat(sessionUser, user)} className='user-image-and-name-container'>

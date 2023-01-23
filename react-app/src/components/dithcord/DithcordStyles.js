@@ -25,9 +25,12 @@ export const ImageWrapper = styled.div`
     object-fit: cover;
     width: 65px;
     height: 65px;
-    border: 2px solid black;
-    border-radius: 50px;
+    border-radius: 50%;
     margin: .3rem 1rem;
+    cursor: pointer;
+    &:hover {
+        border-radius: 30%;
+    }
 `;
 
 export const MessageContainerWrapper = styled.div`
@@ -78,4 +81,8 @@ export const ChannelButtons = styled.button`
     &:hover {
         background-color: rgba(89, 89, 89, 1);
     }
+`
+export const ServerDropDownMenu = styled.div`
+    position: absolute;
+    z-index: 1;
 `

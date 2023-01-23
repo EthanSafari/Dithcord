@@ -41,22 +41,31 @@ function Channels({ channels }) {
                     <ChannelOptions key={channel.id} >
                         <Channel onClick={() => getOneChannel(channel.id)} key={channel.id}>
                             {/* {console.log('', '\n', '--------------CHANNELS COMPONENT DATA--------------', '\n', channel, '\n', '')} */}
-                            <h2 key={channel.id}>{channel.name}</h2>
+                            <h3 key={channel.id}>{channel.name}</h3>
                         </Channel>
-                        <ChannelOptionButtons>
-                            <EditChannelFormModal />
-                            <DeleteChannelButton key={channel.id} channelId={channel.id} />
-                        </ChannelOptionButtons>
+                        {sessionUser
+                            && (currentServer && sessionUser.id === currentServer[0]?.ownerId)
+                            && (
+                                <div>
+                                    <ChannelOptionButtons>
+                                        <EditChannelFormModal />
+                                        <DeleteChannelButton key={channel.id} channelId={channel.id} />
+                                    </ChannelOptionButtons>
+                                </div>
+                            )}
                     </ChannelOptions>
                 ))}
             </ChannelsContainer>
-
             <UserInfo>
                 <div className="logout-div">
+                    <div className='currentuser-info'>
                     <img className="current-user-image" src={sessionUser.profile_img} alt={sessionUser.username} />
                     <p className='logout-username'>{sessionUser.username}</p>
+                    </div>
                 </div>
-                    <LogoutButton />
+                <div className='logout-button-container'>
+                <LogoutButton />
+                </div>
             </UserInfo>
         </>
     )
@@ -71,7 +80,6 @@ const ChannelsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 3vh;
     box-sizing: border-box;
 `
 
@@ -83,16 +91,17 @@ const Channel = styled.div`
 
 const DropDown = styled.div`
     background-color: rgba(10, 10, 10, 0.8);
-    height: 10%;
+    height: fit-content;
 `
 
 const UserInfo = styled.div`
     width: 100%;
-    height: 10%;
+    height: 90px;
     border-top: 1px solid black;
     display: flex;
     flex-direction: column;
     background-color: rgba(10, 10, 10, 0.8);
+    position: static;
 `
 
 const ChannelOptions = styled.div`
