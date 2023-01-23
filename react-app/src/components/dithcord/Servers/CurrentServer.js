@@ -10,6 +10,7 @@ import { getOneServer } from '../../../store/server';
 const ChannelsWrapper = styled.div`
 display: flex;
 flex-direction: column;
+width: 25%;
 `
 
 function CurrentServer({ server }) {

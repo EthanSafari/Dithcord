@@ -67,3 +67,17 @@ export const ServerOptionsButtons = styled.button`
     border: none;
     background-color: transparent;
 `
+
+
+export const ChannelButtons = styled.button`
+    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 40px;
+    height: 20px;
+    border: 1px solid black;
+    border-radius: 30px;
+    &:hover {
+        background-color: rgba(255, 107, 107, 1);
+    }
+`

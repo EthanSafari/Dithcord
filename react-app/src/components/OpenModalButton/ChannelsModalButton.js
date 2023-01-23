@@ -1,6 +1,7 @@
 import React from 'react';
 import { useModal } from '../../context/Modal';
 import styled from 'styled-components';
+import { ChannelButtons } from '../dithcord/DithcordStyles';
 
 function ChannelsModalButton({
   modalComponent, // component to render inside the modal
@@ -17,19 +18,10 @@ function ChannelsModalButton({
   };
 
   return (
-    <ModalButton as="button" onClick={onClick}>{buttonText}</ModalButton>
+    <ChannelButtons as="button" onClick={onClick}>{buttonText}</ChannelButtons>
   );
 }
 
-const ModalButton = styled.button`
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    width: 40px;
-    height: 20px;
-    border: 1px solid black;
-    border-radius: 30px;
-    margin: .3rem 1rem;
-`
+
 
 export default ChannelsModalButton;
