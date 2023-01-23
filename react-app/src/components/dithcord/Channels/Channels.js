@@ -74,7 +74,6 @@ function Channels({ channels }) {
 
 const ChannelsContainer = styled.div`
     width: 100%;
-    border-top: 1px solid black;
     background-color: rgba(49, 49, 49, 0.8);
     height: 90%;
     display: flex;
@@ -90,17 +89,16 @@ const Channel = styled.div`
 `
 
 const DropDown = styled.div`
-    background-color: rgba(10, 10, 10, 0.8);
+    background-color: #454545;
     height: fit-content;
 `
 
 const UserInfo = styled.div`
     width: 100%;
-    height: 90px;
-    border-top: 1px solid black;
+    height: 168px;
     display: flex;
     flex-direction: column;
-    background-color: rgba(10, 10, 10, 0.8);
+    background-color: #454545;
     position: static;
 `
 

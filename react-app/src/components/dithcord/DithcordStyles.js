@@ -13,7 +13,6 @@ export const ServerWrapper = styled.div`
     flex-direction: column;
     width: 5%;
     max-width: 70px;
-    border: 1px solid black;
     align-items: center;
     padding: 1rem;
     background-color: rgba(10, 10, 10, 0.8);
