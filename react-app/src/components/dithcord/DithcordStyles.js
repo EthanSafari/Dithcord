@@ -49,3 +49,21 @@ export const TopPartMessage = styled.div`
     padding: 1% 1%;
     border-top: 1px solid black;
 `
+
+export const ServerOptions = styled.div`
+    display: flex;
+    width: 96%;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid grey;
+    padding: 2%;
+    &:hover {
+        background-color: grey;
+    }
+    `
+
+
+export const ServerOptionsButtons = styled.button`
+    border: none;
+    background-color: transparent;
+`
