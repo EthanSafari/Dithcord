@@ -1,4 +1,4 @@
-const tysonifyText = (string) => {
+const tysonify = (string) => {
     const stringArray = string.split('');
     stringArray.forEach((letter, i) => {
         if (letter === 'c' && stringArray[i + 1] === 'e') stringArray.splice(i, 1, 'th');
@@ -8,6 +8,8 @@ const tysonifyText = (string) => {
     return stringArray.join('');
 };
 
-console.log(tysonifyText('This is a test to see whether this tysonifytext function works'));
-console.log(tysonifyText('Seeing if this works agian'))
-console.log(tysonifyText('Maybe we can check out the words like place, face, race, taste'));;
+export default tysonify
+
+// console.log(tysonifyText('This is a test to see whether this tysonifytext function works'));
+// console.log(tysonifyText('Seeing if this works agian'))
+// console.log(tysonifyText('Maybe we can check out the words like place, face, race, taste'));;
