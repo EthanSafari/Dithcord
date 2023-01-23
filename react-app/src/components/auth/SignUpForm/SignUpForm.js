@@ -36,6 +36,7 @@ const SignUpForm = () => {
     if (!repeatPassword) errors.push('Please confirm password')
     if (password !== repeatPassword) errors.push('Passwords do not match')
     setValidationErrors(errors)
+    setSubmit(false)
   }, [email, username, password, repeatPassword])
 
   const updateUsername = (e) => {
