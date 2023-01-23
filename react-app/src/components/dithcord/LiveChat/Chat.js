@@ -59,43 +59,59 @@ const Chat = ({ props }) => {
 
     return (
         <>
-            <div>
-                {currentChannel && channelMessages && channelMessages.map(message => (
-                    <div key={message.id}>{`${message.author.username}: ${message.body}`}</div>
-                ))}
-            </div>
-            <div>
-                {messages.map((message, ind) => (
-                    <div key={ind}>{`${message.user}: ${message.msg}`}</div>
-                ))}
-            </div>
-
-            {/* <MessagesForm> */}
-                <MessagesForm>
-                    <form onSubmit={sendChat}>
-                        <input className="message-input" value={chatInput} onChange={updateChatInput} />
-                        <MessageButton as="button" type='submit'>Send</MessageButton>
-                    </form>
-                </MessagesForm>
-
-            {/* </MessagesForm> */}
+            <MessageContainer>
+                <NewMessage>
+                    {messages.map((message, ind) => (
+                        <div key={ind}>{`${message.user}: ${message.msg}`}</div>
+                    ))}
+                </NewMessage>    
+                <Message>
+                    {currentChannel && channelMessages && channelMessages.map(message => (
+                        <div key={message.id}>{`${message.author.username}: ${message.body}`}</div>
+                    ))}
+                </Message>
+            </MessageContainer>
+        
+            <MessagesForm>
+                <form onSubmit={sendChat}>
+                    <input className="message-input" value={chatInput} onChange={updateChatInput} />
+                    <MessageButton as="button" type='submit'>Send</MessageButton>
+                </form>
+            </MessagesForm>
         </>
     )
 }
 
+const MessageContainer = styled.div`
+    margin: 4%;
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
+`
+
+const Message = styled.address`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`
+const NewMessage = styled.address`
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+`
 
 const MessageButton = styled.button`
     width: 100px;
     height: 28.8px;
     float: left;
     position: relative;
-    background-color: antiquewhite;
+    background-color: white;
     border: 0;
 `
 
 const MessagesForm = styled.div`
     display: flex;
-    flex-direction: column;
     margin-top: auto;
     padding: 20px;
     background-color: rgb(143, 176, 165);
