@@ -49,7 +49,7 @@ const AddChannelForm = ( ) => {
     }
 
     return (
-        <>
+        <div className='edit'>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
                     <ChannelFormIput className={input.name} key={input.id} {...input} value={addedChannelData[input.name]} onChange={onChange} />
@@ -57,7 +57,7 @@ const AddChannelForm = ( ) => {
                 <span id='api-error'></span>
                 <button className='editServerButton'>Add Channel</button>
             </form>
-        </>
+        </div>
     )
 
 }

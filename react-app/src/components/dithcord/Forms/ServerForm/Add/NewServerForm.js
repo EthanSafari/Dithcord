@@ -56,15 +56,15 @@ const NewServerForm = ( ) => {
     }
 
     return (
-        <>
+        <div className='edit'>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
                     <ServerFormInput className={input.name} key={input.id} {...input} value={editedServerData[input.name]} onChange={onChange} />
                 ))}
                 <span id='api-error'></span>
-                <button className='editServerButton'>Submit Changes</button>
+                <button className="btn btn-edit">Submit Changes</button>
             </form>
-        </>
+        </div>
     )
 
 }

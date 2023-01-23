@@ -1,3 +1,5 @@
+import '../forms.css'
+
 import { useState } from 'react';
 
 const ServerFormInput = (props) => {
@@ -5,7 +7,7 @@ const ServerFormInput = (props) => {
     const { label, errorMessage, onChange, id, ...inputProps } = props;
 
     const showErrorOnLoseFocus = (e) => {
-        if(e.target.value !== "") setFocus(true);
+        if(e.target.value != "") setFocus(true);
     };
 
     return (

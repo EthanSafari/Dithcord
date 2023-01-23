@@ -55,7 +55,7 @@ const EditServerForm = ({ server }) => {
     }
 
     return (
-        <>
+        <div className='edit'>
             <form onSubmit={handleSubmit}>
                 {serverInputs.map((input) => (
                     <FormInput className={input.name} key={input.id} {...input} value={editedServerData[input.name]} onChange={onChange} />
@@ -63,7 +63,7 @@ const EditServerForm = ({ server }) => {
                 <span id='api-error'></span>
                 <button className='editServerButton'>Submit Changes</button>
             </form>
-        </>
+        </div>
     )
 
 }
