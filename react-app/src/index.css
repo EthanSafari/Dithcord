@@ -160,3 +160,33 @@ button {
     border-radius: 50%;
     margin: 7px;
 }
+
+.message-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    padding: 20px;
+    background-color: rgb(143, 176, 165);
+}
+
+.message-input {
+    /* margin-top: 2px; */
+    float: left;
+    margin-left: 22px;
+    background-color: azure;
+    border: 0;
+    height: 28.8px;
+}
+
+
+.message-button {
+    width: 100px;
+    height: 28.8px;
+    float: left;
+    position: relative;
+    background-color: antiquewhite;
+    border: 0;
+}
+
+
+

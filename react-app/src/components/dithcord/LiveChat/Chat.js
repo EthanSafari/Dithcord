@@ -16,28 +16,28 @@ const Chat = ({ props }) => {
     const currentUser = useSelector(state => state.session.user)
     const currentChannel = useSelector(state => state.channels.oneChannel)
     const channelMessages = currentChannel.messages
-    
+
     // console.log('========CHAT========', postedMessage)
-    
+
     useEffect(() => {
         socket = io();
-        socket.emit("join", {user: currentUser.username, roomId: currentChannel.id})
+        socket.emit("join", { user: currentUser.username, roomId: currentChannel.id })
         socket.on("chat", (chat) => {
             console.log("=====ON CHAT====", chat)
             setMessages(messages => [...messages, chat])
         })
-        
-        
-        
+
+
+
         return (() => {
             socket.disconnect()
             setMessages([])
         })
     }, [currentChannel.id, currentUser.username])
-    
-    
-    
-    
+
+
+
+
     const sendChat = (e) => {
         e.preventDefault()
         postedMessage = {
@@ -60,7 +60,7 @@ const Chat = ({ props }) => {
     return (
         <>
             <div>
-                {currentChannel&& channelMessages && channelMessages.map(message => (
+                {currentChannel && channelMessages && channelMessages.map(message => (
                     <div key={message.id}>{`${message.author.username}: ${message.body}`}</div>
                 ))}
             </div>
@@ -70,24 +70,30 @@ const Chat = ({ props }) => {
                 ))}
             </div>
 
-            
-            <form onSubmit={sendChat}>
-                <input value={chatInput} onChange={updateChatInput}/>
-                <MessageButton as="button">Send</MessageButton>
-            </form>     
+            {/* <MessagesForm> */}
+                <div className='message-form'>
+                    <form onSubmit={sendChat}>
+                        <input className="message-input" value={chatInput} onChange={updateChatInput} />
+                        <button className='message-button' type='submit'>Send</button>
+                    </form>
+                </div>
+
+            {/* </MessagesForm> */}
         </>
     )
 }
 
 
-const MessageButton = styled.button`
-display : flex;
+// const MessageButton = styled.button`
+// display : flex;
 
-`
+// `
 
-// const MessageForm = styled.div`
-// display : flex; 
-
+// const MessagesForm = styled.div`
+//     display: flex;
+//     align-items: center;
+//     position: absolute;
+//     bottom: 0;
 // `
 
 export default Chat
