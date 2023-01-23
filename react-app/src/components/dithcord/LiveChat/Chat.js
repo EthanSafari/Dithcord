@@ -133,7 +133,6 @@ const MessageFormWrapper = styled.div`
     .message-button {
        visibility: hidden;
     }
-}
 `
 
 

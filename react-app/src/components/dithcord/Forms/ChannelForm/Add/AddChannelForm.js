@@ -34,7 +34,7 @@ const AddChannelForm = ( ) => {
             label: "Name",
             errorMessage: "Name must be 3-12 characters",
             required: true,
-            pattern: "^[a-zA-Z ]{2,12}$",
+            pattern: "^[a-zA-Z0-9 ]{3,12}$",
         },
     ];
 
