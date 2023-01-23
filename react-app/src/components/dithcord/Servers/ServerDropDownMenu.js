@@ -25,17 +25,13 @@ const ServerDropDownMenu = () => {
                     setShowMenu(!showMenu)}}
                     className='server-option-button'>Server Options</button>
                         </ServerOptions>
-                {showMenu && (
-<div>
-
-
-
-                        <EditServerFormModal server={server} />
-                        <DeleteServerButton server={server} />
-                        <AddChannelFormModal />
-
-</div>
-                )}
+        {showMenu && (
+            <div>
+                <EditServerFormModal server={server} />
+                <DeleteServerButton server={server} />
+                <AddChannelFormModal />
+            </div>
+        )}
         </div>
     )
 }
