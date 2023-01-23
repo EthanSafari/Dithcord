@@ -1,6 +1,7 @@
 import OpenModalButton from "../../../../OpenModalButton";
 import EditServerForm from "./EditServerForm";
 import { useSelector } from "react-redux";
+import DropDownModalButton from "../../../../OpenModalButton/DropDownModalButton";
 
 const EditServerFormModal = ({ server }) => {
     // console.log('EDIT SERVER FORM MODAL:  ', server)
@@ -11,7 +12,7 @@ const EditServerFormModal = ({ server }) => {
     return (
         <>
             {currentUser.id === currentServer[0]?.ownerId && (
-                <OpenModalButton
+                <DropDownModalButton
                     buttonText="Edit Server"
                     modalComponent=<EditServerForm server={ server }/>
                 />

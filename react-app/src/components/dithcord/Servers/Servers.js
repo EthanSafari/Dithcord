@@ -35,7 +35,6 @@ function Servers({ user, servers }) {
             {servers && servers?.map((server) => (
                 <div onClick={() => oneServer(server.id, server.channels[0]?.id)} key={server.id}>
                     {/* <h2>{server.name}</h2> */}
-                    <ServerImageWrapper>
                         {server.serverImage.length === 3 ? (
                             <ImageWrapper>
                                 <div className='private-server-imagename'>
@@ -45,7 +44,6 @@ function Servers({ user, servers }) {
                         ) : (
                     <ImageWrapper as="img" src={server.serverImage} />
                         )}
-                    </ServerImageWrapper>
                 </div>
             ))}
         </ServerWrapper>

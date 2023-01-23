@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { clearAllChannels } from "../../../store/channel";
 import { clearMessages } from "../../../store/message";
 import { deleteServer } from "../../../store/server";
+import styled from "styled-components";
 
 const DeleteServerButton = () => {
     const dispatch = useDispatch();
@@ -21,12 +22,22 @@ const DeleteServerButton = () => {
     return (
         <div>
             {currentUser.id === currentServer[0]?.ownerId && (
-                <button onClick={deleteServerButton}>
+                <DropDownButton as="button" onClick={deleteServerButton}>
                     Delete Server
-                </button>
+                </DropDownButton>
             )}
         </div>
     );
 };
+
+const DropDownButton = styled.button`
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    border: 1px solid black;
+`
 
 export default DeleteServerButton;
