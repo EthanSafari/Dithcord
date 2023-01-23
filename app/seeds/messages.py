@@ -27,13 +27,13 @@ def seed_messages():
         body='Hola', channel_id=3, author_id=5,
     )
     message9 = Message(
-        body='Como esta', channel_id=3, author_id=1,
+        body='What\'s up?', channel_id=3, author_id=1,
     )
     message10 = Message(
-        body='mucho bueno', channel_id=3, author_id=5,
+        body='Nothing much', channel_id=3, author_id=5,
     )
     message11 = Message(
-        body='tu es loco', channel_id=3, author_id=1,
+        body='What', channel_id=3, author_id=1,
     )
     
     db.session.add(message1)
