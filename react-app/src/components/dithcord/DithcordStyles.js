@@ -74,6 +74,10 @@ export const ChannelButtons = styled.button`
     flex-direction: row;
     justify-content: center;
     height: 25px;
+    padding: 0px 10px;
+    border-radius: 10px;
+    background-color: rgba(100, 100, 100, 1);
+    border: none;
     &:hover {
         background-color: rgba(89, 89, 89, 1);
     }
