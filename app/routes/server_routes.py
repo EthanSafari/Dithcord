@@ -8,7 +8,7 @@ server_bp = Blueprint('servers', __name__)
 
 @server_bp.route('')
 def server_home():
-    all_servers = Server.query.all()
+    all_servers = Server.query.filter(Server.private == False).all()
     return {'servers': [server.to_dict() for server in all_servers]}
 
 

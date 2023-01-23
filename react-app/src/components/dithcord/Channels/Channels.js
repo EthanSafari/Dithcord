@@ -75,7 +75,6 @@ function Channels({ channels }) {
                         </div>
                     </div>
                 ))}
-                <AddChannelFormModal />
             </ChannelsContainer>
 
             <UserInfo>

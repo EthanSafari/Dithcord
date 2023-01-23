@@ -49,7 +49,7 @@ function UsersList() {
         {sessionUser.id !== user.id && (
           <div className='private-message-name'>
             <div onClick={() => startPrivateChat(sessionUser, user)} className='user-image-and-name-container'>
-              {console.log(user)}
+              {/* {console.log(user)} */}
               <img className='user-image' src={user.profile_img}></img>
               <div className='user-name'>
                 {user.username}

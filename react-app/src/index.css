@@ -157,3 +157,10 @@ button {
     border-radius: 50%;
     margin: 7px;
 }
+
+.server-option-button {
+    border: none;
+    background-color: transparent;
+    color: white;
+    
+}
