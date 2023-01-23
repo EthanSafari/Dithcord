@@ -9,25 +9,25 @@ def seed_messages():
         body='Hey bud', channel_id=1, author_id=3
     )
     message3 = Message(
-        body='Hows it going', channel_id=1, author_id=2
+        body='Howth it going', channel_id=1, author_id=2
     )
     message4 = Message(
-        body='Not so bad and yourself', channel_id=1, author_id=3
+        body='Not tho bad and yourself?', channel_id=1, author_id=3
     )
     message5 = Message(
         body='Pretty good', channel_id=1, author_id=2,
     )
     message6 = Message(
-        body='Did you see that thing about the thing?', channel_id=2, author_id=4,
+        body='Did you thee that thing about the thing?', channel_id=2, author_id=4,
     )
     message7 = Message(
-        body='Yeah man thats crazy', channel_id=2, author_id=1,
+        body='Yeah man thatth crazy', channel_id=2, author_id=1,
     )
     message8 = Message(
         body='Hola', channel_id=3, author_id=5,
     )
     message9 = Message(
-        body='What\'s up?', channel_id=3, author_id=1,
+        body='What\'th up?', channel_id=3, author_id=1,
     )
     message10 = Message(
         body='Nothing much', channel_id=3, author_id=5,

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { io } from 'socket.io-client'
 import { createMessage } from '../../../store/message';
 import styled from 'styled-components'
+import tysonify from '../../../tysonify-text';
 
 let socket;
 
@@ -41,12 +42,12 @@ const Chat = ({ props }) => {
     const sendChat = (e) => {
         e.preventDefault()
         postedMessage = {
-            "body": chatInput,
+            "body": tysonify(chatInput),
             "channel_id": currentChannel.id,
             "author_id": currentUser.id
         }
         //emitting message
-        socket.emit("chat", { roomId: currentChannel.id, user: `${currentUser.username}`, msg: `${chatInput}` });
+        socket.emit("chat", { roomId: currentChannel.id, user: `${currentUser.username}`, msg: tysonify(chatInput) });
         //clear input field
         dispatch(createMessage(postedMessage))
         setChatInput("")
