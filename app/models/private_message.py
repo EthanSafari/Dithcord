@@ -10,7 +10,7 @@ server_users = db.Table(
 if environment == 'production':
     server_users.schema = SCHEMA
     
-class Server(db.Model):
+class PmServer(db.Model):
     __tablename__ = 'servers'
 
     if environment == "production":
@@ -19,17 +19,15 @@ class Server(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     user1_id = db.Column(db.Integer, nullable=False)
+    user1 = db.relationship('User', back_populates='server')
     user2_id = db.Column(db.Integer, nullable=False)
-    
-    channels = db.relationship('Channel', back_populates='server', cascade="all, delete")
-    users = db.relationship('User', secondary=server_users, back_populates="servers")
+    user2 = db.relationship('User', back_populates='server')
 
     def to_dict(self):
         return {
             'id': self.id,
-            'private': self.private,
             'name': self.name,
-            'serverImage': self.server_image,
-            'ownerId': self.owner_id,
-            'channels': [channel.to_dict() for channel in self.channels],
+            'firstUserId': self.user1_id,
+            'secondUserId': self.user2_id,
+            'Users': [user.to_dict() for user in self.users]
         }
